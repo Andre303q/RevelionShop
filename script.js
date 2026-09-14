@@ -1,6 +1,6 @@
 const productosEjemplo = [
-  { id: "1", nombre: "Sweater Básico Blanco de Algodón", precio: 280.00, imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" },
-  { id: "2", nombre: "Camiseta Casual Estampada Minimal", precio: 180.00, imagen: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" },
+  { id: "1", nombre: "Sweater Básico Blanco de Algodón", precio: 280.00, imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80" },
+  { id: "2", nombre: "Camiseta Casual Estampada Minimal", precio: 180.00, imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" },
   { id: "3", nombre: "Pantalón Cargo Urbano Beige", precio: 420.00, imagen: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80" },
   { id: "4", nombre: "Sudadera Manga Larga Estilo Urbano", precio: 310.00, imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" }
 ];
