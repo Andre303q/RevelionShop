@@ -5,13 +5,13 @@ const productosEjemplo = [
   { id: "3", nombre: "Pantalón Cargo Urbano Beige", precio: 295.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80" },
   { id: "4", nombre: "Sudadera Manga Larga Estilo Urbano", precio: 250.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" },
   
-  // Accesorios / Relojes
+  // Accesorios
   { id: "5", nombre: "Reloj Minimalista Cronógrafo Acero", precio: 480.00, tipo: "reloj", imagen: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" },
   { id: "6", nombre: "Reloj Deportivo Smartwatch Pro", precio: 699.00, tipo: "reloj", imagen: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" },
   
-  // Coleccionables y Pósters (Juguetes / Otaku)
-  { id: "7", nombre: "Póster Coleccionable Anime Edición Especial", precio: 85.00, tipo: "coleccionable", imagen: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80" },
-  { id: "8", nombre: "Auto de Colección Escala Clásico", precio: 150.00, tipo: "juguete", imagen: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80" }
+  // Coleccionables (Figura de Anime corregida + Auto de Colección)
+  { id: "7", nombre: "Figura Coleccionable de Anime Edición Especial", precio: 320.00, tipo: "coleccionable", imagen: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" },
+  { id: "8", nombre: "Auto de Colección Escala Clásico", precio: 150.00, tipo: "coleccionable", imagen: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80" }
 ];
 
 let carrito = [];
@@ -19,19 +19,23 @@ let usuarioActual = null;
 let modoRegistro = false;
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderProducts(productosEjemplo);
+  renderCategorizedProducts();
   initModals();
   initAuthSystem();
   initCheckout();
   revisarSesionActiva();
 });
 
-function renderProducts(array) {
-  const container = document.getElementById('products-container');
-  if (!container) return;
-  container.innerHTML = '';
+function renderCategorizedProducts() {
+  const gridRopa = document.getElementById('grid-ropa');
+  const gridReloj = document.getElementById('grid-reloj');
+  const gridColeccionable = document.getElementById('grid-coleccionable');
 
-  array.forEach(p => {
+  if (gridRopa) gridRopa.innerHTML = '';
+  if (gridReloj) gridReloj.innerHTML = '';
+  if (gridColeccionable) gridColeccionable.innerHTML = '';
+
+  productosEjemplo.forEach(p => {
     const card = document.createElement('div');
     card.className = 'card';
     
@@ -44,6 +48,7 @@ function renderProducts(array) {
             <option value="S">S</option>
             <option value="M" selected>M</option>
             <option value="L">L</option>
+            <option value="XL">XL</option>
           </select>
         </div>`;
     } else if (p.tipo === 'reloj') {
@@ -51,17 +56,18 @@ function renderProducts(array) {
         <div class="size-selector-wrapper">
           <label>Acabado</label>
           <select class="product-size" id="size-${p.id}">
-            <option value="Negro Mate">Negro Mate</option>
+            <option value="Negro Mate" selected>Negro Mate</option>
             <option value="Acero Plata">Acero Plata</option>
+            <option value="Oro Rosado">Oro Rosado</option>
           </select>
         </div>`;
     } else {
       selectorHTML = `
         <div class="size-selector-wrapper">
-          <label>Presentación</label>
+          <label>Versión</label>
           <select class="product-size" id="size-${p.id}">
-            <option value="Edición Estándar">Edición Estándar</option>
-            <option value="Edición Coleccionista">Edición Coleccionista</option>
+            <option value="Edición Estándar" selected>Edición Estándar</option>
+            <option value="Edición Coleccionista Limitada">Edición Coleccionista Limitada</option>
           </select>
         </div>`;
     }
@@ -79,7 +85,14 @@ function renderProducts(array) {
         <button class="btn primary" onclick="addToCart('${p.id}')">Añadir al Carrito</button>
       </div>
     `;
-    container.appendChild(card);
+
+    if (p.tipo === 'ropa' && gridRopa) {
+      gridRopa.appendChild(card);
+    } else if (p.tipo === 'reloj' && gridReloj) {
+      gridReloj.appendChild(card);
+    } else if (p.tipo === 'coleccionable' && gridColeccionable) {
+      gridColeccionable.appendChild(card);
+    }
   });
 }
 
@@ -149,7 +162,7 @@ function initAuthSystem() {
     } else {
       const usuarioEncontrado = baseUsuarios.find(u => u.user === userVal && u.pass === passVal);
       if (!usuarioEncontrado) {
-        authError.textContent = "Usuario o contraseña incorrectos, o cuenta no existente.";
+        authError.textContent = "Usuario o contraseña incorrectos.";
         authError.style.display = "block";
         return;
       }
@@ -194,7 +207,7 @@ function actualizarUIUsuario() {
   }
 }
 
-// CARRITO Y MENSAJE FLOTANTE (TOAST)
+// CAPTURA DINÁMICA DE VARIACIONES EN EL CARRITO
 function addToCart(id) {
   const p = productosEjemplo.find(item => item.id === id);
   const sizeSelect = document.getElementById(`size-${id}`);
@@ -203,7 +216,7 @@ function addToCart(id) {
   if (p) {
     carrito.push({ ...p, opcionSeleccionada: selectedOption });
     updateCartUI();
-    mostrarToast(`¡Agregaste "${p.nombre}" al carrito!`);
+    mostrarToast(`¡Agregaste "${p.nombre}" (${selectedOption})!`);
   }
 }
 
@@ -229,7 +242,8 @@ function updateCartUI() {
       <div class="cart-item">
         <div>
           <strong>${item.nombre}</strong><br>
-          <small style="color: var(--text-muted);">${item.opcionSeleccionada} - Q ${item.precio.toFixed(2)}</small>
+          <small style="color: #a5b4fc; font-weight: 600;">Opción: ${item.opcionSeleccionada}</small><br>
+          <small style="color: var(--text-muted);">Q ${item.precio.toFixed(2)}</small>
         </div>
         <button class="btn danger" style="padding:4px 8px; font-size:0.75rem;" onclick="removeFromCart(${index})">X</button>
       </div>
