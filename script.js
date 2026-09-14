@@ -1,62 +1,62 @@
 // ==========================================
-// 1. PRODUCTOS DE LA TIENDA (Estilo Y2K / Streetwear)
+// 1. PRODUCTOS DE LA TIENDA (Catálogo Y2K / Streetwear)
 // ==========================================
 const productos = [
   {
     id: 1,
-    nombre: "Camiseta Cyber Y2K Star Graphic",
-    precio: 199.00,
-    imagen: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=60",
+    nombre: "Sudadera Doble Capucha Cyber Y2K",
+    precio: 420.00,
+    imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&auto=format&fit=crop&q=60",
     tallas: ["S", "M", "L", "XL"]
   },
   {
     id: 2,
-    nombre: "Hoodie Oversized Techwear Dark",
-    precio: 350.00,
-    imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&auto=format&fit=crop&q=60",
+    nombre: "Hoodie con Forro de Piel y Cremallera",
+    precio: 450.00,
+    imagen: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&auto=format&fit=crop&q=60",
     tallas: ["M", "L", "XL"]
   },
   {
     id: 3,
-    nombre: "Gorra Trucker Y2K Star",
-    precio: 120.00,
-    imagen: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&auto=format&fit=crop&q=60",
-    tallas: ["Única"]
+    nombre: "Sweater Oversize con Calavera Gótica",
+    precio: 380.00,
+    imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&auto=format&fit=crop&q=60",
+    tallas: ["S", "M", "L"]
   },
   {
     id: 4,
-    nombre: "Cargo Pants Parachute Tactical",
-    precio: 320.00,
+    nombre: "Pantalón Cargo Baggy Tactical Streetwear",
+    precio: 490.00,
     imagen: "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=500&auto=format&fit=crop&q=60",
     tallas: ["S", "M", "L", "XL"]
   },
   {
     id: 5,
-    nombre: "Chaqueta Cortavientos Retro Cyber",
-    precio: 390.00,
-    imagen: "https://images.unsplash.com/photo-1544441893-675973e31985?w=500&auto=format&fit=crop&q=60",
+    nombre: "Sudadera Cruz de Pedrería Estética 2000s",
+    precio: 395.00,
+    imagen: "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=500&auto=format&fit=crop&q=60",
     tallas: ["M", "L", "XL"]
   },
   {
     id: 6,
-    nombre: "Jogger Baggy Streetwear Acid Wash",
-    precio: 280.00,
-    imagen: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=500&auto=format&fit=crop&q=60",
-    tallas: ["S", "M", "L", "XL"]
+    nombre: "Camiseta Baby Tee Star Graphic Y2K",
+    precio: 210.00,
+    imagen: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=60",
+    tallas: ["S", "M", "L"]
   },
   {
     id: 7,
-    nombre: "Beanie Oversize Underground Black",
-    precio: 95.00,
-    imagen: "https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=500&auto=format&fit=crop&q=60",
-    tallas: ["Única"]
+    nombre: "Chaqueta Cortavientos Retro Techwear",
+    precio: 520.00,
+    imagen: "https://images.unsplash.com/photo-1544441893-675973e31985?w=500&auto=format&fit=crop&q=60",
+    tallas: ["M", "L", "XL"]
   },
   {
     id: 8,
-    nombre: "Hoodie Cremallera Skull Y2K",
-    precio: 370.00,
-    imagen: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&auto=format&fit=crop&q=60",
-    tallas: ["S", "M", "L", "XL"]
+    nombre: "Gorra Trucker Underground Star",
+    precio: 150.00,
+    imagen: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&auto=format&fit=crop&q=60",
+    tallas: ["Única"]
   }
 ];
 
@@ -184,7 +184,7 @@ btnCheckout.addEventListener("click", () => {
     authModal.style.display = "flex";
     return;
   }
-  alert(`¡Gracias por tu compra, ${usuarioActivo}! Tu pedido streetwear ha sido procesado con éxito.`);
+  alert(`¡Gracias por tu compra, ${usuarioActivo}! Tu pedido Y2K Streetwear ha sido procesado con éxito.`);
   carrito = [];
   actualizarCarritoUI();
   cartModal.style.display = "none";
