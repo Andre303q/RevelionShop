@@ -10,7 +10,7 @@ const db = getFirestore(app);
 
 console.log("¡Firebase conectado exitosamente en Revelion Shop!");
 
-// Importaciones de Firebase
+// Importaciones de Firebase (Limpias y sin duplicados)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { 
   getAuth, 
