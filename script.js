@@ -13,7 +13,7 @@ const productos = [
     id: 2,
     nombre: "Sweater Básico Blanco de Algodón",
     precio: 280.00,
-    imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&auto=format&fit=crop&q=60",
+    imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=500&auto=format&fit=crop&q=60",
     tallas: ["S", "M", "L", "XL"]
   },
   {
@@ -27,28 +27,28 @@ const productos = [
     id: 4,
     nombre: "Pantalón Cargo Urbano Beige",
     precio: 420.00,
-    imagen: "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=500&auto=format&fit=crop&q=60",
+    imagen: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=500&auto=format&fit=crop&q=60",
     tallas: ["S", "M", "L", "XL"]
   },
   {
     id: 5,
-    nombre: "Sudadera Manga Larga Naranja Estilo Urbano",
+    nombre: "Sudadera Manga Larga Estilo Urbano",
     precio: 310.00,
-    imagen: "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=500&auto=format&fit=crop&q=60",
+    imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&auto=format&fit=crop&q=60",
     tallas: ["M", "L", "XL"]
   },
   {
     id: 6,
     nombre: "Chaqueta Cortavientos Deportiva / Casual",
     precio: 490.00,
-    imagen: "https://images.unsplash.com/photo-1544441893-675973e31985?w=500&auto=format&fit=crop&q=60",
+    imagen: "https://images.unsplash.com/photo-1548883354-7622d03aca27?w=500&auto=format&fit=crop&q=60",
     tallas: ["M", "L", "XL"]
   },
   {
     id: 7,
     nombre: "Conjunto Jogger y Playera Minimalista",
     precio: 450.00,
-    imagen: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=500&auto=format&fit=crop&q=60",
+    imagen: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&auto=format&fit=crop&q=60",
     tallas: ["S", "M", "L", "XL"]
   },
   {
