@@ -1,60 +1,60 @@
 // ==========================================
-// 1. PRODUCTOS DE LA TIENDA (Catálogo Y2K / Streetwear)
+// 1. PRODUCTOS DE LA TIENDA (Ropa General & Streetwear)
 // ==========================================
 const productos = [
   {
     id: 1,
-    nombre: "Sudadera Con Capucha Y2k",
-    precio: 320.00,
-    imagen: "https://images.unsplash.com/photo-1667221769494-868171f6ce2b?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    nombre: "Sudadera con Capucha Oversized Negra",
+    precio: 350.00,
+    imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&auto=format&fit=crop&q=60",
     tallas: ["S", "M", "L", "XL"]
   },
   {
     id: 2,
-    nombre: "Hoodie con Forro de Piel y Cremallera",
-    precio: 450.00,
-    imagen: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&auto=format&fit=crop&q=60",
-    tallas: ["M", "L", "XL"]
+    nombre: "Sweater Básico Blanco de Algodón",
+    precio: 280.00,
+    imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&auto=format&fit=crop&q=60",
+    tallas: ["S", "M", "L", "XL"]
   },
   {
     id: 3,
-    nombre: "Sweater Oversize con Calavera Gótica",
-    precio: 380.00,
-    imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&auto=format&fit=crop&q=60",
-    tallas: ["S", "M", "L"]
+    nombre: "Camiseta Casual Estampada Minimal",
+    precio: 180.00,
+    imagen: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=60",
+    tallas: ["S", "M", "L", "XL"]
   },
   {
     id: 4,
-    nombre: "Pantalón Cargo Baggy Tactical Streetwear",
-    precio: 490.00,
+    nombre: "Pantalón Cargo Urbano Beige",
+    precio: 420.00,
     imagen: "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=500&auto=format&fit=crop&q=60",
     tallas: ["S", "M", "L", "XL"]
   },
   {
     id: 5,
-    nombre: "Sudadera Cruz de Pedrería Estética 2000s",
-    precio: 395.00,
+    nombre: "Sudadera Manga Larga Naranja Estilo Urbano",
+    precio: 310.00,
     imagen: "https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=500&auto=format&fit=crop&q=60",
     tallas: ["M", "L", "XL"]
   },
   {
     id: 6,
-    nombre: "Camiseta Baby Tee Star Graphic Y2K",
-    precio: 210.00,
-    imagen: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=60",
-    tallas: ["S", "M", "L"]
-  },
-  {
-    id: 7,
-    nombre: "Chaqueta Cortavientos Retro Techwear",
-    precio: 520.00,
+    nombre: "Chaqueta Cortavientos Deportiva / Casual",
+    precio: 490.00,
     imagen: "https://images.unsplash.com/photo-1544441893-675973e31985?w=500&auto=format&fit=crop&q=60",
     tallas: ["M", "L", "XL"]
   },
   {
+    id: 7,
+    nombre: "Conjunto Jogger y Playera Minimalista",
+    precio: 450.00,
+    imagen: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=500&auto=format&fit=crop&q=60",
+    tallas: ["S", "M", "L", "XL"]
+  },
+  {
     id: 8,
-    nombre: "Gorra Trucker Underground Star",
-    precio: 150.00,
+    nombre: "Gorra Trucker Clásica Ajustable",
+    precio: 120.00,
     imagen: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&auto=format&fit=crop&q=60",
     tallas: ["Única"]
   }
@@ -184,7 +184,7 @@ btnCheckout.addEventListener("click", () => {
     authModal.style.display = "flex";
     return;
   }
-  alert(`¡Gracias por tu compra, ${usuarioActivo}! Tu pedido Y2K Streetwear ha sido procesado con éxito.`);
+  alert(`¡Gracias por tu compra, ${usuarioActivo}! Tu pedido ha sido procesado con éxito.`);
   carrito = [];
   actualizarCarritoUI();
   cartModal.style.display = "none";
