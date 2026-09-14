@@ -56,8 +56,14 @@
   <div id="login-modal" class="modal-overlay">
     <div class="modal-content">
       <button class="modal-close" id="close-login">&times;</button>
-      <h2 class="modal-title">Iniciar Sesión</h2>
-      <form id="login-form">
+      <h2 class="modal-title" id="login-modal-title">Iniciar Sesión</h2>
+      
+      <!-- IMPORTANTE: ID corregido para que el script lo detecte -->
+      <form id="form-login">
+        <div class="form-group" id="group-name" style="display: none;">
+          <label>Nombre</label>
+          <input type="text" id="reg-name" placeholder="Tu nombre">
+        </div>
         <div class="form-group">
           <label>Correo o Nombre de usuario</label>
           <input type="text" id="login-user" required placeholder="Ej. prueba">
@@ -66,8 +72,9 @@
           <label>Contraseña</label>
           <input type="password" id="login-pass" required placeholder="••••••••">
         </div>
-        <button type="submit" class="btn primary" style="width: 100%; margin-top: 0.5rem;">Entrar</button>
+        <button type="submit" id="login-submit-btn" class="btn primary" style="width: 100%; margin-top: 0.5rem;">Entrar</button>
       </form>
+
       <div class="auth-switch">
         <a href="#" id="sw-to-register">¿No tienes cuenta? Regístrate aquí</a>
       </div>
