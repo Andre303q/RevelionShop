@@ -3,13 +3,6 @@
 // ==========================================
 const productos = [
   {
-    id: 1,
-    nombre: "Sudadera con Capucha Oversized Negra",
-    precio: 350.00,
-    imagen: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&auto=format&fit=crop&q=60",
-    tallas: ["S", "M", "L", "XL"]
-  },
-  {
     id: 2,
     nombre: "Sweater Básico Blanco de Algodón",
     precio: 280.00,
