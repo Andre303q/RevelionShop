@@ -1,5 +1,5 @@
 // ==========================================
-// 1. PRODUCTOS DE LA TIENDA (Ropa General & Streetwear)
+// 1. PRODUCTOS DE LA TIENDA (Sin el primer artículo)
 // ==========================================
 const productos = [
   {
@@ -80,7 +80,45 @@ const cartTotalPrice = document.getElementById("cart-total-price");
 const btnCheckout = document.getElementById("btn-checkout");
 
 // ==========================================
-// 2. RENDERIZAR CATÁLOGO
+// 2. SISTEMA DE NOTIFICACIONES TOAST (Dinámico)
+// ==========================================
+function mostrarNotificacion(mensaje) {
+  // Crear el elemento toast si no existe
+  let toast = document.getElementById("toast-notification");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "toast-notification";
+    toast.style.cssText = `
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      z-index: 9999;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease-in-out;
+    `;
+    document.body.appendChild(toast);
+  }
+
+  toast.textContent = mensaje;
+  toast.style.opacity = "1";
+  toast.style.transform = "translateY(0)";
+
+  // Ocultar después de 3 segundos
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateY(20px)";
+  }, 3000);
+}
+
+// ==========================================
+// 3. RENDERIZAR CATÁLOGO CON ESTILO DINÁMICO
 // ==========================================
 function cargarCatalogo() {
   if (!productsContainer) return;
@@ -89,9 +127,21 @@ function cargarCatalogo() {
   productos.forEach((producto) => {
     const card = document.createElement("div");
     card.classList.add("card");
+    // Transición suave para las tarjetas
+    card.style.cssText = "transition: transform 0.3s ease, box-shadow 0.3s ease;";
+    card.onmouseover = () => {
+      card.style.transform = "translateY(-6px)";
+      card.style.boxShadow = "0 10px 20px rgba(59, 130, 246, 0.2)";
+    };
+    card.onmouseout = () => {
+      card.style.transform = "translateY(0)";
+      card.style.boxShadow = "0 4px 6px rgba(0,0,0,0.3)";
+    };
 
     card.innerHTML = `
-      <img src="${producto.imagen}" alt="${producto.nombre}">
+      <div style="overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+        <img src="${producto.imagen}" alt="${producto.nombre}" style="transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
       <div class="card-body">
         <h3 class="card-title">${producto.nombre}</h3>
         <p class="card-price">Q ${producto.precio.toFixed(2)}</p>
@@ -119,7 +169,7 @@ function cargarCatalogo() {
 }
 
 // ==========================================
-// 3. GESTIÓN DEL CARRITO
+// 4. GESTIÓN DEL CARRITO
 // ==========================================
 function agregarAlCarrito(idProducto) {
   const producto = productos.find(p => p.id === idProducto);
@@ -128,6 +178,9 @@ function agregarAlCarrito(idProducto) {
 
   carrito.push({ ...producto, tallaSeleccionada });
   actualizarCarritoUI();
+
+  // Lanzar mensaje flotante dinámico
+  mostrarNotificacion(`✨ ¡${producto.nombre} agregado al carrito!`);
 }
 
 function actualizarCarritoUI() {
@@ -163,6 +216,7 @@ function actualizarCarritoUI() {
 window.eliminarDelCarrito = function(index) {
   carrito.splice(index, 1);
   actualizarCarritoUI();
+  mostrarNotificacion("🗑️ Producto eliminado del carrito");
 };
 
 btnCheckout.addEventListener("click", () => {
@@ -184,7 +238,7 @@ btnCheckout.addEventListener("click", () => {
 });
 
 // ==========================================
-// 4. AUTENTICACIÓN LOCAL (localStorage)
+// 5. AUTENTICACIÓN LOCAL
 // ==========================================
 btnLoginModal.addEventListener("click", () => authModal.style.display = "flex");
 closeAuth.addEventListener("click", () => authModal.style.display = "none");
@@ -232,7 +286,7 @@ authForm.addEventListener("submit", (e) => {
     localStorage.setItem("revelion_usuarios", JSON.stringify(usuarios));
     localStorage.setItem("usuarioActivo", username);
     
-    alert(`¡Cuenta creada con éxito! Bienvenido, ${username}`);
+    mostrarNotificacion(`🎉 ¡Bienvenido a Revelion, ${username}!`);
   } else {
     let usuarioEncontrado = null;
     
@@ -249,7 +303,7 @@ authForm.addEventListener("submit", (e) => {
 
     if (usuarioEncontrado) {
       localStorage.setItem("usuarioActivo", usuarioEncontrado);
-      alert(`¡Bienvenido de nuevo, ${usuarioEncontrado}!`);
+      mostrarNotificacion(`👋 ¡Hola de nuevo, ${usuarioEncontrado}!`);
     } else {
       alert("Credenciales incorrectas. Verifica tus datos.");
       return;
@@ -263,7 +317,7 @@ authForm.addEventListener("submit", (e) => {
 
 btnLogout.addEventListener("click", () => {
   localStorage.removeItem("usuarioActivo");
-  alert("Sesión cerrada correctamente.");
+  mostrarNotificacion("🔒 Sesión cerrada");
   verificarSesion();
 });
 
