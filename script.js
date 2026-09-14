@@ -1,27 +1,62 @@
 // ==========================================
-// 1. PRODUCTOS DE LA TIENDA (Quetzales / Q)
+// 1. PRODUCTOS DE LA TIENDA (Estilo Y2K / Streetwear)
 // ==========================================
 const productos = [
   {
     id: 1,
-    nombre: "Camiseta Revelion Oversize",
+    nombre: "Camiseta Cyber Y2K Star Graphic",
     precio: 199.00,
     imagen: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=60",
     tallas: ["S", "M", "L", "XL"]
   },
   {
     id: 2,
-    nombre: "Hoodie Revelion Black",
+    nombre: "Hoodie Oversized Techwear Dark",
     precio: 350.00,
     imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&auto=format&fit=crop&q=60",
     tallas: ["M", "L", "XL"]
   },
   {
     id: 3,
-    nombre: "Gorra Revelion Classic",
+    nombre: "Gorra Trucker Y2K Star",
     precio: 120.00,
     imagen: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&auto=format&fit=crop&q=60",
     tallas: ["Única"]
+  },
+  {
+    id: 4,
+    nombre: "Cargo Pants Parachute Tactical",
+    precio: 320.00,
+    imagen: "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?w=500&auto=format&fit=crop&q=60",
+    tallas: ["S", "M", "L", "XL"]
+  },
+  {
+    id: 5,
+    nombre: "Chaqueta Cortavientos Retro Cyber",
+    precio: 390.00,
+    imagen: "https://images.unsplash.com/photo-1544441893-675973e31985?w=500&auto=format&fit=crop&q=60",
+    tallas: ["M", "L", "XL"]
+  },
+  {
+    id: 6,
+    nombre: "Jogger Baggy Streetwear Acid Wash",
+    precio: 280.00,
+    imagen: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?w=500&auto=format&fit=crop&q=60",
+    tallas: ["S", "M", "L", "XL"]
+  },
+  {
+    id: 7,
+    nombre: "Beanie Oversize Underground Black",
+    precio: 95.00,
+    imagen: "https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?w=500&auto=format&fit=crop&q=60",
+    tallas: ["Única"]
+  },
+  {
+    id: 8,
+    nombre: "Hoodie Cremallera Skull Y2K",
+    precio: 370.00,
+    imagen: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&auto=format&fit=crop&q=60",
+    tallas: ["S", "M", "L", "XL"]
   }
 ];
 
@@ -149,7 +184,7 @@ btnCheckout.addEventListener("click", () => {
     authModal.style.display = "flex";
     return;
   }
-  alert(`¡Gracias por tu compra, ${usuarioActivo}! Tu pedido ha sido procesado con éxito.`);
+  alert(`¡Gracias por tu compra, ${usuarioActivo}! Tu pedido streetwear ha sido procesado con éxito.`);
   carrito = [];
   actualizarCarritoUI();
   cartModal.style.display = "none";
@@ -158,15 +193,12 @@ btnCheckout.addEventListener("click", () => {
 // ==========================================
 // 4. AUTENTICACIÓN LOCAL (localStorage)
 // ==========================================
-
-// Abrir / Cerrar Modales
 btnLoginModal.addEventListener("click", () => authModal.style.display = "flex");
 closeAuth.addEventListener("click", () => authModal.style.display = "none");
 
 btnCartToggle.addEventListener("click", () => cartModal.style.display = "flex");
 closeCart.addEventListener("click", () => cartModal.style.display = "none");
 
-// Alternar entre Iniciar Sesión y Registrarse
 toggleMode.addEventListener("click", (e) => {
   e.preventDefault();
   modoRegistro = !modoRegistro;
@@ -185,13 +217,11 @@ toggleMode.addEventListener("click", (e) => {
   }
 });
 
-// Enviar formulario (Login o Registro)
 authForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const inputVal = authUserInput.value.trim();
   const password = authPassword.value;
   
-  // Obtener base de datos de usuarios guardados o crear objeto vacío
   let usuarios = JSON.parse(localStorage.getItem("revelion_usuarios")) || {};
 
   if (modoRegistro) {
@@ -205,21 +235,17 @@ authForm.addEventListener("submit", (e) => {
       return;
     }
 
-    // Registrar nuevo usuario
     usuarios[inputVal] = { username, password };
     localStorage.setItem("revelion_usuarios", JSON.stringify(usuarios));
     localStorage.setItem("usuarioActivo", username);
     
     alert(`¡Cuenta creada con éxito! Bienvenido, ${username}`);
   } else {
-    // Iniciar sesión (busca por correo o por nombre de usuario)
     let usuarioEncontrado = null;
     
-    // Si ingresó el correo directamente
     if (usuarios[inputVal] && usuarios[inputVal].password === password) {
       usuarioEncontrado = usuarios[inputVal].username;
     } else {
-      // Si ingresó el nombre de usuario, buscamos en los valores
       for (let email in usuarios) {
         if (usuarios[email].username === inputVal && usuarios[email].password === password) {
           usuarioEncontrado = usuarios[email].username;
@@ -242,14 +268,12 @@ authForm.addEventListener("submit", (e) => {
   verificarSesion();
 });
 
-// Cerrar Sesión
 btnLogout.addEventListener("click", () => {
   localStorage.removeItem("usuarioActivo");
   alert("Sesión cerrada correctamente.");
   verificarSesion();
 });
 
-// Verificar si hay sesión activa al cargar
 function verificarSesion() {
   const usuarioActivo = localStorage.getItem("usuarioActivo");
   if (usuarioActivo) {
@@ -264,7 +288,6 @@ function verificarSesion() {
   }
 }
 
-// Inicializar la app
 document.addEventListener("DOMContentLoaded", () => {
   cargarCatalogo();
   verificarSesion();
