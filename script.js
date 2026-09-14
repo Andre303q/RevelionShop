@@ -1,8 +1,12 @@
 const productosEjemplo = [
-  { id: "1", nombre: "Sweater Básico Blanco de Algodón", precio: 280.00, imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80" },
-  { id: "2", nombre: "Camiseta Casual Estampada Minimal", precio: 180.00, imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" },
-  { id: "3", nombre: "Pantalón Cargo Urbano Beige", precio: 420.00, imagen: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80" },
-  { id: "4", nombre: "Sudadera Manga Larga Estilo Urbano", precio: 310.00, imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" }
+  { id: "1", nombre: "Sweater Básico Blanco de Algodón", precio: 280.00, categoria: "ropa", imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80" },
+  { id: "2", nombre: "Camiseta Casual Estampada Minimal", precio: 180.00, categoria: "ropa", imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" },
+  { id: "3", nombre: "Pantalón Cargo Urbano Beige", precio: 420.00, categoria: "ropa", imagen: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80" },
+  { id: "4", nombre: "Sudadera Manga Larga Estilo Urbano", precio: 310.00, categoria: "ropa", imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" },
+  { id: "5", nombre: "Reloj Minimalista Cronógrafo Acero", precio: 650.00, categoria: "accesorios", imagen: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" },
+  { id: "6", nombre: "Reloj Deportivo Smartwatch Pro", precio: 890.00, categoria: "accesorios", imagen: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" },
+  { id: "7", nombre: "Figura de Colección Robot Articulado", precio: 340.00, categoria: "juguetes", imagen: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" },
+  { id: "8", nombre: "Auto de Carreras Escala Clásico", precio: 220.00, categoria: "juguetes", imagen: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80" }
 ];
 
 let carrito = [];
@@ -25,6 +29,38 @@ function renderProducts(array) {
   array.forEach(p => {
     const card = document.createElement('div');
     card.className = 'card';
+    
+    // Condicional para mostrar selector de talla solo si es ropa, o etiqueta distinta si es accesorio/juguete
+    let selectorHTML = `
+      <div class="size-selector-wrapper">
+        <label>Talla</label>
+        <select class="product-size" id="size-${p.id}">
+          <option value="S">S</option>
+          <option value="M" selected>M</option>
+          <option value="L">L</option>
+        </select>
+      </div>`;
+    
+    if (p.categoria === 'reloj' || p.categoria === 'accesorios') {
+      selectorHTML = `
+        <div class="size-selector-wrapper">
+          <label>Estilo / Color</label>
+          <select class="product-size" id="size-${p.id}">
+            <option value="Negro Mate">Negro Mate</option>
+            <option value="Acero Plata">Acero Plata</option>
+          </select>
+        </div>`;
+    } else if (p.categoria === 'juguetes') {
+      selectorHTML = `
+        <div class="size-selector-wrapper">
+          <label>Edición</label>
+          <select class="product-size" id="size-${p.id}">
+            <option value="Edición Estándar">Edición Estándar</option>
+            <option value="Edición Coleccionista">Edición Coleccionista</option>
+          </select>
+        </div>`;
+    }
+
     card.innerHTML = `
       <div class="card-img-container">
         <img src="${p.imagen}" alt="${p.nombre}">
@@ -33,14 +69,7 @@ function renderProducts(array) {
         <div>
           <h3 class="card-title">${p.nombre}</h3>
           <p class="card-price">Q ${p.precio.toFixed(2)}</p>
-          <div class="size-selector-wrapper">
-            <label>Talla</label>
-            <select class="product-size" id="size-${p.id}">
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-            </select>
-          </div>
+          ${selectorHTML}
         </div>
         <button class="btn primary" onclick="addToCart('${p.id}')">Añadir al Carrito</button>
       </div>
@@ -64,7 +93,6 @@ function initModals() {
   };
 }
 
-// Sistema de autenticación con base de datos local (localStorage) estricta
 function initAuthSystem() {
   const formAuth = document.getElementById('form-auth');
   const swModeText = document.getElementById('sw-mode-text');
@@ -73,7 +101,6 @@ function initAuthSystem() {
   const authSubmitBtn = document.getElementById('auth-submit-btn');
   const authError = document.getElementById('auth-error');
 
-  // Cambiar entre Iniciar Sesión y Registrarse
   swModeText.onclick = (e) => {
     e.preventDefault();
     modoRegistro = !modoRegistro;
@@ -103,21 +130,18 @@ function initAuthSystem() {
     let baseUsuarios = JSON.parse(localStorage.getItem('revelion_users')) || [];
 
     if (modoRegistro) {
-      // Validar si ya existe
       const existe = baseUsuarios.find(u => u.user === userVal);
       if (existe) {
         authError.textContent = "El nombre de usuario ya está registrado.";
         authError.style.display = "block";
         return;
       }
-      // Guardar nuevo usuario
       baseUsuarios.push({ user: userVal, pass: passVal, name: nameVal });
       localStorage.setItem('revelion_users', JSON.stringify(baseUsuarios));
       alert("¡Cuenta creada con éxito! Ahora inicia sesión.");
       modoRegistro = false;
-      swModeText.click(); // Resetear formulario a login
+      swModeText.click();
     } else {
-      // Validar inicio de sesión real
       const usuarioEncontrado = baseUsuarios.find(u => u.user === userVal && u.pass === passVal);
       if (!usuarioEncontrado) {
         authError.textContent = "Usuario o contraseña incorrectos, o cuenta no existente.";
@@ -125,7 +149,6 @@ function initAuthSystem() {
         return;
       }
 
-      // Login exitoso
       usuarioActual = usuarioEncontrado.name || usuarioEncontrado.user;
       localStorage.setItem('revelion_active_user', usuarioActual);
       actualizarUIUsuario();
@@ -166,14 +189,27 @@ function actualizarUIUsuario() {
   }
 }
 
-// Carrito y Compra Real
+// CARRITO Y MENSAJE FLOTANTE (TOAST)
 function addToCart(id) {
   const p = productosEjemplo.find(item => item.id === id);
-  const size = document.getElementById(`size-${id}`).value;
+  const sizeSelect = document.getElementById(`size-${id}`);
+  const selectedOption = sizeSelect ? sizeSelect.value : 'Estándar';
+  
   if (p) {
-    carrito.push({ ...p, talla: size });
+    carrito.push({ ...p, opcionSeleccionada: selectedOption });
     updateCartUI();
+    mostrarToast(`¡Agregaste "${p.nombre}" al carrito!`);
   }
+}
+
+function mostrarToast(mensaje) {
+  const toast = document.getElementById('toast-notification');
+  toast.textContent = mensaje;
+  toast.classList.add('show');
+  
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2500);
 }
 
 function updateCartUI() {
@@ -188,7 +224,7 @@ function updateCartUI() {
       <div class="cart-item">
         <div>
           <strong>${item.nombre}</strong><br>
-          <small>Talla: ${item.talla} - Q ${item.precio.toFixed(2)}</small>
+          <small style="color: var(--text-muted);">${item.opcionSeleccionada} - Q ${item.precio.toFixed(2)}</small>
         </div>
         <button class="btn danger" style="padding:4px 8px; font-size:0.75rem;" onclick="removeFromCart(${index})">X</button>
       </div>
