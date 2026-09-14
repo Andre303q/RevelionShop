@@ -11,7 +11,9 @@
     <header>
         <div class="logo">⚡ Revelion Shop</div>
         <nav id="user-nav">
-            <span id="user-email" style="display:none; color: var(--accent); font-weight: 600; margin-right: 10px;"></span>
+            <!-- Saludo al usuario logueado -->
+            <span id="user-display" style="display:none; color: var(--accent); font-weight: 600; margin-right: 15px;"></span>
+            
             <button id="btn-login-modal" class="btn">Iniciar Sesión</button>
             <button id="btn-logout" class="btn secondary" style="display:none;">Cerrar Sesión</button>
             <button id="btn-cart-toggle" class="btn">🛒 Carrito (<span id="cart-count">0</span>)</button>
@@ -23,7 +25,7 @@
         <section id="shop-section">
             <h2>Catálogo de Productos</h2>
             <div id="products-container" class="grid">
-                <!-- Los productos se cargan desde JavaScript -->
+                <!-- Los productos se cargan dinámicamente desde JavaScript -->
             </div>
         </section>
     </main>
@@ -48,12 +50,16 @@
             <h2 id="auth-title">Iniciar Sesión</h2>
             <form id="auth-form">
                 <!-- Campo de Nombre de Usuario (Solo visible al registrarse) -->
-                <div id="username-field-container" style="display: none;">
-                    <input type="text" id="auth-username" placeholder="Nombre de usuario">
+                <div id="username-field-container" style="display: none; margin-bottom: 1rem;">
+                    <input type="text" id="auth-username" placeholder="Nombre de usuario" style="width: 100%; padding: 0.5rem; background: var(--bg-dark); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;">
                 </div>
-                <input type="email" id="auth-email" placeholder="Correo electrónico" required>
-                <input type="password" id="auth-password" placeholder="Contraseña" required>
-                <button type="submit" id="auth-submit-btn" class="btn primary">Entrar</button>
+                <div style="margin-bottom: 1rem;">
+                    <input type="text" id="auth-user-input" placeholder="Correo o Nombre de usuario" required style="width: 100%; padding: 0.5rem; background: var(--bg-dark); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <input type="password" id="auth-password" placeholder="Contraseña" required style="width: 100%; padding: 0.5rem; background: var(--bg-dark); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;">
+                </div>
+                <button type="submit" id="auth-submit-btn" class="btn primary" style="width: 100%;">Entrar</button>
             </form>
             <p id="auth-toggle-text" style="margin-top: 1rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
                 ¿No tienes cuenta? <a href="#" id="toggle-mode" style="color: var(--accent);">Regístrate aquí</a>
@@ -61,7 +67,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE LA TIENDA -->
-    <script type="module" src="script.js"></script>
+    <!-- SCRIPT PRINCIPAL -->
+    <script src="script.js"></script>
 </body>
 </html>
