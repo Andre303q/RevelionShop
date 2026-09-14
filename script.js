@@ -4,9 +4,9 @@
 const productos = [
   {
     id: 1,
-    nombre: "Sudadera Doble Capucha Cyber Y2K",
-    precio: 420.00,
-    imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=500&auto=format&fit=crop&q=60",
+    nombre: "Sudadera Con Capucha Y2k",
+    precio: 320.00,
+    imagen: "https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Farticulo.mercadolibre.com.mx%2FMLM-3758968246-sudadera-con-capucha-y2k-estilo-hip-hop-holgada-algodon-_JM&ved=0CBYQjRxqFwoTCKiAmuHx7pYDFQAAAAAdAAAAABBP&opi=89978449",
     tallas: ["S", "M", "L", "XL"]
   },
   {
