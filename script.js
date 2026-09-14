@@ -339,3 +339,13 @@ document.addEventListener("DOMContentLoaded", () => {
   cargarCatalogo();
   verificarSesion();
 });
+
+// Ejemplo para abrir el carrito
+document.getElementById('btn-cart-toggle').addEventListener('click', () => {
+  document.getElementById('cart-modal').style.display = 'flex';
+});
+
+// Ejemplo para cerrar el carrito
+document.getElementById('close-cart').addEventListener('click', () => {
+  document.getElementById('cart-modal').style.display = 'none';
+});
