@@ -9,16 +9,16 @@
 <body>
 
   <!-- HEADER FIJO -->
-  <header>
-    <a href="#" class="logo-container">
+  <header class="header">
+    <div class="logo-container">
       <div class="logo-badge">
         <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
       </div>
       <div class="logo-text">
         <span class="logo-title">REVELION</span>
-        <span class="logo-subtitle">Shop</span>
+        <span class="logo-subtitle">SHOP</span>
       </div>
-    </a>
+    </div>
 
     <div class="nav-actions">
       <span id="user-display" style="display: none;"></span>
@@ -31,9 +31,7 @@
   <!-- CATÁLOGO DE PRODUCTOS -->
   <main class="catalogue-wrapper">
     <h1 class="section-title">Catálogo de Productos</h1>
-    <div id="products-container">
-      <!-- Los productos se cargan dinámicamente mediante JS -->
-    </div>
+    <div id="products-container"></div>
   </main>
 
   <!-- MODAL DE CARRITO -->
@@ -41,42 +39,40 @@
     <div class="modal-content">
       <button class="modal-close" id="close-cart">&times;</button>
       <h2 class="modal-title">Tu Carrito de Compras</h2>
-      <div id="cart-items-list" class="cart-items-list">
-        <!-- Items del carrito -->
-      </div>
+      <div id="cart-items-list" class="cart-items-list"></div>
       <div class="cart-summary">
         <span>Total:</span>
         <span id="cart-total">Q 0.00</span>
       </div>
-      <button class="btn primary" style="width: 100%;">Finalizar Compra</button>
+      <button id="btn-checkout" class="btn primary" style="width: 100%;">Realizar Compra</button>
     </div>
   </div>
 
-  <!-- MODAL DE INICIO DE SESIÓN -->
+  <!-- MODAL DE INICIO DE SESIÓN / REGISTRO -->
   <div id="login-modal" class="modal-overlay">
     <div class="modal-content">
       <button class="modal-close" id="close-login">&times;</button>
-      <h2 class="modal-title" id="login-modal-title">Iniciar Sesión</h2>
+      <h2 class="modal-title" id="modal-title-auth">Iniciar Sesión</h2>
       
-      <!-- IMPORTANTE: ID corregido para que el script lo detecte -->
-      <form id="form-login">
+      <form id="form-auth">
         <div class="form-group" id="group-name" style="display: none;">
-          <label>Nombre</label>
-          <input type="text" id="reg-name" placeholder="Tu nombre">
+          <label>Nombre Completo</label>
+          <input type="text" id="auth-name" placeholder="Tu nombre">
         </div>
         <div class="form-group">
-          <label>Correo o Nombre de usuario</label>
-          <input type="text" id="login-user" required placeholder="Ej. prueba">
+          <label>Nombre de Usuario</label>
+          <input type="text" id="auth-user" required placeholder="Ej. juan123">
         </div>
         <div class="form-group">
           <label>Contraseña</label>
-          <input type="password" id="login-pass" required placeholder="••••••••">
+          <input type="password" id="auth-pass" required placeholder="••••••••">
         </div>
-        <button type="submit" id="login-submit-btn" class="btn primary" style="width: 100%; margin-top: 0.5rem;">Entrar</button>
+        <div id="auth-error" class="auth-error-msg" style="display: none;"></div>
+        <button type="submit" id="auth-submit-btn" class="btn primary" style="width: 100%; margin-top: 0.5rem;">Entrar</button>
       </form>
 
       <div class="auth-switch">
-        <a href="#" id="sw-to-register">¿No tienes cuenta? Regístrate aquí</a>
+        <a href="#" id="sw-mode-text">¿No tienes cuenta? Regístrate aquí</a>
       </div>
     </div>
   </div>
