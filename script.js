@@ -10,12 +10,13 @@ const db = getFirestore(app);
 
 console.log("¡Firebase conectado exitosamente en Revelion Shop!");
 
-// Importaciones de Firebase (Limpias y sin duplicados)
+// Importaciones de Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { 
   getAuth, 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword, 
+  updateProfile,
   signOut, 
   onAuthStateChanged 
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
@@ -26,7 +27,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // ==========================================
-// LISTA DE PRODUCTOS (Fácil de editar y agregar)
+// LISTA DE PRODUCTOS (Quetzales / Q)
 // ==========================================
 const productos = [
   {
@@ -68,6 +69,8 @@ const authForm = document.getElementById("auth-form");
 const authTitle = document.getElementById("auth-title");
 const authSubmitBtn = document.getElementById("auth-submit-btn");
 const toggleMode = document.getElementById("toggle-mode");
+const usernameFieldContainer = document.getElementById("username-field-container");
+const authUsername = document.getElementById("auth-username");
 const authEmail = document.getElementById("auth-email");
 const authPassword = document.getElementById("auth-password");
 const userEmailSpan = document.getElementById("user-email");
@@ -92,8 +95,8 @@ function cargarCatalogo() {
         <h3 class="card-title">${producto.nombre}</h3>
         <p class="card-price">Q ${producto.precio.toFixed(2)}</p>
         <div style="margin: 0.75rem 0;">
-          <label style="font-size: 0.85rem; color: #6b7280;">Talla: </label>
-          <select id="talla-${producto.id}" style="padding: 0.25rem; border-radius: 4px; border: 1px solid #d1d5db;">
+          <label style="font-size: 0.85rem; color: var(--text-muted);">Talla: </label>
+          <select id="talla-${producto.id}" style="padding: 0.3rem; border-radius: 4px; background: var(--bg-dark); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1);">
             ${producto.tallas.map(t => `<option value="${t}">${t}</option>`).join("")}
           </select>
         </div>
@@ -104,7 +107,6 @@ function cargarCatalogo() {
     productsContainer.appendChild(card);
   });
 
-  // Agregar eventos a los botones de comprar
   document.querySelectorAll(".btn-add-cart").forEach(button => {
     button.addEventListener("click", (e) => {
       const id = parseInt(e.target.getAttribute("data-id"));
@@ -133,7 +135,7 @@ function actualizarCarritoUI() {
   let total = 0;
 
   if (carrito.length === 0) {
-    cartItemsContainer.innerHTML = "<p style='color: #6b7280; text-align: center; padding: 1rem;'>Tu carrito está vacío.</p>";
+    cartItemsContainer.innerHTML = "<p style='color: var(--text-muted); text-align: center; padding: 1rem;'>Tu carrito está vacío.</p>";
   } else {
     carrito.forEach((item, index) => {
       total += item.precio;
@@ -142,11 +144,11 @@ function actualizarCarritoUI() {
       div.innerHTML = `
         <div>
           <strong>${item.nombre}</strong><br>
-          <small>Talla: ${item.tallaSeleccionada}</small>
+          <small style="color: var(--text-muted);">Talla: ${item.tallaSeleccionada}</small>
         </div>
-        <div>
+        <div style="display: flex; align-items: center; gap: 10px;">
           <span>Q ${item.precio.toFixed(2)}</span>
-          <button class="btn secondary" style="padding: 0.2rem 0.5rem; margin-left: 0.5rem; color: #ef4444;" onclick="window.eliminarDelCarrito(${index})">✕</button>
+          <button class="btn secondary" style="padding: 0.2rem 0.5rem; color: var(--danger); border-color: var(--danger);" onclick="window.eliminarDelCarrito(${index})">✕</button>
         </div>
       `;
       cartItemsContainer.appendChild(div);
@@ -156,7 +158,6 @@ function actualizarCarritoUI() {
   cartTotalPrice.textContent = total.toFixed(2);
 }
 
-// Función global para eliminar items del carrito
 window.eliminarDelCarrito = function(index) {
   carrito.splice(index, 1);
   actualizarCarritoUI();
@@ -165,12 +166,16 @@ window.eliminarDelCarrito = function(index) {
 // ==========================================
 // 3. CONTROL DE MODALES Y AUTENTICACIÓN
 // ==========================================
+
+// Abrir / Cerrar Modal de Autenticación
 btnLoginModal.addEventListener("click", () => authModal.style.display = "flex");
 closeAuth.addEventListener("click", () => authModal.style.display = "none");
 
+// Abrir / Cerrar Modal de Carrito
 btnCartToggle.addEventListener("click", () => cartModal.style.display = "flex");
 closeCart.addEventListener("click", () => cartModal.style.display = "none");
 
+// Cambiar entre Iniciar Sesión y Registrarse
 toggleMode.addEventListener("click", (e) => {
   e.preventDefault();
   modoRegistro = !modoRegistro;
@@ -178,23 +183,35 @@ toggleMode.addEventListener("click", (e) => {
     authTitle.textContent = "Crear Cuenta";
     authSubmitBtn.textContent = "Registrarse";
     toggleMode.textContent = "¿Ya tienes cuenta? Inicia sesión";
+    usernameFieldContainer.style.display = "block";
+    authUsername.setAttribute("required", "true");
   } else {
     authTitle.textContent = "Iniciar Sesión";
     authSubmitBtn.textContent = "Entrar";
     toggleMode.textContent = "¿No tienes cuenta? Regístrate aquí";
+    usernameFieldContainer.style.display = "none";
+    authUsername.removeAttribute("required");
   }
 });
 
+// Enviar formulario de Autenticación (Login o Registro)
 authForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const email = authEmail.value;
   const password = authPassword.value;
+  const username = authUsername.value;
 
   try {
     if (modoRegistro) {
-      await createUserWithEmailAndPassword(auth, email, password);
-      alert("¡Cuenta creada y sesión iniciada con éxito!");
+      // Registrar usuario con Firebase Auth
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      // Guardar el nombre de usuario en el perfil de Firebase
+      await updateProfile(userCredential.user, {
+        displayName: username
+      });
+      alert(`¡Cuenta creada con éxito! Bienvenido, ${username}`);
     } else {
+      // Iniciar sesión
       await signInWithEmailAndPassword(auth, email, password);
       alert("¡Sesión iniciada con éxito!");
     }
@@ -205,15 +222,17 @@ authForm.addEventListener("submit", async (e) => {
   }
 });
 
+// Cerrar Sesión
 btnLogout.addEventListener("click", async () => {
   await signOut(auth);
-  alert("Sesión cerrada.");
+  alert("Sesión cerrada correctamente.");
 });
 
-// Observador de estado de autenticación de Firebase
+// Observador de estado de autenticación (Cambia la interfaz según el usuario logueado)
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    userEmailSpan.textContent = user.email;
+    const displayName = user.displayName || user.email;
+    userEmailSpan.textContent = `Hola, ${displayName}`;
     userEmailSpan.style.display = "inline";
     btnLoginModal.style.display = "none";
     btnLogout.style.display = "inline-block";
@@ -224,7 +243,7 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-// Inicializar la tienda al cargar la página
+// Inicializar al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   cargarCatalogo();
 });
