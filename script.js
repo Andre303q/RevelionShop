@@ -1,4 +1,3 @@
-// Datos de ejemplo para el catálogo (puedes adaptarlos o mantener los tuyos)
 const productosEjemplo = [
   { id: "1", nombre: "Sweater Básico Blanco de Algodón", precio: 280.00, imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" },
   { id: "2", nombre: "Camiseta Casual Estampada Minimal", precio: 180.00, imagen: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" },
@@ -8,145 +7,217 @@ const productosEjemplo = [
 
 let carrito = [];
 let usuarioActual = null;
+let modoRegistro = false;
 
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts(productosEjemplo);
   initModals();
-  initAuth();
+  initAuthSystem();
+  initCheckout();
+  revisarSesionActiva();
 });
 
-// Renderizar Productos asegurando la estructura correcta
-function renderProducts(productsArray) {
+function renderProducts(array) {
   const container = document.getElementById('products-container');
   if (!container) return;
   container.innerHTML = '';
 
-  productsArray.forEach(product => {
+  array.forEach(p => {
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `
       <div class="card-img-container">
-        <img src="${product.imagen}" alt="${product.nombre}">
+        <img src="${p.imagen}" alt="${p.nombre}">
       </div>
       <div class="card-body">
         <div>
-          <h3 class="card-title">${product.nombre}</h3>
-          <p class="card-price">Q ${product.precio.toFixed(2)}</p>
+          <h3 class="card-title">${p.nombre}</h3>
+          <p class="card-price">Q ${p.precio.toFixed(2)}</p>
           <div class="size-selector-wrapper">
             <label>Talla</label>
-            <select class="product-size" id="size-${product.id}">
+            <select class="product-size" id="size-${p.id}">
               <option value="S">S</option>
               <option value="M">M</option>
               <option value="L">L</option>
             </select>
           </div>
         </div>
-        <button class="btn primary" onclick="addToCart('${product.id}')">Añadir al Carrito</button>
+        <button class="btn primary" onclick="addToCart('${p.id}')">Añadir al Carrito</button>
       </div>
     `;
     container.appendChild(card);
   });
 }
 
-// Control de Modales (Apertura y Cierre flotante)
 function initModals() {
   const loginModal = document.getElementById('login-modal');
   const cartModal = document.getElementById('cart-modal');
 
-  document.getElementById('btn-login-modal').addEventListener('click', () => {
-    loginModal.style.display = 'flex';
-  });
+  document.getElementById('btn-login-modal').onclick = () => loginModal.style.display = 'flex';
+  document.getElementById('close-login').onclick = () => loginModal.style.display = 'none';
+  document.getElementById('btn-cart-toggle').onclick = () => cartModal.style.display = 'flex';
+  document.getElementById('close-cart').onclick = () => cartModal.style.display = 'none';
 
-  document.getElementById('close-login').addEventListener('click', () => {
-    loginModal.style.display = 'none';
-  });
-
-  document.getElementById('btn-cart-toggle').addEventListener('click', () => {
-    cartModal.style.display = 'flex';
-  });
-
-  document.getElementById('close-cart').addEventListener('click', () => {
-    cartModal.style.display = 'none';
-  });
-
-  // Cerrar haciendo clic fuera del contenido
-  window.addEventListener('click', (e) => {
+  window.onclick = (e) => {
     if (e.target === loginModal) loginModal.style.display = 'none';
     if (e.target === cartModal) cartModal.style.display = 'none';
-  });
+  };
 }
 
-// Lógica de Autenticación e Inicio de Sesión Corregida
-function initAuth() {
-  const formLogin = document.getElementById('form-login');
+// Sistema de autenticación con base de datos local (localStorage) estricta
+function initAuthSystem() {
+  const formAuth = document.getElementById('form-auth');
+  const swModeText = document.getElementById('sw-mode-text');
+  const modalTitleAuth = document.getElementById('modal-title-auth');
+  const groupName = document.getElementById('group-name');
+  const authSubmitBtn = document.getElementById('auth-submit-btn');
+  const authError = document.getElementById('auth-error');
+
+  // Cambiar entre Iniciar Sesión y Registrarse
+  swModeText.onclick = (e) => {
+    e.preventDefault();
+    modoRegistro = !modoRegistro;
+    authError.style.display = 'none';
+    formAuth.reset();
+
+    if (modoRegistro) {
+      modalTitleAuth.textContent = "Crear Cuenta Nueva";
+      groupName.style.display = "block";
+      authSubmitBtn.textContent = "Registrarse";
+      swModeText.textContent = "¿Ya tienes cuenta? Inicia sesión aquí";
+    } else {
+      modalTitleAuth.textContent = "Iniciar Sesión";
+      groupName.style.display = "none";
+      authSubmitBtn.textContent = "Entrar";
+      swModeText.textContent = "¿No tienes cuenta? Regístrate aquí";
+    }
+  };
+
+  formAuth.onsubmit = (e) => {
+    e.preventDefault();
+    authError.style.display = 'none';
+    const userVal = document.getElementById('auth-user').value.trim();
+    const passVal = document.getElementById('auth-pass').value.trim();
+    const nameVal = document.getElementById('auth-name').value.trim();
+
+    let baseUsuarios = JSON.parse(localStorage.getItem('revelion_users')) || [];
+
+    if (modoRegistro) {
+      // Validar si ya existe
+      const existe = baseUsuarios.find(u => u.user === userVal);
+      if (existe) {
+        authError.textContent = "El nombre de usuario ya está registrado.";
+        authError.style.display = "block";
+        return;
+      }
+      // Guardar nuevo usuario
+      baseUsuarios.push({ user: userVal, pass: passVal, name: nameVal });
+      localStorage.setItem('revelion_users', JSON.stringify(baseUsuarios));
+      alert("¡Cuenta creada con éxito! Ahora inicia sesión.");
+      modoRegistro = false;
+      swModeText.click(); // Resetear formulario a login
+    } else {
+      // Validar inicio de sesión real
+      const usuarioEncontrado = baseUsuarios.find(u => u.user === userVal && u.pass === passVal);
+      if (!usuarioEncontrado) {
+        authError.textContent = "Usuario o contraseña incorrectos, o cuenta no existente.";
+        authError.style.display = "block";
+        return;
+      }
+
+      // Login exitoso
+      usuarioActual = usuarioEncontrado.name || usuarioEncontrado.user;
+      localStorage.setItem('revelion_active_user', usuarioActual);
+      actualizarUIUsuario();
+      document.getElementById('login-modal').style.display = 'none';
+      formAuth.reset();
+    }
+  };
+
+  document.getElementById('btn-logout').onclick = () => {
+    usuarioActual = null;
+    localStorage.removeItem('revelion_active_user');
+    actualizarUIUsuario();
+  };
+}
+
+function revisarSesionActiva() {
+  const activo = localStorage.getItem('revelion_active_user');
+  if (activo) {
+    usuarioActual = activo;
+    actualizarUIUsuario();
+  }
+}
+
+function actualizarUIUsuario() {
   const userDisplay = document.getElementById('user-display');
   const btnLoginModal = document.getElementById('btn-login-modal');
   const btnLogout = document.getElementById('btn-logout');
-  const loginModal = document.getElementById('login-modal');
 
-  formLogin.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const userInput = document.getElementById('login-user').value.trim();
-
-    if (userInput) {
-      usuarioActual = userInput;
-      userDisplay.textContent = `Hola, ${usuarioActual}`;
-      userDisplay.style.display = 'inline-block';
-      btnLoginModal.style.display = 'none';
-      btnLogout.style.display = 'inline-block';
-      
-      loginModal.style.display = 'none';
-      formLogin.reset();
-    }
-  });
-
-  btnLogout.addEventListener('click', () => {
-    usuarioActual = null;
+  if (usuarioActual) {
+    userDisplay.textContent = `Hola, ${usuarioActual}`;
+    userDisplay.style.display = 'inline-block';
+    btnLoginModal.style.display = 'none';
+    btnLogout.style.display = 'inline-block';
+  } else {
     userDisplay.style.display = 'none';
     btnLoginModal.style.display = 'inline-block';
     btnLogout.style.display = 'none';
-  });
+  }
 }
 
-// Función del Carrito
-function addToCart(productId) {
-  const product = productosEjemplo.find(p => p.id === productId);
-  const sizeSelect = document.getElementById(`size-${productId}`);
-  const selectedSize = sizeSelect ? sizeSelect.value : 'M';
-
-  if (product) {
-    carrito.push({ ...product, talla: selectedSize });
+// Carrito y Compra Real
+function addToCart(id) {
+  const p = productosEjemplo.find(item => item.id === id);
+  const size = document.getElementById(`size-${id}`).value;
+  if (p) {
+    carrito.push({ ...p, talla: size });
     updateCartUI();
   }
 }
 
 function updateCartUI() {
-  const countSpan = document.getElementById('cart-count');
-  const listContainer = document.getElementById('cart-items-list');
-  const totalSpan = document.getElementById('cart-total');
-
-  countSpan.textContent = carrito.length;
-  listContainer.innerHTML = '';
-
+  document.getElementById('cart-count').textContent = carrito.length;
+  const list = document.getElementById('cart-items-list');
+  list.innerHTML = '';
   let total = 0;
+
   carrito.forEach((item, index) => {
     total += item.precio;
-    const div = document.createElement('div');
-    div.className = 'cart-item';
-    div.innerHTML = `
-      <div>
-        <strong>${item.nombre}</strong><br>
-        <small>Talla: ${item.talla} - Q ${item.precio.toFixed(2)}</small>
+    list.innerHTML += `
+      <div class="cart-item">
+        <div>
+          <strong>${item.nombre}</strong><br>
+          <small>Talla: ${item.talla} - Q ${item.precio.toFixed(2)}</small>
+        </div>
+        <button class="btn danger" style="padding:4px 8px; font-size:0.75rem;" onclick="removeFromCart(${index})">X</button>
       </div>
-      <button class="btn danger" style="padding: 4px 8px; font-size: 0.75rem;" onclick="removeFromCart(${index})">X</button>
     `;
-    listContainer.appendChild(div);
   });
-
-  totalSpan.textContent = `Q ${total.toFixed(2)}`;
+  document.getElementById('cart-total').textContent = `Q ${total.toFixed(2)}`;
 }
 
 function removeFromCart(index) {
   carrito.splice(index, 1);
   updateCartUI();
+}
+
+function initCheckout() {
+  document.getElementById('btn-checkout').onclick = () => {
+    if (!usuarioActual) {
+      alert("Debes iniciar sesión para realizar una compra.");
+      document.getElementById('cart-modal').style.display = 'none';
+      document.getElementById('login-modal').style.display = 'flex';
+      return;
+    }
+    if (carrito.length === 0) {
+      alert("Tu carrito está vacío.");
+      return;
+    }
+
+    alert(`¡Compra realizada con éxito, ${usuarioActual}! Gracias por tu pedido en Revelion Shop.`);
+    carrito = [];
+    updateCartUI();
+    document.getElementById('cart-modal').style.display = 'none';
+  };
 }
