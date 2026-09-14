@@ -6,7 +6,7 @@ const productos = [
     id: 1,
     nombre: "Sudadera Con Capucha Y2k",
     precio: 320.00,
-    imagen: "https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Farticulo.mercadolibre.com.mx%2FMLM-3758968246-sudadera-con-capucha-y2k-estilo-hip-hop-holgada-algodon-_JM&ved=0CBYQjRxqFwoTCKiAmuHx7pYDFQAAAAAdAAAAABBP&opi=89978449",
+    imagen: "https://images.unsplash.com/photo-1667221769494-868171f6ce2b?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     tallas: ["S", "M", "L", "XL"]
   },
   {
