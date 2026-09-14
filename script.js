@@ -1,12 +1,17 @@
 const productosEjemplo = [
-  { id: "1", nombre: "Sweater Básico Blanco de Algodón", precio: 280.00, categoria: "ropa", imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80" },
-  { id: "2", nombre: "Camiseta Casual Estampada Minimal", precio: 180.00, categoria: "ropa", imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" },
-  { id: "3", nombre: "Pantalón Cargo Urbano Beige", precio: 420.00, categoria: "ropa", imagen: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80" },
-  { id: "4", nombre: "Sudadera Manga Larga Estilo Urbano", precio: 310.00, categoria: "ropa", imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" },
-  { id: "5", nombre: "Reloj Minimalista Cronógrafo Acero", precio: 650.00, categoria: "accesorios", imagen: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" },
-  { id: "6", nombre: "Reloj Deportivo Smartwatch Pro", precio: 890.00, categoria: "accesorios", imagen: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" },
-  { id: "7", nombre: "Figura de Colección Robot Articulado", precio: 340.00, categoria: "juguetes", imagen: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" },
-  { id: "8", nombre: "Auto de Carreras Escala Clásico", precio: 220.00, categoria: "juguetes", imagen: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80" }
+  // Ropa
+  { id: "1", nombre: "Sweater Básico Blanco de Algodón", precio: 220.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80" },
+  { id: "2", nombre: "Camiseta Casual Estampada Minimal", precio: 135.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" },
+  { id: "3", nombre: "Pantalón Cargo Urbano Beige", precio: 295.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80" },
+  { id: "4", nombre: "Sudadera Manga Larga Estilo Urbano", precio: 250.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" },
+  
+  // Accesorios / Relojes
+  { id: "5", nombre: "Reloj Minimalista Cronógrafo Acero", precio: 480.00, tipo: "reloj", imagen: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" },
+  { id: "6", nombre: "Reloj Deportivo Smartwatch Pro", precio: 699.00, tipo: "reloj", imagen: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" },
+  
+  // Coleccionables y Pósters (Juguetes / Otaku)
+  { id: "7", nombre: "Póster Coleccionable Anime Edición Especial", precio: 85.00, tipo: "coleccionable", imagen: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80" },
+  { id: "8", nombre: "Auto de Colección Escala Clásico", precio: 150.00, tipo: "juguete", imagen: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80" }
 ];
 
 let carrito = [];
@@ -30,30 +35,30 @@ function renderProducts(array) {
     const card = document.createElement('div');
     card.className = 'card';
     
-    // Condicional para mostrar selector de talla solo si es ropa, o etiqueta distinta si es accesorio/juguete
-    let selectorHTML = `
-      <div class="size-selector-wrapper">
-        <label>Talla</label>
-        <select class="product-size" id="size-${p.id}">
-          <option value="S">S</option>
-          <option value="M" selected>M</option>
-          <option value="L">L</option>
-        </select>
-      </div>`;
-    
-    if (p.categoria === 'reloj' || p.categoria === 'accesorios') {
+    let selectorHTML = '';
+    if (p.tipo === 'ropa') {
       selectorHTML = `
         <div class="size-selector-wrapper">
-          <label>Estilo / Color</label>
+          <label>Talla</label>
+          <select class="product-size" id="size-${p.id}">
+            <option value="S">S</option>
+            <option value="M" selected>M</option>
+            <option value="L">L</option>
+          </select>
+        </div>`;
+    } else if (p.tipo === 'reloj') {
+      selectorHTML = `
+        <div class="size-selector-wrapper">
+          <label>Acabado</label>
           <select class="product-size" id="size-${p.id}">
             <option value="Negro Mate">Negro Mate</option>
             <option value="Acero Plata">Acero Plata</option>
           </select>
         </div>`;
-    } else if (p.categoria === 'juguetes') {
+    } else {
       selectorHTML = `
         <div class="size-selector-wrapper">
-          <label>Edición</label>
+          <label>Presentación</label>
           <select class="product-size" id="size-${p.id}">
             <option value="Edición Estándar">Edición Estándar</option>
             <option value="Edición Coleccionista">Edición Coleccionista</option>
