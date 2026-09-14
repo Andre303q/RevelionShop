@@ -1,73 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revelion Shop</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revelion Shop</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- HEADER Y NAVEGACIÓN -->
-    <header>
-        <div class="logo">⚡ Revelion Shop</div>
-        <nav id="user-nav">
-            <!-- Saludo al usuario logueado -->
-            <span id="user-display" style="display:none; color: var(--accent); font-weight: 600; margin-right: 15px;"></span>
-            
-            <button id="btn-login-modal" class="btn">Iniciar Sesión</button>
-            <button id="btn-logout" class="btn secondary" style="display:none;">Cerrar Sesión</button>
-            <button id="btn-cart-toggle" class="btn">🛒 Carrito (<span id="cart-count">0</span>)</button>
-        </nav>
-    </header>
 
-    <main class="container">
-        <!-- SECCIÓN DE PRODUCTOS -->
-        <section id="shop-section">
-            <h2>Catálogo de Productos</h2>
-            <div id="products-container" class="grid">
-                <!-- Los productos se cargan dinámicamente desde JavaScript -->
-            </div>
-        </section>
-    </main>
+  <!-- HEADER FIJO -->
+  <header>
+    <a href="#" class="logo-container">
+      <div class="logo-badge">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-title">REVELION</span>
+        <span class="logo-subtitle">Shop</span>
+      </div>
+    </a>
 
-    <!-- MODAL DE CARRITO -->
-    <div id="cart-modal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <span id="close-cart" class="close">&times;</span>
-            <h2>Tu Carrito de Compras</h2>
-            <div id="cart-items"></div>
-            <div class="cart-total">
-                <h3>Total: Q <span id="cart-total-price">0.00</span></h3>
-                <button id="btn-checkout" class="btn primary">Finalizar Compra</button>
-            </div>
-        </div>
+    <div class="nav-actions">
+      <span id="user-display" style="display: none;"></span>
+      <button id="btn-login-modal" class="btn secondary">Iniciar Sesión</button>
+      <button id="btn-logout" class="btn danger" style="display: none;">Salir</button>
+      <button id="btn-cart-toggle" class="btn primary">🛒 Carrito (<span id="cart-count">0</span>)</button>
     </div>
+  </header>
 
-    <!-- MODAL DE AUTENTICACIÓN (LOGIN / REGISTRO) -->
-    <div id="auth-modal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <span id="close-auth" class="close">&times;</span>
-            <h2 id="auth-title">Iniciar Sesión</h2>
-            <form id="auth-form">
-                <!-- Campo de Nombre de Usuario (Solo visible al registrarse) -->
-                <div id="username-field-container" style="display: none; margin-bottom: 1rem;">
-                    <input type="text" id="auth-username" placeholder="Nombre de usuario" style="width: 100%; padding: 0.5rem; background: var(--bg-dark); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;">
-                </div>
-                <div style="margin-bottom: 1rem;">
-                    <input type="text" id="auth-user-input" placeholder="Correo o Nombre de usuario" required style="width: 100%; padding: 0.5rem; background: var(--bg-dark); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;">
-                </div>
-                <div style="margin-bottom: 1rem;">
-                    <input type="password" id="auth-password" placeholder="Contraseña" required style="width: 100%; padding: 0.5rem; background: var(--bg-dark); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;">
-                </div>
-                <button type="submit" id="auth-submit-btn" class="btn primary" style="width: 100%;">Entrar</button>
-            </form>
-            <p id="auth-toggle-text" style="margin-top: 1rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
-                ¿No tienes cuenta? <a href="#" id="toggle-mode" style="color: var(--accent);">Regístrate aquí</a>
-            </p>
-        </div>
+  <!-- CATÁLOGO DE PRODUCTOS -->
+  <main class="catalogue-wrapper">
+    <h1 class="section-title">Catálogo de Productos</h1>
+    <div id="products-container">
+      <!-- Los productos se cargan dinámicamente mediante JS -->
     </div>
+  </main>
 
-    <!-- SCRIPT PRINCIPAL -->
-    <script src="script.js"></script>
+  <!-- MODAL DE CARRITO -->
+  <div id="cart-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" id="close-cart">&times;</button>
+      <h2 class="modal-title">Tu Carrito de Compras</h2>
+      <div id="cart-items-list" class="cart-items-list">
+        <!-- Items del carrito -->
+      </div>
+      <div class="cart-summary">
+        <span>Total:</span>
+        <span id="cart-total">Q 0.00</span>
+      </div>
+      <button class="btn primary" style="width: 100%;">Finalizar Compra</button>
+    </div>
+  </div>
+
+  <!-- MODAL DE INICIO DE SESIÓN -->
+  <div id="login-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" id="close-login">&times;</button>
+      <h2 class="modal-title">Iniciar Sesión</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label>Correo o Nombre de usuario</label>
+          <input type="text" id="login-user" required placeholder="Ej. prueba">
+        </div>
+        <div class="form-group">
+          <label>Contraseña</label>
+          <input type="password" id="login-pass" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn primary" style="width: 100%; margin-top: 0.5rem;">Entrar</button>
+      </form>
+      <div class="auth-switch">
+        <a href="#" id="sw-to-register">¿No tienes cuenta? Regístrate aquí</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
