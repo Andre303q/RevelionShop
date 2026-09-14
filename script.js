@@ -1,16 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-import { firebaseConfig } from "./firebase-config.js";
-
-// Inicializar Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-console.log("¡Firebase conectado exitosamente en Revelion Shop!");
-
-// Importaciones de Firebase
+// Importaciones de Firebase (Única vez en todo el archivo)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { 
   getAuth, 
@@ -166,16 +154,12 @@ window.eliminarDelCarrito = function(index) {
 // ==========================================
 // 3. CONTROL DE MODALES Y AUTENTICACIÓN
 // ==========================================
-
-// Abrir / Cerrar Modal de Autenticación
 btnLoginModal.addEventListener("click", () => authModal.style.display = "flex");
 closeAuth.addEventListener("click", () => authModal.style.display = "none");
 
-// Abrir / Cerrar Modal de Carrito
 btnCartToggle.addEventListener("click", () => cartModal.style.display = "flex");
 closeCart.addEventListener("click", () => cartModal.style.display = "none");
 
-// Cambiar entre Iniciar Sesión y Registrarse
 toggleMode.addEventListener("click", (e) => {
   e.preventDefault();
   modoRegistro = !modoRegistro;
@@ -194,7 +178,6 @@ toggleMode.addEventListener("click", (e) => {
   }
 });
 
-// Enviar formulario de Autenticación (Login o Registro)
 authForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const email = authEmail.value;
@@ -203,15 +186,10 @@ authForm.addEventListener("submit", async (e) => {
 
   try {
     if (modoRegistro) {
-      // Registrar usuario con Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      // Guardar el nombre de usuario en el perfil de Firebase
-      await updateProfile(userCredential.user, {
-        displayName: username
-      });
+      await updateProfile(userCredential.user, { displayName: username });
       alert(`¡Cuenta creada con éxito! Bienvenido, ${username}`);
     } else {
-      // Iniciar sesión
       await signInWithEmailAndPassword(auth, email, password);
       alert("¡Sesión iniciada con éxito!");
     }
@@ -222,13 +200,11 @@ authForm.addEventListener("submit", async (e) => {
   }
 });
 
-// Cerrar Sesión
 btnLogout.addEventListener("click", async () => {
   await signOut(auth);
   alert("Sesión cerrada correctamente.");
 });
 
-// Observador de estado de autenticación (Cambia la interfaz según el usuario logueado)
 onAuthStateChanged(auth, (user) => {
   if (user) {
     const displayName = user.displayName || user.email;
@@ -243,7 +219,6 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-// Inicializar al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   cargarCatalogo();
 });
