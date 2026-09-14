@@ -1,5 +1,5 @@
 /* ==========================================
-   1. VARIABLES Y CONFIGURACIÓN GLOBAL
+   VARIABLES Y CONFIGURACIÓN GLOBAL
    ========================================== */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
@@ -31,7 +31,7 @@ body {
 }
 
 /* ==========================================
-   2. HEADER Y NAVEGACIÓN
+   HEADER Y NAVEGACIÓN
    ========================================== */
 header {
   display: flex;
@@ -109,7 +109,7 @@ header {
 }
 
 /* ==========================================
-   3. BOTONES
+   BOTONES
    ========================================== */
 .btn {
   display: inline-flex;
@@ -160,7 +160,7 @@ header {
 }
 
 /* ==========================================
-   4. CATÁLOGO Y TARJETAS DE PRODUCTOS
+   CATÁLOGO Y TARJETAS DE PRODUCTOS
    ========================================== */
 .catalogue-wrapper {
   padding: 2.5rem 5% 4rem;
@@ -273,7 +273,7 @@ header {
 }
 
 /* ==========================================
-   5. MODALES FLOTANTES (CENTRADOS Y SOBRE TODO)
+   MODALES FLOTANTES
    ========================================== */
 .modal-overlay {
   position: fixed;
@@ -283,7 +283,7 @@ header {
   height: 100vh;
   background: rgba(5, 7, 12, 0.75);
   backdrop-filter: blur(6px);
-  display: none; /* Se activa con JS cambiando a flex */
+  display: none;
   align-items: center;
   justify-content: center;
   z-index: 9999;
@@ -405,13 +405,12 @@ header {
 }
 
 /* ==========================================
-   6. RESPONSIVE
+   RESPONSIVE
    ========================================== */
 @media (max-width: 640px) {
   header {
     padding: 0.75rem 1rem;
   }
-  
   .catalogue-wrapper {
     padding: 1.5rem 1rem;
   }
