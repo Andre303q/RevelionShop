@@ -10,10 +10,10 @@ const productosEjemplo = [
   // Accesorios / Relojes (Individuales sin selector)
   { id: "7", nombre: "Reloj Minimalista Cronógrafo Acero", precio: 480.00, tipo: "reloj", imagen: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" },
   { id: "8", nombre: "Reloj Deportivo Smartwatch Pro", precio: 699.00, tipo: "reloj", imagen: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" },
-  { id: "9", nombre: "Cadena para Pantalon", precio: 129.00, tipo: "accesorio", imagen: "https://preview.redd.it/where-to-find-clothing-accessories-that-fit-grunge-y2k-easy-v0-532xvpj1x2cf1.jpg?width=640&crop=smart&auto=webp&s=59263934be3db1987893582837e12e9734468937" },
-  { id: "10", nombre: "Pulsera estilo y2k", precio: 129.00, tipo: "accesorio", imagen: "https://i.etsystatic.com/45963821/r/il/884f55/6146331475/il_fullxfull.6146331475_iv9b.jpg" },
-  { id: "11", nombre: "Muñequera punk", precio: 219.00, tipo: "accesorio", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIZ9XXOQa9jGzpeF5VdUxm7kQMai7ao_auOu9FcglCJJe2-vCPGGGhZBo&s=10" },
-  { id: "12", nombre: "Pendientes Estilo Fresa", precio: 110.00, tipo: "accesorio", imagen: "https://www.chocolatecomplementos.com/wp-content/uploads/2026/02/fresa-arito-300x300.jpg" },
+  { id: "9", nombre: "Cadena para Pantalon", precio: 129.00, tipo: "reloj", imagen: "https://preview.redd.it/where-to-find-clothing-accessories-that-fit-grunge-y2k-easy-v0-532xvpj1x2cf1.jpg?width=640&crop=smart&auto=webp&s=59263934be3db1987893582837e12e9734468937" },
+  { id: "10", nombre: "Pulsera estilo y2k", precio: 129.00, tipo: "reloj", imagen: "https://i.etsystatic.com/45963821/r/il/884f55/6146331475/il_fullxfull.6146331475_iv9b.jpg" },
+  { id: "11", nombre: "Muñequera punk", precio: 219.00, tipo: "reloh", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIZ9XXOQa9jGzpeF5VdUxm7kQMai7ao_auOu9FcglCJJe2-vCPGGGhZBo&s=10" },
+  { id: "12", nombre: "Pendientes Estilo Fresa", precio: 110.00, tipo: "reloj", imagen: "https://www.chocolatecomplementos.com/wp-content/uploads/2026/02/fresa-arito-300x300.jpg" },
  
   // Coleccionables / Juguetes / Posters / etc (Individuales sin selector)
   { id: "13", nombre: "Posters estilo Anime", precio: 320.00, tipo: "coleccionable", imagen: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" },
