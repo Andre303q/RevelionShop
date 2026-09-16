@@ -220,7 +220,24 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavigation() { 
   const logoHome = document.getElementById('logo-home');
   if (logoHome) {
-    logoHome.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    logoHome.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const catalogo = document.getElementById('catalogo');
+      if (catalogo) {
+        catalogo.classList.remove('catalogue-visible');
+        catalogo.classList.add('catalogue-hidden');
+      }
+    };
+  }
+
+  const btnExplore = document.getElementById('btn-explore');
+  const catalogo = document.getElementById('catalogo');
+  if (btnExplore && catalogo) {
+    btnExplore.onclick = () => {
+      catalogo.classList.remove('catalogue-hidden');
+      catalogo.classList.add('catalogue-visible');
+      catalogo.scrollIntoView({ behavior: 'smooth' });
+    };
   }
 } 
 
