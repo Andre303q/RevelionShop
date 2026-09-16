@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* Paleta Clara por defecto */
   --bg-primary: #f8fafc;
   --bg-secondary: #ffffff;
   --bg-card: #ffffff;
@@ -18,7 +17,6 @@
 }
 
 [data-theme="dark"] {
-  /* Paleta Oscura */
   --bg-primary: #090d16;
   --bg-secondary: #111827;
   --bg-card: #1f2937;
@@ -68,6 +66,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
+  cursor: pointer;
 }
 
 .logo-badge {
@@ -111,7 +110,7 @@ body {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 #user-display {
@@ -124,16 +123,24 @@ body {
   border: 1px solid var(--border-color);
 }
 
+/* VISTAS (CONTROL DE PANTALLAS) */
+.view-section {
+  display: none;
+}
+.view-section.active {
+  display: block;
+}
+
 /* HERO SECTION (INICIO / BIENVENIDA) */
 .hero-section {
-  padding: 5rem 5% 4rem;
+  padding: 4rem 5%;
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
-  min-height: 80vh;
+  min-height: calc(100vh - 73px);
 }
 
 .hero-content {
@@ -148,7 +155,7 @@ body {
   gap: 6px;
   background: rgba(99, 102, 241, 0.1);
   color: var(--accent);
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 700;
@@ -156,7 +163,7 @@ body {
 }
 
 .hero-title {
-  font-size: 3.2rem;
+  font-size: 3.4rem;
   font-weight: 800;
   letter-spacing: -1px;
   line-height: 1.1;
@@ -170,7 +177,7 @@ body {
 }
 
 .hero-desc {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
   line-height: 1.6;
   max-width: 500px;
@@ -194,12 +201,12 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-color);
-  height: 280px;
+  height: 320px;
   transition: var(--transition);
 }
 
 .hero-img-card:nth-child(2) {
-  transform: translateY(25px);
+  transform: translateY(30px);
 }
 
 .hero-img-card:hover {
@@ -217,7 +224,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   padding: 10px 18px;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.9rem;
@@ -252,9 +259,32 @@ body {
   justify-content: center;
 }
 
+.btn-icon-only svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--text-main);
+  transition: var(--transition);
+}
+
+/* SELECTOR DE IDIOMA */
+.lang-select {
+  background: var(--bg-primary);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: var(--transition);
+}
+.lang-select:hover { border-color: var(--accent); }
+
 /* CATÁLOGO Y PRODUCTOS */
 .catalogue-wrapper {
-  padding: 4rem 5% 5rem;
+  padding: 3rem 5% 5rem;
   max-width: 1400px;
   margin: 0 auto;
 }
