@@ -1,5 +1,4 @@
 const productosEjemplo = [  
-  // Ropa  
   {   
     id: "1",   
     nombre: { es: "Sweater Básico Blanco de Algodón", en: "Basic White Cotton Sweater" },   
@@ -42,8 +41,6 @@ const productosEjemplo = [
     tipo: "ropa",   
     imagen: "https://m.media-amazon.com/images/I/812w-hkANhL._AC_SY1000_.jpg"   
   }, 
-   
-  // Accesorios  
   {   
     id: "7",   
     nombre: { es: "Reloj Minimalista Cronógrafo Acero", en: "Minimalist Steel Chronograph Watch" },   
@@ -86,8 +83,6 @@ const productosEjemplo = [
     tipo: "reloj",   
     imagen: "https://www.chocolatecomplementos.com/wp-content/uploads/2026/02/fresa-arito-300x300.jpg"   
   }, 
-  
-  // Coleccionables  
   {   
     id: "13",   
     nombre: { es: "Posters estilo Anime", en: "Anime Style Posters" },   
@@ -132,14 +127,12 @@ const productosEjemplo = [
   } 
 ]; 
 
-// DICCIONARIO DE IDIOMAS 
 const translations = { 
   es: { 
     loginBtn: "Iniciar Sesión", 
     logoutBtn: "Salir", 
     cartBtn: "Carrito", 
     heroTag: "Nueva Colección 2026", 
-    heroTitle: "Estilo urbano y <span>vanguardia</span>", 
     heroDesc: "Explora las últimas tendencias en moda y accesorios diseñados para destacar en cualquier lugar.", 
     heroExplore: "Explorar Catálogo", 
     catalogueTitle: "Catálogo de Productos", 
@@ -161,7 +154,6 @@ const translations = {
     switchToRegister: "¿No tienes cuenta? Regístrate aquí", 
     switchToLogin: "¿Ya tienes cuenta? Inicia sesión aquí", 
     toastAdded: "¡Producto añadido al carrito!", 
-    toastCheckout: "¡Compra realizada con éxito, ", 
     emptyCartAlert: "Tu carrito está vacío.", 
     loginRequiredAlert: "Debes iniciar sesión para realizar una compra.",
     receiptTitle: "Comprobante de Pago",
@@ -176,7 +168,6 @@ const translations = {
     logoutBtn: "Sign Out", 
     cartBtn: "Cart", 
     heroTag: "New Collection 2026", 
-    heroTitle: "Urban style and <span>avant-garde</span>", 
     heroDesc: "Explore the latest trends in fashion and accessories designed to stand out anywhere.", 
     heroExplore: "Explore Catalogue", 
     catalogueTitle: "Product Catalogue", 
@@ -198,7 +189,6 @@ const translations = {
     switchToRegister: "Don't have an account? Register here", 
     switchToLogin: "Already have an account? Sign in here", 
     toastAdded: "Product added to cart!", 
-    toastCheckout: "Purchase successful, ", 
     emptyCartAlert: "Your cart is empty.", 
     loginRequiredAlert: "You must sign in to make a purchase.",
     receiptTitle: "Payment Receipt",
@@ -230,16 +220,13 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavigation() { 
   const logoHome = document.getElementById('logo-home');
   if (logoHome) {
-    logoHome.onclick = () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+    logoHome.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 } 
 
 function initLanguageSystem() { 
   const langSelector = document.getElementById('lang-selector'); 
   if (!langSelector) return;
-  
   langSelector.value = currentLang; 
   applyTranslations(); 
 
@@ -298,8 +285,7 @@ function setSunIcon(svg) {
 
 function formatearPrecio(precioGTQ) { 
   if (currentLang === 'en') { 
-    const precioUSD = precioGTQ / TASA_CAMBIO_USD; 
-    return `$ ${precioUSD.toFixed(2)} USD`; 
+    return `$ ${(precioGTQ / TASA_CAMBIO_USD).toFixed(2)} USD`; 
   } 
   return `Q ${precioGTQ.toFixed(2)}`; 
 } 
@@ -311,7 +297,6 @@ function renderCategorizedProducts() {
   container.innerHTML = ''; 
   const t = translations[currentLang]; 
 
-  // Agrupar por categorías lógicas
   const categorias = {
     ropa: { titulo: t.catRopa, items: productosEjemplo.filter(p => p.tipo === 'ropa') },
     reloj: { titulo: t.catReloj, items: productosEjemplo.filter(p => p.tipo === 'reloj') },
@@ -324,23 +309,21 @@ function renderCategorizedProducts() {
 
     const catSection = document.createElement('div');
     catSection.className = 'category-section';
-    catSection.innerHTML = `<h3 class="category-title" style="margin: 2rem 0 1rem 0; font-size: 1.5rem;">${catData.titulo}</h3>`;
+    catSection.innerHTML = `<h3 class="category-title">${catData.titulo}</h3>`;
     
     const grid = document.createElement('div');
     grid.className = 'products-grid';
-    grid.style.cssText = 'display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;';
 
     catData.items.forEach(p => {
       const card = document.createElement('div'); 
       card.className = 'card'; 
-      card.style.cssText = 'background: var(--card-bg, #fff); border: 1px solid var(--border-color, #e2e8f0); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding: 1rem;';
        
       let selectorHTML = ''; 
       if (p.tipo === 'ropa') { 
         selectorHTML = ` 
-          <div class="size-selector-wrapper" style="margin: 0.5rem 0;"> 
-            <label style="font-size: 0.85rem;">${t.sizeLabel}: </label> 
-            <select class="product-size" id="size-${p.id}" style="padding: 4px; border-radius: 4px;"> 
+          <div class="size-selector-wrapper"> 
+            <label>${t.sizeLabel}: </label> 
+            <select class="product-size" id="size-${p.id}"> 
               <option value="S">S</option> 
               <option value="M" selected>M</option> 
               <option value="L">L</option> 
@@ -353,13 +336,13 @@ function renderCategorizedProducts() {
       const precioFormateado = formatearPrecio(p.precio); 
 
       card.innerHTML = ` 
-        <div class="card-img-container" style="width: 100%; height: 200px; overflow: hidden; border-radius: 8px;"> 
-          <img src="${p.imagen}" alt="${nombreArticulo}" style="width: 100%; height: 100%; object-fit: cover;"> 
+        <div class="card-img-container"> 
+          <img src="${p.imagen}" alt="${nombreArticulo}"> 
         </div> 
-        <div class="card-body" style="display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; margin-top: 1rem;"> 
+        <div class="card-body"> 
           <div> 
-            <h4 class="card-title" style="font-size: 1rem; margin-bottom: 0.5rem;">${nombreArticulo}</h4> 
-            <p class="card-price" style="font-weight: bold; color: var(--accent, #6366f1);">${precioFormateado}</p> 
+            <h4 class="card-title">${nombreArticulo}</h4> 
+            <p class="card-price">${precioFormateado}</p> 
             ${selectorHTML} 
           </div> 
           <button class="btn primary" style="width: 100%; margin-top: 0.5rem;" onclick="addToCart('${p.id}')">${t.addToCartBtn}</button> 
@@ -388,7 +371,7 @@ function initModals() {
   if (btnAuth && authModal) btnAuth.onclick = () => authModal.style.display = 'flex'; 
   if (closeAuth && authModal) closeAuth.onclick = () => authModal.style.display = 'none'; 
   if (btnCart && cartModal) btnCart.onclick = () => cartModal.style.display = 'flex'; 
-  if (closeCart && cartModal) closeCart.onclick = () => cartModal.style.display = 'none'; 
+  if (closeCart && cartModal) closeCart.onclick = () => closeCart.closest('.modal-overlay').style.display = 'none'; 
   if (closeReceipt && receiptModal) closeReceipt.onclick = () => receiptModal.style.display = 'none';
   if (btnCerrarRecibo && receiptModal) btnCerrarRecibo.onclick = () => receiptModal.style.display = 'none';
 
@@ -485,7 +468,6 @@ function revisarSesionActiva() {
 function actualizarUIUsuario() { 
   const userDisplay = document.getElementById('user-display'); 
   const btnAuth = document.getElementById('btn-auth'); 
-
   if (!userDisplay || !btnAuth) return;
 
   const t = translations[currentLang];
@@ -523,13 +505,9 @@ function addToCart(id) {
 function mostrarToast(mensaje) { 
   const toast = document.getElementById('toast'); 
   if (!toast) return;
-  
   toast.textContent = mensaje; 
   toast.classList.add('show'); 
-   
-  setTimeout(() => { 
-    toast.classList.remove('show'); 
-  }, 2500); 
+  setTimeout(() => toast.classList.remove('show'), 2500); 
 } 
 
 function updateCartUI() { 
@@ -545,16 +523,16 @@ function updateCartUI() {
   carrito.forEach((item, index) => { 
     total += item.precio; 
     const nombreArticulo = item.nombre[currentLang] || item.nombre.es; 
-    let detalleExtra = item.tipo === 'ropa' ? `<br><small style="color: var(--accent, #6366f1); font-weight: 700;">${item.opcionSeleccionada}</small>` : ''; 
+    let detalleExtra = item.tipo === 'ropa' ? `<br><small style="color: var(--accent); font-weight: 700;">${item.opcionSeleccionada}</small>` : ''; 
      
     list.innerHTML += ` 
-      <div class="cart-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--border-color, #eee); padding-bottom: 8px;"> 
+      <div class="cart-item"> 
         <div> 
           <strong>${nombreArticulo}</strong> 
           ${detalleExtra}<br> 
           <small style="color: var(--text-muted);">${formatearPrecio(item.precio)}</small> 
         </div> 
-        <button class="btn danger" style="padding:4px 8px; font-size:0.75rem; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer;" onclick="removeFromCart(${index})">X</button> 
+        <button class="btn danger" style="padding:4px 8px; font-size:0.75rem;" onclick="removeFromCart(${index})">X</button> 
       </div> 
     `; 
   }); 
@@ -576,10 +554,8 @@ function initCheckout() {
     const t = translations[currentLang]; 
     if (!usuarioActual) { 
       alert(t.loginRequiredAlert); 
-      const cartModal = document.getElementById('cart-modal');
-      const authModal = document.getElementById('auth-modal');
-      if (cartModal) cartModal.style.display = 'none'; 
-      if (authModal) authModal.style.display = 'flex'; 
+      document.getElementById('cart-modal').style.display = 'none'; 
+      document.getElementById('auth-modal').style.display = 'flex'; 
       return; 
     } 
     if (carrito.length === 0) { 
@@ -587,36 +563,25 @@ function initCheckout() {
       return; 
     } 
 
-    // Generar recibo nativo
-    const rNumber = document.getElementById('r-number');
-    const rDate = document.getElementById('r-date');
-    const rClient = document.getElementById('r-client');
-    const rItems = document.getElementById('r-items');
-    const rTotal = document.getElementById('r-total');
-
-    if (rNumber) rNumber.textContent = 'REV-' + Math.floor(100000 + Math.random() * 900000);
-    if (rDate) rDate.textContent = new Date().toLocaleString();
-    if (rClient) rClient.textContent = usuarioActual;
+    document.getElementById('r-number').textContent = 'REV-' + Math.floor(100000 + Math.random() * 900000);
+    document.getElementById('r-date').textContent = new Date().toLocaleString();
+    document.getElementById('r-client').textContent = usuarioActual;
 
     let totalRecibo = 0;
-    if (rItems) {
-      rItems.innerHTML = '';
-      carrito.forEach(item => {
-        totalRecibo += item.precio;
-        const nombreArticulo = item.nombre[currentLang] || item.nombre.es;
-        rItems.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>${nombreArticulo}</span> <span>${formatearPrecio(item.precio)}</span></div>`;
-      });
-    }
+    const rItems = document.getElementById('r-items');
+    rItems.innerHTML = '';
+    
+    carrito.forEach(item => {
+      totalRecibo += item.precio;
+      const nombreArticulo = item.nombre[currentLang] || item.nombre.es;
+      rItems.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>${nombreArticulo}</span> <span>${formatearPrecio(item.precio)}</span></div>`;
+    });
 
-    if (rTotal) rTotal.textContent = formatearPrecio(totalRecibo);
+    document.getElementById('r-total').textContent = formatearPrecio(totalRecibo);
 
-    // Ocultar carrito y mostrar modal de recibo
-    const cartModal = document.getElementById('cart-modal');
-    const receiptModal = document.getElementById('receipt-modal');
-    if (cartModal) cartModal.style.display = 'none';
-    if (receiptModal) receiptModal.style.display = 'flex';
+    document.getElementById('cart-modal').style.display = 'none';
+    document.getElementById('receipt-modal').style.display = 'flex';
 
-    // Vaciar carrito
     carrito = []; 
     updateCartUI(); 
   }; 
