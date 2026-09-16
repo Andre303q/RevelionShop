@@ -8,8 +8,8 @@
 </head>
 <body>
 
-  <!-- NOTIFICACIÓN FLOTANTE (TOAST) -->
-  <div id="toast-notification" class="toast">¡Producto añadido al carrito!</div>
+  <!-- NOTIFICACIÓN TOAST -->
+  <div id="toast-notification" class="toast"></div>
 
   <!-- HEADER FIJO -->
   <header class="header">
@@ -28,29 +28,33 @@
       
       <!-- SELECTOR DE IDIOMA -->
       <select id="lang-selector" class="lang-select">
-        <option value="es">🇪🇸 ES</option>
-        <option value="en">🇬🇧 EN</option>
+        <option value="es">ES</option>
+        <option value="en">EN</option>
       </select>
 
       <!-- BOTÓN TEMA SVG -->
-      <button id="btn-theme-toggle" class="btn secondary btn-icon-only" title="Cambiar Tema">
+      <button id="btn-theme-toggle" class="btn secondary btn-icon-only" title="Toggle Theme">
         <svg id="theme-svg-icon" viewBox="0 0 24 24">
-          <!-- Icono de Luna por defecto -->
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
         </svg>
       </button>
 
       <button id="btn-login-modal" class="btn secondary" data-i18n="loginBtn">Iniciar Sesión</button>
       <button id="btn-logout" class="btn danger" style="display: none;" data-i18n="logoutBtn">Salir</button>
-      <button id="btn-cart-toggle" class="btn primary">🛒 <span data-i18n="cartBtn">Carrito</span> (<span id="cart-count">0</span>)</button>
+      
+      <!-- BOTÓN CARRITO CON SVG DINÁMICO -->
+      <button id="btn-cart-toggle" class="btn primary">
+        <svg style="width:16px;height:16px;fill:currentColor;" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        <span data-i18n="cartBtn">Carrito</span> (<span id="cart-count">0</span>)
+      </button>
     </div>
   </header>
 
-  <!-- SECCIÓN 1: VISTA DE INICIO (OBLIGATORIA AL ENTRAR) -->
+  <!-- SECCIÓN 1: VISTA DE INICIO -->
   <section id="view-inicio" class="view-section active">
     <div class="hero-section">
       <div class="hero-content">
-        <span class="hero-tag" data-i18n="heroTag">✨ Nueva Colección Disponible</span>
+        <span class="hero-tag" data-i18n="heroTag">Nueva Colección Disponible</span>
         <h1 class="hero-title" data-i18n-html="heroTitle">Encuentra tu estilo único con <span>Revelion Shop</span></h1>
         <p class="hero-desc" data-i18n="heroDesc">Explora nuestra selección exclusiva de ropa urbana, accesorios de vanguardia y coleccionables icónicos diseñados para destacar.</p>
         <div class="hero-buttons">
@@ -69,26 +73,26 @@
     </div>
   </section>
 
-  <!-- SECCIÓN 2: VISTA DE CATÁLOGO (SE ACCEDE AL INTERACTUAR) -->
+  <!-- SECCIÓN 2: VISTA DE CATÁLOGO -->
   <main id="view-catalogo" class="view-section">
     <div class="catalogue-wrapper">
       <h1 class="main-title" data-i18n="catalogueTitle">Catálogo Exclusivo</h1>
 
       <!-- SECCIÓN ROPA -->
       <section class="category-section">
-        <h2 class="category-title" data-i18n="catRopa">👕 Ropa y Textil</h2>
+        <h2 class="category-title" data-i18n="catRopa">Ropa y Textil</h2>
         <div id="grid-ropa" class="products-grid"></div>
       </section>
 
       <!-- SECCIÓN ACCESORIOS -->
       <section class="category-section">
-        <h2 class="category-title" data-i18n="catReloj">⌚ Accesorios y Relojes</h2>
+        <h2 class="category-title" data-i18n="catReloj">Accesorios y Relojes</h2>
         <div id="grid-reloj" class="products-grid"></div>
       </section>
 
       <!-- SECCIÓN COLECCIONABLES -->
       <section class="category-section">
-        <h2 class="category-title" data-i18n="catColeccionable">🎮 Coleccionables y Juguetes</h2>
+        <h2 class="category-title" data-i18n="catColeccionable">Coleccionables y Juguetes</h2>
         <div id="grid-coleccionable" class="products-grid"></div>
       </section>
     </div>
@@ -108,7 +112,7 @@
     </div>
   </div>
 
-  <!-- MODAL DE INICIO DE SESIÓN / REGISTRO -->
+  <!-- MODAL DE INICIO DE SESIÓN -->
   <div id="login-modal" class="modal-overlay">
     <div class="modal-content">
       <button class="modal-close" id="close-login">&times;</button>
