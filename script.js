@@ -4,7 +4,10 @@ const productosEjemplo = [
   { id: "2", nombre: "Camiseta Casual Estampada Minimal", precio: 135.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" },
   { id: "3", nombre: "Pantalón Cargo Urbano Beige", precio: 295.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80" },
   { id: "4", nombre: "Sudadera Manga Larga Estilo Urbano", precio: 250.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" },
-  { id: "5", nombre: "Sudadera Negra", precio: 295.00, tipo: "ropa", imagen: "https://www.newera.com.gt/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0726%2F7713%2F0419%2Ffiles%2F60792227_HOODIE_MLB_HYPERFLY_NEYYAN_NVY_F.png%3Fv%3D1772889381&w=1920&q=75" },
+  { id: "5", nombre: "Sudadera Negra", precio: 250.00, tipo: "ropa", imagen: "https://www.newera.com.gt/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0726%2F7713%2F0419%2Ffiles%2F60792227_HOODIE_MLB_HYPERFLY_NEYYAN_NVY_F.png%3Fv%3D1772889381&w=1920&q=75" },
+  { id: "6", nombre: "Pantalon con estampado y2k", precio: 270.00, tipo: "ropa", imagen: "https://y2k-streetwear.com/cdn/shop/files/jean-japonais-imprime-7029556.jpg?v=1763907258" },
+  { id: "7", nombre: "Pantalon Holgado estilo vaquero y2k", precio: 295.00, tipo: "ropa", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTINL-sBCHfw1pQfevWDojcxhslp135_kVPO87axzTeUXKm7HfAV6tT8fI&s=10" },
+
   
   // Accesorios
   { id: "5", nombre: "Reloj Minimalista Cronógrafo Acero", precio: 480.00, tipo: "reloj", imagen: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" },
