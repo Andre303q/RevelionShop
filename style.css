@@ -500,6 +500,41 @@ body {
   font-size: 1.1rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-main);
 }
 
+/* REGLA DE IMPRESIÓN PARA EL RECIBO NATIVO */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #receipt-modal, #receipt-container, #receipt-container * {
+    visibility: visible;
+  }
+  #receipt-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: white !important;
+    backdrop-filter: none;
+    display: flex !important;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 0;
+  }
+  #receipt-container {
+    box-shadow: none !important;
+    border: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
 @media (max-width: 900px) {
   .hero-section {
     grid-template-columns: 1fr;
