@@ -34,7 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initAuthSystem();
   initCheckout();
   revisarSesionActiva();
+  initHeroScroll();
 });
+
+function initHeroScroll() {
+  const btnExplorar = document.getElementById('btn-explorar');
+  if (btnExplorar) {
+    btnExplorar.onclick = () => {
+      document.getElementById('catalogo').scrollIntoView({ behavior: 'smooth' });
+    };
+  }
+}
 
 function renderCategorizedProducts() {
   const gridRopa = document.getElementById('grid-ropa');
@@ -50,7 +60,6 @@ function renderCategorizedProducts() {
     card.className = 'card';
     
     let selectorHTML = '';
-    // Únicamente la ropa tiene selector de talla
     if (p.tipo === 'ropa') {
       selectorHTML = `
         <div class="size-selector-wrapper">
@@ -229,7 +238,7 @@ function updateCartUI() {
 
   carrito.forEach((item, index) => {
     total += item.precio;
-    let detalleExtra = item.tipo === 'ropa' ? `<br><small style="color: #a5b4fc; font-weight: 600;">${item.opcionSeleccionada}</small>` : '';
+    let detalleExtra = item.tipo === 'ropa' ? `<br><small style="color: var(--accent); font-weight: 700;">${item.opcionSeleccionada}</small>` : '';
     
     list.innerHTML += `
       <div class="cart-item">
