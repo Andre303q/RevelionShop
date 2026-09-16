@@ -1,240 +1,143 @@
-const productosEjemplo = [
-  // Ropa
-  { 
-    id: "1", 
-    nombre: { es: "Sweater Básico Blanco de Algodón", en: "Basic White Cotton Sweater" }, 
-    precio: 220.00, 
-    tipo: "ropa", 
-    imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80" 
+// Base de datos de productos de Revelion Shop
+const productos = [
+  {
+    id: 1,
+    categoria: "ropa",
+    nombre: { es: "Hoodie Oversize Minimal", en: "Minimal Oversize Hoodie" },
+    precio: 350.00,
+    imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80",
+    tallas: ["S", "M", "L", "XL"]
   },
-  { 
-    id: "2", 
-    nombre: { es: "Camiseta Casual Estampada Minimal", en: "Minimal Printed Casual T-Shirt" }, 
-    precio: 135.00, 
-    tipo: "ropa", 
-    imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" 
+  {
+    id: 2,
+    categoria: "ropa",
+    nombre: { es: "Camiseta Aesthetic Black", en: "Aesthetic Black T-Shirt" },
+    precio: 180.00,
+    imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80",
+    tallas: ["XS", "S", "M", "L"]
   },
-  { 
-    id: "3", 
-    nombre: { es: "Pantalón Cargo Urbano Beige", en: "Beige Urban Cargo Pants" }, 
-    precio: 295.00, 
-    tipo: "ropa", 
-    imagen: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80" 
+  {
+    id: 3,
+    categoria: "accesorios",
+    nombre: { es: "Gafas de Sol Cyberpunk", en: "Cyberpunk Sunglasses" },
+    precio: 220.00,
+    imagen: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80"
   },
-  { 
-    id: "4", 
-    nombre: { es: "Sudadera Manga Larga Estilo Urbano", en: "Urban Style Long Sleeve Hoodie" }, 
-    precio: 250.00, 
-    tipo: "ropa", 
-    imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" 
-  },
-  { 
-    id: "5", 
-    nombre: { es: "Pantalón Gris Estilo Y2K", en: "Y2K Style Grey Pants" }, 
-    precio: 265.00, 
-    tipo: "ropa", 
-    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ64HzNIcTADawH1w6YY0B3Qt6ax8fI-AbwoWd0pCCCqg&s=10" 
-  },
-  { 
-    id: "6", 
-    nombre: { es: "Pantalón Cargo Mujer Azul", en: "Women's Blue Cargo Pants" }, 
-    precio: 250.00, 
-    tipo: "ropa", 
-    imagen: "https://m.media-amazon.com/images/I/812w-hkANhL._AC_SY1000_.jpg" 
-  },
-  
-  // Accesorios
-  { 
-    id: "7", 
-    nombre: { es: "Reloj Minimalista Cronógrafo Acero", en: "Minimalist Steel Chronograph Watch" }, 
-    precio: 480.00, 
-    tipo: "reloj", 
-    imagen: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" 
-  },
-  { 
-    id: "8", 
-    nombre: { es: "Reloj Deportivo Smartwatch Pro", en: "Smartwatch Pro Sport Watch" }, 
-    precio: 699.00, 
-    tipo: "reloj", 
-    imagen: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" 
-  },
-  { 
-    id: "9", 
-    nombre: { es: "Cadena para Pantalón", en: "Pants Chain Accessory" }, 
-    precio: 129.00, 
-    tipo: "reloj", 
-    imagen: "https://preview.redd.it/where-to-find-clothing-accessories-that-fit-grunge-y2k-easy-v0-532xvpj1x2cf1.jpg?width=640&crop=smart&auto=webp&s=59263934be3db1987893582837e12e9734468937" 
-  },
-  { 
-    id: "10", 
-    nombre: { es: "Pulsera estilo Y2K", en: "Y2K Style Bracelet" }, 
-    precio: 129.00, 
-    tipo: "reloj", 
-    imagen: "https://i.etsystatic.com/45963821/r/il/884f55/6146331475/il_fullxfull.6146331475_iv9b.jpg" 
-  },
-  { 
-    id: "11", 
-    nombre: { es: "Muñequera Punk", en: "Punk Leather Wristband" }, 
-    precio: 219.00, 
-    tipo: "reloj", 
-    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIZ9XXOQa9jGzpeF5VdUxm7kQMai7ao_auOu9FcglCJJe2-vCPGGGhZBo&s=10" 
-  },
-  { 
-    id: "12", 
-    nombre: { es: "Pendientes Estilo Fresa", en: "Strawberry Style Earrings" }, 
-    precio: 110.00, 
-    tipo: "reloj", 
-    imagen: "https://www.chocolatecomplementos.com/wp-content/uploads/2026/02/fresa-arito-300x300.jpg" 
-  },
- 
-  // Coleccionables
-  { 
-    id: "13", 
-    nombre: { es: "Posters estilo Anime", en: "Anime Style Posters" }, 
-    precio: 320.00, 
-    tipo: "coleccionable", 
-    imagen: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" 
-  },
-  { 
-    id: "14", 
-    nombre: { es: "Auto de Colección Escala Clásico", en: "Classic Scale Collectible Car" }, 
-    precio: 150.00, 
-    tipo: "coleccionable", 
-    imagen: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80" 
-  },
-  { 
-    id: "15", 
-    nombre: { es: "Coleccionable de Pokémon Bulbasaur", en: "Bulbasaur Pokémon Collectible" }, 
-    precio: 299.00, 
-    tipo: "coleccionable", 
-    imagen: "https://media.vulcanita.com.ar/uploads/2024/11/Foto1_Pokemon_PKW2297_Pack-.webp" 
-  },
-  { 
-    id: "16", 
-    nombre: { es: "Poster Serie Stranger Things", en: "Stranger Things TV Series Poster" }, 
-    precio: 129.00, 
-    tipo: "coleccionable", 
-    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdJrOB93U48zYkrjwNa78MV_hjW0V8_ieOuozrxGUfLW51YU2itbjptTI&s=10" 
-  },
-  { 
-    id: "17", 
-    nombre: { es: "Poster Rocky The Movie", en: "Rocky The Movie Poster" }, 
-    precio: 149.00, 
-    tipo: "coleccionable", 
-    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjXoPXyPxVf8rQ3n2ZBSBvALvEoC67ebI79uvW9KcETA&s=10" 
-  },
-  { 
-    id: "18", 
-    nombre: { es: "Poster Star Wars", en: "Star Wars Poster" }, 
-    precio: 149.00, 
-    tipo: "coleccionable", 
-    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVQHjwyS0oHXHk2SqGFuBCJ6CGAMuAg4fdBUvJO_sXIdTHfcT0xihO_RQ&s=10" 
+  {
+    id: 4,
+    categoria: "accesorios",
+    nombre: { es: "Mochila Urbana Waterproof", en: "Urban Waterproof Backpack" },
+    precio: 450.00,
+    imagen: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80"
   }
 ];
 
-// DICCIONARIO DE IDIOMAS
+// Diccionario de traducciones
 const translations = {
   es: {
     loginBtn: "Iniciar Sesión",
-    logoutBtn: "Salir",
+    logoutBtn: "Cerrar Sesión",
     cartBtn: "Carrito",
-    heroTag: "Nueva Colección Disponible",
-    heroTitle: "Encuentra tu estilo único con <span>Revelion Shop</span>",
-    heroDesc: "Explora nuestra selección exclusiva de ropa urbana, accesorios de vanguardia y coleccionables icónicos diseñados para destacar.",
-    exploreBtn: "Ver Catálogo",
-    catalogueTitle: "Catálogo Exclusivo",
-    catRopa: "Ropa y Textil",
-    catReloj: "Accesorios y Relojes",
-    catColeccionable: "Coleccionables y Juguetes",
-    addToCartBtn: "Añadir al Carrito",
-    sizeLabel: "Talla",
-    cartModalTitle: "Tu Carrito de Compras",
+    heroTag: "Nueva Colección 2026",
+    heroTitle: "Estilo urbano y <span>vanguardia</span>",
+    heroDesc: "Explora las últimas tendencias en moda y accesorios diseñados para destacar en cualquier lugar.",
+    heroExplore: "Explorar Catálogo",
+    catalogueTitle: "Catálogo de Productos",
+    catRopa: "Ropa y Prendas",
+    catAccesorios: "Accesorios",
+    sizeLabel: "Talla:",
+    addToCart: "Añadir al Carrito",
+    loginTitle: "Iniciar Sesión",
+    registerTitle: "Crear Cuenta",
+    emailLabel: "Correo Electrónico",
+    passwordLabel: "Contraseña",
+    loginSubmit: "Ingresar",
+    registerSubmit: "Registrarse",
+    switchToRegister: "¿No tienes cuenta? Regístrate aquí",
+    switchToLogin: "¿Ya tienes cuenta? Inicia sesión",
+    cartTitle: "Tu Carrito",
     cartTotalLabel: "Total:",
     checkoutBtn: "Realizar Compra",
-    loginModalTitle: "Iniciar Sesión",
-    registerModalTitle: "Crear Cuenta Nueva",
-    labelName: "Nombre Completo",
-    labelUser: "Nombre de Usuario",
-    labelPass: "Contraseña",
-    authSubmitLogin: "Entrar",
-    authSubmitRegister: "Registrarse",
-    switchRegister: "¿No tienes cuenta? Regístrate aquí",
-    switchLogin: "¿Ya tienes cuenta? Inicia sesión aquí",
-    toastAdded: "¡Producto añadido al carrito!",
-    toastCheckout: "¡Compra realizada con éxito, ",
+    loginRequiredAlert: "Debes iniciar sesión para realizar una compra.",
     emptyCartAlert: "Tu carrito está vacío.",
-    loginRequiredAlert: "Debes iniciar sesión para realizar una compra."
+    toastAdded: "¡Producto añadido al carrito!",
+    receiptTitle: "Comprobante de Pago",
+    receiptNumberLabel: "Nro de Recibo:",
+    receiptDateLabel: "Fecha:",
+    receiptClientLabel: "Cliente:",
+    printReceiptBtn: "Imprimir / PDF",
+    closeReceiptBtn: "Cerrar"
   },
   en: {
     loginBtn: "Sign In",
     logoutBtn: "Sign Out",
     cartBtn: "Cart",
-    heroTag: "New Collection Available",
-    heroTitle: "Find your unique style with <span>Revelion Shop</span>",
-    heroDesc: "Explore our exclusive selection of streetwear, cutting-edge accessories, and iconic collectibles designed to stand out.",
-    exploreBtn: "View Catalogue",
-    catalogueTitle: "Exclusive Catalogue",
-    catRopa: "Apparel & Textile",
-    catReloj: "Accessories & Watches",
-    catColeccionable: "Collectibles & Toys",
-    addToCartBtn: "Add to Cart",
-    sizeLabel: "Size",
-    cartModalTitle: "Your Shopping Cart",
+    heroTag: "New Collection 2026",
+    heroTitle: "Urban style and <span>vanguard</span>",
+    heroDesc: "Explore the latest trends in fashion and accessories designed to stand out anywhere.",
+    heroExplore: "Explore Catalogue",
+    catalogueTitle: "Product Catalogue",
+    catRopa: "Apparel & Clothing",
+    catAccesorios: "Accessories",
+    sizeLabel: "Size:",
+    addToCart: "Add to Cart",
+    loginTitle: "Sign In",
+    registerTitle: "Create Account",
+    emailLabel: "Email Address",
+    passwordLabel: "Password",
+    loginSubmit: "Sign In",
+    registerSubmit: "Register",
+    switchToRegister: "Don't have an account? Register here",
+    switchToLogin: "Already have an account? Sign in",
+    cartTitle: "Your Cart",
     cartTotalLabel: "Total:",
     checkoutBtn: "Checkout",
-    loginModalTitle: "Sign In",
-    registerModalTitle: "Create New Account",
-    labelName: "Full Name",
-    labelUser: "Username",
-    labelPass: "Password",
-    authSubmitLogin: "Sign In",
-    authSubmitRegister: "Register",
-    switchRegister: "Don't have an account? Register here",
-    switchLogin: "Already have an account? Sign in here",
-    toastAdded: "Product added to cart!",
-    toastCheckout: "Purchase successful, ",
+    loginRequiredAlert: "You must be logged in to complete a purchase.",
     emptyCartAlert: "Your cart is empty.",
-    loginRequiredAlert: "You must sign in to make a purchase."
+    toastAdded: "Product added to cart!",
+    receiptTitle: "Payment Receipt",
+    receiptNumberLabel: "Receipt No:",
+    receiptDateLabel: "Date:",
+    receiptClientLabel: "Customer:",
+    printReceiptBtn: "Print / PDF",
+    closeReceiptBtn: "Close"
   }
 };
 
+// Estado global de la aplicación
 let currentLang = localStorage.getItem('revelion_lang') || 'es';
-let carrito = [];
-let usuarioActual = null;
-let modoRegistro = false;
-const TASA_CAMBIO_USD = 7.8; // 1 USD aprox 7.8 Quetzales
+let currentTheme = localStorage.getItem('revelion_theme') || 'light';
+let usuarioActual = localStorage.getItem('revelion_user') || null;
+let carrito = JSON.parse(localStorage.getItem('revelion_cart')) || [];
+let isRegisterMode = false;
 
+// Inicialización general al cargar el DOM
 document.addEventListener('DOMContentLoaded', () => {
-  initLanguageSystem();
-  initThemeSystem();
-  renderCategorizedProducts();
+  initTheme();
+  initLanguage();
+  renderCatalogue();
+  updateAuthUI();
+  updateCartUI();
   initModals();
-  initAuthSystem();
+  initAuth();
   initCheckout();
-  revisarSesionActiva();
-  initNavigation();
 });
 
-function initNavigation() {
-  const btnExplorar = document.getElementById('btn-explorar');
-  const logoHomeLink = document.getElementById('logo-home-link');
-  const viewInicio = document.getElementById('view-inicio');
-  const viewCatalogo = document.getElementById('view-catalogo');
-
-  btnExplorar.onclick = () => {
-    viewInicio.classList.remove('active');
-    viewCatalogo.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  logoHomeLink.onclick = () => {
-    viewCatalogo.classList.remove('active');
-    viewInicio.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+// GESTIÓN DE TEMA (CLARO / OSCURO)
+function initTheme() {
+  const htmlEl = document.documentElement;
+  htmlEl.setAttribute('data-theme', currentTheme);
+  
+  const themeToggleBtn = document.getElementById('btn-theme-toggle');
+  themeToggleBtn.onclick = () => {
+    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+    htmlEl.setAttribute('data-theme', currentTheme);
+    localStorage.setItem('revelion_theme', currentTheme);
   };
 }
 
-function initLanguageSystem() {
+// GESTIÓN DE IDIOMA
+function initLanguage() {
   const langSelector = document.getElementById('lang-selector');
   langSelector.value = currentLang;
   applyTranslations();
@@ -243,8 +146,7 @@ function initLanguageSystem() {
     currentLang = e.target.value;
     localStorage.setItem('revelion_lang', currentLang);
     applyTranslations();
-    renderCategorizedProducts();
-    updateCartUI();
+    renderCatalogue();
   };
 }
 
@@ -252,284 +154,284 @@ function applyTranslations() {
   const t = translations[currentLang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (t[key]) el.textContent = t[key];
+    if (t[key]) {
+      el.innerHTML = t[key];
+    }
   });
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const key = el.getAttribute('data-i18n-html');
-    if (t[key]) el.innerHTML = t[key];
-  });
+  updateAuthUI();
 }
 
-function initThemeSystem() {
-  const btnThemeToggle = document.getElementById('btn-theme-toggle');
-  const themeSvgIcon = document.getElementById('theme-svg-icon');
-  
-  const savedTheme = localStorage.getItem('revelion_theme') || 'light';
-  if (savedTheme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    setSunIcon(themeSvgIcon);
-  } else {
-    document.documentElement.removeAttribute('data-theme');
-    setMoonIcon(themeSvgIcon);
-  }
+// RENDERIZADO DEL CATÁLOGO
+function renderCatalogue() {
+  const container = document.getElementById('categories-container');
+  container.innerHTML = '';
 
-  btnThemeToggle.onclick = () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    if (currentTheme === 'dark') {
-      document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('revelion_theme', 'light');
-      setMoonIcon(themeSvgIcon);
-    } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('revelion_theme', 'dark');
-      setSunIcon(themeSvgIcon);
-    }
+  const categorias = {
+    ropa: translations[currentLang].catRopa,
+    accesorios: translations[currentLang].catAccesorios
   };
-}
 
-function setMoonIcon(svg) {
-  svg.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-}
+  for (const [key, labelName] of Object.entries(categorias)) {
+    const productosCat = productos.filter(p => p.categoria === key);
+    if (productosCat.length === 0) continue;
 
-function setSunIcon(svg) {
-  svg.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
-}
-
-function formatearPrecio(precioGTQ) {
-  if (currentLang === 'en') {
-    const precioUSD = precioGTQ / TASA_CAMBIO_USD;
-    return `$ ${precioUSD.toFixed(2)} USD`;
-  }
-  return `Q ${precioGTQ.toFixed(2)}`;
-}
-
-function renderCategorizedProducts() {
-  const gridRopa = document.getElementById('grid-ropa');
-  const gridReloj = document.getElementById('grid-reloj');
-  const gridColeccionable = document.getElementById('grid-coleccionable');
-
-  if (gridRopa) gridRopa.innerHTML = '';
-  if (gridReloj) gridReloj.innerHTML = '';
-  if (gridColeccionable) gridColeccionable.innerHTML = '';
-
-  const t = translations[currentLang];
-
-  productosEjemplo.forEach(p => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    
-    let selectorHTML = '';
-    if (p.tipo === 'ropa') {
-      selectorHTML = `
-        <div class="size-selector-wrapper">
-          <label>${t.sizeLabel}</label>
-          <select class="product-size" id="size-${p.id}">
-            <option value="S">S</option>
-            <option value="M" selected>M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-          </select>
-        </div>`;
-    }
-
-    const nombreArticulo = p.nombre[currentLang] || p.nombre.es;
-    const precioFormateado = formatearPrecio(p.precio);
-
-    card.innerHTML = `
-      <div class="card-img-container">
-        <img src="${p.imagen}" alt="${nombreArticulo}">
-      </div>
-      <div class="card-body">
-        <div>
-          <h3 class="card-title">${nombreArticulo}</h3>
-          <p class="card-price">${precioFormateado}</p>
-          ${selectorHTML}
-        </div>
-        <button class="btn primary" onclick="addToCart('${p.id}')">${t.addToCartBtn}</button>
-      </div>
+    let sectionHTML = `
+      <div class="category-section">
+        <h3 class="category-title">${labelName}</h3>
+        <div class="products-grid">
     `;
 
-    if (p.tipo === 'ropa' && gridRopa) {
-      gridRopa.appendChild(card);
-    } else if (p.tipo === 'reloj' && gridReloj) {
-      gridReloj.appendChild(card);
-    } else if (p.tipo === 'coleccionable' && gridColeccionable) {
-      gridColeccionable.appendChild(card);
-    }
+    productosCat.forEach(prod => {
+      const nombreProd = prod.nombre[currentLang] || prod.nombre.es;
+      let sizeSelectorHTML = '';
+
+      if (prod.tallas) {
+        let optionsHTML = prod.tallas.map(t => `<option value="${t}">${t}</option>`).join('');
+        sizeSelectorHTML = `
+          <div class="size-selector-wrapper">
+            <label>${translations[currentLang].sizeLabel}</label>
+            <select id="size-${prod.id}">${optionsHTML}</select>
+          </div>
+        `;
+      }
+
+      sectionHTML += `
+        <div class="card">
+          <div class="card-img-container">
+            <img src="${prod.imagen}" alt="${nombreProd}" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div>
+              <h4 class="card-title">${nombreProd}</h4>
+              <div class="card-price">${formatearPrecio(prod.precio)}</div>
+            </div>
+            <div>
+              ${sizeSelectorHTML}
+              <button class="btn primary" style="width: 100%;" onclick="agregarAlCarrito(${prod.id})">
+                ${translations[currentLang].addToCart}
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+
+    sectionHTML += `</div></div>`;
+    container.innerHTML += sectionHTML;
+  }
+}
+
+function formatearPrecio(monto) {
+  return `Q ${monto.toFixed(2)}`;
+}
+
+// GESTIÓN DEL CARRITO
+function agregarAlCarrito(idProducto) {
+  const productoBase = productos.find(p => p.id === idProducto);
+  if (!productoBase) return;
+
+  let opcionSeleccionada = null;
+  if (productoBase.tallas) {
+    const selectTalla = document.getElementById(`size-${idProducto}`);
+    opcionSeleccionada = selectTalla ? selectTalla.value : productoBase.tallas[0];
+  }
+
+  const itemCarrito = {
+    ...productoBase,
+    opcionSeleccionada,
+    cartItemId: Date.now() + Math.random()
+  };
+
+  carrito.push(itemCarrito);
+  localStorage.setItem('revelion_cart', JSON.stringify(carrito));
+  updateCartUI();
+  showToast();
+}
+
+function actualizarContenidoCarritoModal() {
+  const container = document.getElementById('cart-items-container');
+  const totalAmountEl = document.getElementById('cart-total-amount');
+  container.innerHTML = '';
+
+  if (carrito.length === 0) {
+    container.innerHTML = `<p style="text-align: center; color: var(--text-muted); padding: 1.5rem 0;" data-i18n="emptyCartAlert">${translations[currentLang].emptyCartAlert}</p>`;
+    totalAmountEl.textContent = formatearPrecio(0);
+    return;
+  }
+
+  let total = 0;
+  carrito.forEach(item => {
+    const nombreProd = item.nombre[currentLang] || item.nombre.es;
+    const detalleExtra = item.opcionSeleccionada ? `<br><small style="color: var(--accent); font-weight: 700;">${translations[currentLang].sizeLabel} ${item.opcionSeleccionada}</small>` : '';
+    total += item.precio;
+
+    container.innerHTML += `
+      <div class="cart-item">
+        <div>
+          <strong>${nombreProd}</strong>
+          ${detalleExtra}
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-weight: 700;">${formatearPrecio(item.precio)}</span>
+          <button class="btn danger" style="padding: 4px 8px; font-size: 0.75rem;" onclick="eliminarDelCarrito(${item.cartItemId})">X</button>
+        </div>
+      </div>
+    `;
   });
+
+  totalAmountEl.textContent = formatearPrecio(total);
 }
 
-function initModals() {
-  const loginModal = document.getElementById('login-modal');
-  const cartModal = document.getElementById('cart-modal');
-
-  document.getElementById('btn-login-modal').onclick = () => loginModal.style.display = 'flex';
-  document.getElementById('close-login').onclick = () => loginModal.style.display = 'none';
-  document.getElementById('btn-cart-toggle').onclick = () => cartModal.style.display = 'flex';
-  document.getElementById('close-cart').onclick = () => cartModal.style.display = 'none';
-
-  window.onclick = (e) => {
-    if (e.target === loginModal) loginModal.style.display = 'none';
-    if (e.target === cartModal) cartModal.style.display = 'none';
-  };
+function eliminarDelCarrito(cartItemId) {
+  carrito = carrito.filter(item => item.cartItemId !== cartItemId);
+  localStorage.setItem('revelion_cart', JSON.stringify(carrito));
+  updateCartUI();
+  actualizarContenidoCarritoModal();
 }
 
-function initAuthSystem() {
-  const formAuth = document.getElementById('form-auth');
-  const swModeText = document.getElementById('sw-mode-text');
-  const modalTitleAuth = document.getElementById('modal-title-auth');
-  const groupName = document.getElementById('group-name');
-  const authSubmitBtn = document.getElementById('auth-submit-btn');
-  const authError = document.getElementById('auth-error');
-
-  swModeText.onclick = (e) => {
-    e.preventDefault();
-    modoRegistro = !modoRegistro;
-    authError.style.display = 'none';
-    formAuth.reset();
-    const t = translations[currentLang];
-
-    if (modoRegistro) {
-      modalTitleAuth.textContent = t.registerModalTitle;
-      groupName.style.display = "block";
-      authSubmitBtn.textContent = t.authSubmitRegister;
-      swModeText.textContent = t.switchLogin;
-    } else {
-      modalTitleAuth.textContent = t.loginModalTitle;
-      groupName.style.display = "none";
-      authSubmitBtn.textContent = t.authSubmitLogin;
-      swModeText.textContent = t.switchRegister;
-    }
-  };
-
-  formAuth.onsubmit = (e) => {
-    e.preventDefault();
-    authError.style.display = 'none';
-    const userVal = document.getElementById('auth-user').value.trim();
-    const passVal = document.getElementById('auth-pass').value.trim();
-    const nameVal = document.getElementById('auth-name').value.trim();
-
-    let baseUsuarios = JSON.parse(localStorage.getItem('revelion_users')) || [];
-
-    if (modoRegistro) {
-      const existe = baseUsuarios.find(u => u.user === userVal);
-      if (existe) {
-        authError.textContent = currentLang === 'es' ? "El nombre de usuario ya está registrado." : "Username already taken.";
-        authError.style.display = "block";
-        return;
-      }
-      baseUsuarios.push({ user: userVal, pass: passVal, name: nameVal });
-      localStorage.setItem('revelion_users', JSON.stringify(baseUsuarios));
-      alert(currentLang === 'es' ? "¡Cuenta creada con éxito! Ahora inicia sesión." : "Account created successfully! Please sign in.");
-      modoRegistro = false;
-      swModeText.click();
-    } else {
-      const usuarioEncontrado = baseUsuarios.find(u => u.user === userVal && u.pass === passVal);
-      if (!usuarioEncontrado) {
-        authError.textContent = currentLang === 'es' ? "Usuario o contraseña incorrectos." : "Invalid username or password.";
-        authError.style.display = "block";
-        return;
-      }
-
-      usuarioActual = usuarioEncontrado.name || usuarioEncontrado.user;
-      localStorage.setItem('revelion_active_user', usuarioActual);
-      actualizarUIUsuario();
-      document.getElementById('login-modal').style.display = 'none';
-      formAuth.reset();
-    }
-  };
-
-  document.getElementById('btn-logout').onclick = () => {
-    usuarioActual = null;
-    localStorage.removeItem('revelion_active_user');
-    actualizarUIUsuario();
-  };
+function updateCartUI() {
+  const countEl = document.getElementById('cart-count');
+  countEl.textContent = carrito.length;
 }
 
-function revisarSesionActiva() {
-  const activo = localStorage.getItem('revelion_active_user');
-  if (activo) {
-    usuarioActual = activo;
-    actualizarUIUsuario();
-  }
-}
-
-function actualizarUIUsuario() {
-  const userDisplay = document.getElementById('user-display');
-  const btnLoginModal = document.getElementById('btn-login-modal');
-  const btnLogout = document.getElementById('btn-logout');
-
-  if (usuarioActual) {
-    userDisplay.textContent = `${currentLang === 'es' ? 'Hola' : 'Hello'}, ${usuarioActual}`;
-    userDisplay.style.display = 'inline-block';
-    btnLoginModal.style.display = 'none';
-    btnLogout.style.display = 'inline-block';
-  } else {
-    userDisplay.style.display = 'none';
-    btnLoginModal.style.display = 'inline-block';
-    btnLogout.style.display = 'none';
-  }
-}
-
-function addToCart(id) {
-  const p = productosEjemplo.find(item => item.id === id);
-  const sizeSelect = document.getElementById(`size-${id}`);
-  const selectedOption = sizeSelect ? `${translations[currentLang].sizeLabel}: ${sizeSelect.value}` : '';
-  
-  if (p) {
-    carrito.push({ ...p, opcionSeleccionada: selectedOption });
-    updateCartUI();
-    mostrarToast(translations[currentLang].toastAdded);
-  }
-}
-
-function mostrarToast(mensaje) {
-  const toast = document.getElementById('toast-notification');
-  toast.textContent = mensaje;
+function showToast() {
+  const toast = document.getElementById('toast');
+  toast.textContent = translations[currentLang].toastAdded;
   toast.classList.add('show');
-  
   setTimeout(() => {
     toast.classList.remove('show');
   }, 2500);
 }
 
-function updateCartUI() {
-  document.getElementById('cart-count').textContent = carrito.length;
-  const list = document.getElementById('cart-items-list');
-  list.innerHTML = '';
-  let total = 0;
+// MODALES Y AUTENTICACIÓN
+function initModals() {
+  const cartModal = document.getElementById('cart-modal');
+  const authModal = document.getElementById('auth-modal');
 
-  carrito.forEach((item, index) => {
-    total += item.precio;
-    const nombreArticulo = item.nombre[currentLang] || item.nombre.es;
-    let detalleExtra = item.tipo === 'ropa' ? `<br><small style="color: var(--accent); font-weight: 700;">${item.opcionSeleccionada}</small>` : '';
-    
-    list.innerHTML += `
-      <div class="cart-item">
-        <div>
-          <strong>${nombreArticulo}</strong>
-          ${detalleExtra}<br>
-          <small style="color: var(--text-muted);">${formatearPrecio(item.precio)}</small>
-        </div>
-        <button class="btn danger" style="padding:4px 8px; font-size:0.75rem;" onclick="removeFromCart(${index})">X</button>
-      </div>
-    `;
-  });
-  document.getElementById('cart-total').textContent = formatearPrecio(total);
+  document.getElementById('btn-cart').onclick = () => {
+    actualizarContenidoCarritoModal();
+    cartModal.style.display = 'flex';
+  };
+  document.getElementById('close-cart').onclick = () => cartModal.style.display = 'none';
+
+  window.onclick = (e) => {
+    if (e.target === cartModal) cartModal.style.display = 'none';
+    if (e.target === authModal) authModal.style.display = 'none';
+  };
+
+  document.getElementById('logo-home').onclick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 }
 
-function removeFromCart(index) {
-  carrito.splice(index, 1);
-  updateCartUI();
+function updateAuthUI() {
+  const userDisplay = document.getElementById('user-display');
+  const btnAuth = document.getElementById('btn-auth');
+  const t = translations[currentLang];
+
+  if (usuarioActual) {
+    userDisplay.textContent = usuarioActual;
+    userDisplay.style.display = 'inline-block';
+    btnAuth.textContent = t.logoutBtn;
+    btnAuth.className = 'btn danger';
+  } else {
+    userDisplay.style.display = 'none';
+    btnAuth.textContent = t.loginBtn;
+    btnAuth.className = 'btn secondary';
+  }
 }
 
+function initAuth() {
+  const authModal = document.getElementById('auth-modal');
+  const btnAuth = document.getElementById('btn-auth');
+  const closeAuth = document.getElementById('close-auth');
+  const authForm = document.getElementById('auth-form');
+  const authSwitch = document.getElementById('auth-switch-mode');
+  const authError = document.getElementById('auth-error');
+
+  btnAuth.onclick = () => {
+    if (usuarioActual) {
+      usuarioActual = null;
+      localStorage.removeItem('revelion_user');
+      updateAuthUI();
+      return;
+    }
+    isRegisterMode = false;
+    renderAuthMode();
+    authError.style.display = 'none';
+    authModal.style.display = 'flex';
+  };
+
+  closeAuth.onclick = () => authModal.style.display = 'none';
+
+  authSwitch.onclick = (e) => {
+    e.preventDefault();
+    isRegisterMode = !isRegisterMode;
+    renderAuthMode();
+    authError.style.display = 'none';
+  };
+
+  authForm.onsubmit = (e) => {
+    e.preventDefault();
+    const email = document.getElementById('auth-email').value.trim();
+    const pass = document.getElementById('auth-password').value.trim();
+    const t = translations[currentLang];
+
+    if (isRegisterMode) {
+      localStorage.setItem(`user_${email}`, pass);
+      usuarioActual = email;
+      localStorage.setItem('revelion_user', usuarioActual);
+      authModal.style.display = 'none';
+      updateAuthUI();
+    } else {
+      const storedPass = localStorage.getItem(`user_${email}`);
+      if (storedPass && storedPass === pass) {
+        usuarioActual = email;
+        localStorage.setItem('revelion_user', usuarioActual);
+        authModal.style.display = 'none';
+        updateAuthUI();
+      } else {
+        authError.textContent = currentLang === 'es' ? "Credenciales inválidas o cuenta no existente." : "Invalid credentials or non-existent account.";
+        authError.style.display = 'block';
+      }
+    }
+    authForm.reset();
+  };
+}
+
+function renderAuthMode() {
+  const t = translations[currentLang];
+  document.getElementById('auth-modal-title').textContent = isRegisterMode ? t.registerTitle : t.loginTitle;
+  document.getElementById('auth-submit-btn').textContent = isRegisterMode ? t.registerSubmit : t.loginSubmit;
+  document.getElementById('auth-switch-mode').textContent = isRegisterMode ? t.switchToLogin : t.switchToRegister;
+}
+
+// PROCESAMIENTO DE COMPRA Y RECIBO NATIVO
 function initCheckout() {
+  const receiptModal = document.getElementById('receipt-modal');
+  const closeReceiptBtn = document.getElementById('close-receipt');
+  const btnCerrarRecibo = document.getElementById('btn-cerrar-recibo');
+
+  closeReceiptBtn.onclick = () => receiptModal.style.display = 'none';
+  btnCerrarRecibo.onclick = () => receiptModal.style.display = 'none';
+
+  window.addEventListener('click', (e) => {
+    if (e.target === receiptModal) {
+      receiptModal.style.display = 'none';
+    }
+  });
+
   document.getElementById('btn-checkout').onclick = () => {
     const t = translations[currentLang];
     if (!usuarioActual) {
       alert(t.loginRequiredAlert);
       document.getElementById('cart-modal').style.display = 'none';
-      document.getElementById('login-modal').style.display = 'flex';
+      document.getElementById('login-modal').style.display = 'flex'; // Abre auth si no está logueado
+      // O abrir el modal de auth correspondiente:
+      const authModal = document.getElementById('auth-modal');
+      isRegisterMode = false;
+      renderAuthMode();
+      authModal.style.display = 'flex';
       return;
     }
     if (carrito.length === 0) {
@@ -537,9 +439,49 @@ function initCheckout() {
       return;
     }
 
-    alert(`${t.toastCheckout}${usuarioActual}!`);
+    // Calcular el total actual
+    let totalCompra = carrito.reduce((acc, item) => acc + item.precio, 0);
+
+    // Generar datos del recibo con folio único
+    const datosRecibo = {
+      receiptNumber: `REC-${Date.now()}`,
+      date: new Date().toISOString(),
+      cliente: usuarioActual,
+      items: [...carrito],
+      totalAmount: totalCompra
+    };
+
+    // Pintar los datos en el modal de recibo
+    document.getElementById('r-number').textContent = datosRecibo.receiptNumber;
+    document.getElementById('r-date').textContent = new Date(datosRecibo.date).toLocaleString();
+    document.getElementById('r-client').textContent = datosRecibo.cliente;
+    document.getElementById('r-total').textContent = formatearPrecio(datosRecibo.totalAmount);
+
+    const contenedorItemsRecibo = document.getElementById('r-items');
+    contenedorItemsRecibo.innerHTML = '';
+
+    datosRecibo.items.forEach(item => {
+      const nombreArticulo = item.nombre[currentLang] || item.nombre.es;
+      const detalleExtra = item.opcionSeleccionada ? `<br><small style="color: var(--accent); font-weight: 700;">${translations[currentLang].sizeLabel} ${item.opcionSeleccionada}</small>` : '';
+      
+      contenedorItemsRecibo.innerHTML += `
+        <div class="cart-item">
+          <div>
+            <strong>${nombreArticulo}</strong>
+            ${detalleExtra}
+          </div>
+          <div style="font-weight: 700;">${formatearPrecio(item.precio)}</div>
+        </div>
+      `;
+    });
+
+    // Vaciar carrito y cerrar modal del carrito
     carrito = [];
+    localStorage.removeItem('revelion_cart');
     updateCartUI();
     document.getElementById('cart-modal').style.display = 'none';
+
+    // Mostrar el recibo formal en pantalla
+    receiptModal.style.display = 'flex';
   };
 }
