@@ -46,7 +46,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* HEADER */
+/* HEADER DINÁMICO */
 .header {
   display: flex;
   justify-content: space-between;
@@ -110,7 +110,7 @@ body {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 #user-display {
@@ -118,12 +118,12 @@ body {
   font-weight: 600;
   color: var(--text-main);
   background: var(--bg-primary);
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
   border: 1px solid var(--border-color);
 }
 
-/* VISTAS (CONTROL DE PANTALLAS) */
+/* VISTAS */
 .view-section {
   display: none;
 }
@@ -131,7 +131,7 @@ body {
   display: block;
 }
 
-/* HERO SECTION (INICIO / BIENVENIDA) */
+/* HERO SECTION */
 .hero-section {
   padding: 4rem 5%;
   max-width: 1400px;
@@ -219,7 +219,7 @@ body {
   object-fit: cover;
 }
 
-/* BOTONES GENERALES */
+/* BOTONES */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -250,8 +250,8 @@ body {
 .btn.danger:hover { background: var(--danger); color: white; transform: translateY(-2px); }
 
 .btn-icon-only {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   padding: 0;
   border-radius: 10px;
   display: flex;
@@ -271,7 +271,7 @@ body {
   background: var(--bg-primary);
   color: var(--text-main);
   border: 1px solid var(--border-color);
-  padding: 8px 10px;
+  padding: 9px 12px;
   border-radius: 10px;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.85rem;
@@ -282,7 +282,7 @@ body {
 }
 .lang-select:hover { border-color: var(--accent); }
 
-/* CATÁLOGO Y PRODUCTOS */
+/* CATÁLOGO */
 .catalogue-wrapper {
   padding: 3rem 5% 5rem;
   max-width: 1400px;
@@ -319,7 +319,7 @@ body {
   gap: 1.75rem;
 }
 
-/* TARJETAS DE PRODUCTO */
+/* TARJETAS */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -407,7 +407,7 @@ body {
   cursor: pointer;
 }
 
-/* NOTIFICACIÓN TOAST */
+/* TOAST */
 .toast {
   position: fixed;
   top: 20px; right: 20px;
@@ -500,7 +500,6 @@ body {
   font-size: 1.1rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-main);
 }
 
-/* RESPONSIVE */
 @media (max-width: 900px) {
   .hero-section {
     grid-template-columns: 1fr;
