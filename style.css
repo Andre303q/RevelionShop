@@ -123,16 +123,16 @@ body {
   border: 1px solid var(--border-color);
 }
 
-/* APARTADO DE BIENVENIDA (HERO SECTION - 2 COLUMNAS) */
+/* APARTADO DE BIENVENIDA (HERO SECTION - DISEÑO ORDENADO Y COMPACTO) */
 .hero-section {
   padding: 4rem 5%;
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 4rem;
   min-height: calc(100vh - 73px);
   background: radial-gradient(circle at center, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
   position: relative;
@@ -144,7 +144,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
-  max-width: 600px;
+  max-width: 550px;
   margin-bottom: 0;
 }
 
@@ -163,7 +163,7 @@ body {
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: 800;
   letter-spacing: -1.5px;
   line-height: 1.1;
@@ -177,10 +177,10 @@ body {
 }
 
 .hero-desc {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
   line-height: 1.6;
-  max-width: 520px;
+  max-width: 480px;
 }
 
 .hero-buttons {
@@ -189,32 +189,34 @@ body {
   margin-top: 1rem;
 }
 
-/* CONTENEDOR DE MODELOS AL LADO DERECHO */
+/* CONTENEDOR DE MODELOS ORDENADO Y MÁS PEQUEÑO */
 .hero-images-grid {
-  display: flex;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 160px);
+  gap: 1.25rem;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
 }
 
 .hero-img-card {
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-sm);
   border: 1px solid var(--border-color);
-  width: 220px;
-  height: 340px;
+  width: 160px;
+  height: 230px;
   transition: var(--transition);
 }
 
 .hero-img-card:nth-child(2) {
-  transform: translateY(25px);
+  transform: translateY(20px); /* Da un escalonado sutil y ordenado */
 }
 
 .hero-img-card:hover {
-  transform: scale(1.04) translateY(0);
+  transform: scale(1.03) translateY(0);
   border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
 }
 
 .hero-img-card img {
@@ -540,15 +542,15 @@ body {
     align-items: center;
   }
   .hero-title {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
   }
   .hero-images-grid {
-    flex-direction: row;
+    grid-template-columns: repeat(2, 140px);
     width: 100%;
   }
   .hero-img-card {
-    width: 160px;
-    height: 240px;
+    width: 140px;
+    height: 200px;
   }
   .hero-img-card:nth-child(2) {
     transform: translateY(0);
