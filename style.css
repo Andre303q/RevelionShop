@@ -123,28 +123,29 @@ body {
   border: 1px solid var(--border-color);
 }
 
-/* APARTADO DE BIENVENIDA (HERO SECTION) */
+/* APARTADO DE BIENVENIDA (HERO SECTION - 2 COLUMNAS) */
 .hero-section {
   padding: 4rem 5%;
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  text-align: center;
+  justify-content: space-between;
+  gap: 3rem;
   min-height: calc(100vh - 73px);
-  justify-content: center;
   background: radial-gradient(circle at center, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
   position: relative;
+  text-align: left;
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.5rem;
-  max-width: 800px;
-  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-bottom: 0;
 }
 
 .hero-tag {
@@ -162,7 +163,7 @@ body {
 }
 
 .hero-title {
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 800;
   letter-spacing: -1.5px;
   line-height: 1.1;
@@ -176,10 +177,10 @@ body {
 }
 
 .hero-desc {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--text-muted);
   line-height: 1.6;
-  max-width: 600px;
+  max-width: 520px;
 }
 
 .hero-buttons {
@@ -188,13 +189,13 @@ body {
   margin-top: 1rem;
 }
 
+/* CONTENEDOR DE MODELOS AL LADO DERECHO */
 .hero-images-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 280px);
+  display: flex;
   gap: 1.5rem;
   justify-content: center;
-  width: 100%;
-  max-width: 700px;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .hero-img-card {
@@ -202,12 +203,13 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-color);
-  height: 220px;
+  width: 220px;
+  height: 340px;
   transition: var(--transition);
 }
 
 .hero-img-card:nth-child(2) {
-  transform: translateY(-20px);
+  transform: translateY(25px);
 }
 
 .hero-img-card:hover {
@@ -528,8 +530,27 @@ body {
   .no-print { display: none !important; }
 }
 
-@media (max-width: 768px) {
-  .hero-title { font-size: 2.8rem; }
-  .hero-images-grid { grid-template-columns: 1fr; max-width: 320px; }
-  .hero-img-card:nth-child(2) { transform: translateY(0); }
+@media (max-width: 968px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 5%;
+  }
+  .hero-content {
+    align-items: center;
+  }
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  .hero-images-grid {
+    flex-direction: row;
+    width: 100%;
+  }
+  .hero-img-card {
+    width: 160px;
+    height: 240px;
+  }
+  .hero-img-card:nth-child(2) {
+    transform: translateY(0);
+  }
 }
