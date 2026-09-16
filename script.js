@@ -1,34 +1,141 @@
-// Base de datos de productos de Revelion Shop
+// Base de datos completa de productos de Revelion Shop
 const productos = [
+  // --- Ropa y Textil ---
   {
     id: 1,
     categoria: "ropa",
-    nombre: { es: "Hoodie Oversize Minimal", en: "Minimal Oversize Hoodie" },
-    precio: 350.00,
+    nombre: { es: "Suéter Básico Blanco de Algodón", en: "Basic White Cotton Sweater" },
+    precio: 220.00,
     imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80",
     tallas: ["S", "M", "L", "XL"]
   },
   {
     id: 2,
     categoria: "ropa",
-    nombre: { es: "Camiseta Aesthetic Black", en: "Aesthetic Black T-Shirt" },
+    nombre: { es: "Camiseta Casual Estampada Mínima", en: "Casual Minimal Print T-Shirt" },
     precio: 180.00,
     imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80",
-    tallas: ["XS", "S", "M", "L"]
+    tallas: ["S", "M", "L"]
   },
   {
     id: 3,
-    categoria: "accesorios",
-    nombre: { es: "Gafas de Sol Cyberpunk", en: "Cyberpunk Sunglasses" },
-    precio: 220.00,
-    imagen: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80"
+    categoria: "ropa",
+    nombre: { es: "Pantalón Cargo Urbano Beige", en: "Urban Beige Cargo Pants" },
+    precio: 295.00,
+    imagen: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80",
+    tallas: ["S", "M", "L", "XL"]
   },
   {
     id: 4,
+    categoria: "ropa",
+    nombre: { es: "Sudadera Manga Larga Estilo Urbano", en: "Urban Style Long Sleeve Sweatshirt" },
+    precio: 260.00,
+    imagen: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80",
+    tallas: ["S", "M", "L"]
+  },
+  {
+    id: 5,
+    categoria: "ropa",
+    nombre: { es: "Pantalón Denim Brocado Y2K", en: "Y2K Brocade Denim Pants" },
+    precio: 285.00,
+    imagen: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=600&q=80",
+    tallas: ["S", "M", "L"]
+  },
+  {
+    id: 6,
+    categoria: "ropa",
+    nombre: { es: "Pantalón Cargo Mujer Azul", en: "Blue Women Cargo Pants" },
+    precio: 250.00,
+    imagen: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80",
+    tallas: ["S", "M", "L"]
+  },
+
+  // --- Accesorios y Relojes ---
+  {
+    id: 7,
     categoria: "accesorios",
-    nombre: { es: "Mochila Urbana Waterproof", en: "Urban Waterproof Backpack" },
-    precio: 450.00,
-    imagen: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80"
+    nombre: { es: "Reloj Minimalista Cronógrafo Acero", en: "Minimalist Steel Chronograph Watch" },
+    precio: 489.00,
+    imagen: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 8,
+    categoria: "accesorios",
+    nombre: { es: "Reloj Deportivo Smartwatch Pro", en: "Smartwatch Pro Sport Watch" },
+    precio: 699.00,
+    imagen: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 9,
+    categoria: "accesorios",
+    nombre: { es: "Cadena para Pantalón", en: "Pants Chain" },
+    precio: 129.00,
+    imagen: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 10,
+    categoria: "accesorios",
+    nombre: { es: "Pulsera estilo Y2K", en: "Y2K Style Bracelet" },
+    precio: 129.00,
+    imagen: "https://images.unsplash.com/photo-1611591475271-e6e66488a08d?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 11,
+    categoria: "accesorios",
+    nombre: { es: "Muñequera Punk", en: "Punk Wristband" },
+    precio: 219.00,
+    imagen: "https://images.unsplash.com/photo-1598560917505-59a36683c49c?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 12,
+    categoria: "accesorios",
+    nombre: { es: "Pendientes Fresa Infensa", en: "Infensa Strawberry Earrings" },
+    precio: 110.00,
+    imagen: "https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=600&q=80"
+  },
+
+  // --- Coleccionables y Juguetes ---
+  {
+    id: 13,
+    categoria: "coleccionables",
+    nombre: { es: "Poster Estilo Anime", en: "Anime Style Poster" },
+    precio: 120.00,
+    imagen: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 14,
+    categoria: "coleccionables",
+    nombre: { es: "Auto de Colección Escala Clásico", en: "Classic Scale Collector Car" },
+    precio: 150.00,
+    imagen: "https://images.unsplash.com/photo-1581235720704-06d3acfcb36f?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 15,
+    categoria: "coleccionables",
+    nombre: { es: "Coleccionable de Pokémon Dulcezar", en: "Dulcezar Pokémon Collectible" },
+    precio: 299.00,
+    imagen: "https://images.unsplash.com/photo-1613771404784-3a5686aa2be3?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 16,
+    categoria: "coleccionables",
+    nombre: { es: "Poster Serie Stranger Things", en: "Stranger Things Series Poster" },
+    precio: 129.00,
+    imagen: "https://images.unsplash.com/photo-1594909122845-11baa439b7bf?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 17,
+    categoria: "coleccionables",
+    nombre: { es: "Poster Rocky The Movie", en: "Rocky The Movie Poster" },
+    precio: 149.00,
+    imagen: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    id: 18,
+    categoria: "coleccionables",
+    nombre: { es: "Poster Starwars", en: "Star Wars Poster" },
+    precio: 149.00,
+    imagen: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80"
   }
 ];
 
@@ -42,9 +149,10 @@ const translations = {
     heroTitle: "Estilo urbano y <span>vanguardia</span>",
     heroDesc: "Explora las últimas tendencias en moda y accesorios diseñados para destacar en cualquier lugar.",
     heroExplore: "Explorar Catálogo",
-    catalogueTitle: "Catálogo de Productos",
-    catRopa: "Ropa y Prendas",
-    catAccesorios: "Accesorios",
+    catalogueTitle: "Catálogo Exclusivo",
+    catRopa: "Ropa y Textil",
+    catAccesorios: "Accesorios y Relojes",
+    catColeccionables: "Coleccionables y Juguetes",
     sizeLabel: "Talla:",
     addToCart: "Añadir al Carrito",
     loginTitle: "Iniciar Sesión",
@@ -76,9 +184,10 @@ const translations = {
     heroTitle: "Urban style and <span>vanguard</span>",
     heroDesc: "Explore the latest trends in fashion and accessories designed to stand out anywhere.",
     heroExplore: "Explore Catalogue",
-    catalogueTitle: "Product Catalogue",
-    catRopa: "Apparel & Clothing",
-    catAccesorios: "Accessories",
+    catalogueTitle: "Exclusive Catalogue",
+    catRopa: "Apparel & Textile",
+    catAccesorios: "Accessories & Watches",
+    catColeccionables: "Collectibles & Toys",
     sizeLabel: "Size:",
     addToCart: "Add to Cart",
     loginTitle: "Sign In",
@@ -161,14 +270,15 @@ function applyTranslations() {
   updateAuthUI();
 }
 
-// RENDERIZADO DEL CATÁLOGO
+// RENDERIZADO DEL CATÁLOGO COMPLETO
 function renderCatalogue() {
   const container = document.getElementById('categories-container');
   container.innerHTML = '';
 
   const categorias = {
     ropa: translations[currentLang].catRopa,
-    accesorios: translations[currentLang].catAccesorios
+    accesorios: translations[currentLang].catAccesorios,
+    coleccionables: translations[currentLang].catColeccionables
   };
 
   for (const [key, labelName] of Object.entries(categorias)) {
@@ -254,7 +364,7 @@ function actualizarContenidoCarritoModal() {
   container.innerHTML = '';
 
   if (carrito.length === 0) {
-    container.innerHTML = `<p style="text-align: center; color: var(--text-muted); padding: 1.5rem 0;" data-i18n="emptyCartAlert">${translations[currentLang].emptyCartAlert}</p>`;
+    container.innerHTML = `<p style="text-align: center; color: var(--text-muted); padding: 1.5rem 0;">${translations[currentLang].emptyCartAlert}</p>`;
     totalAmountEl.textContent = formatearPrecio(0);
     return;
   }
@@ -375,7 +485,6 @@ function initAuth() {
     e.preventDefault();
     const email = document.getElementById('auth-email').value.trim();
     const pass = document.getElementById('auth-password').value.trim();
-    const t = translations[currentLang];
 
     if (isRegisterMode) {
       localStorage.setItem(`user_${email}`, pass);
@@ -426,8 +535,6 @@ function initCheckout() {
     if (!usuarioActual) {
       alert(t.loginRequiredAlert);
       document.getElementById('cart-modal').style.display = 'none';
-      document.getElementById('login-modal').style.display = 'flex'; // Abre auth si no está logueado
-      // O abrir el modal de auth correspondiente:
       const authModal = document.getElementById('auth-modal');
       isRegisterMode = false;
       renderAuthMode();
@@ -439,10 +546,8 @@ function initCheckout() {
       return;
     }
 
-    // Calcular el total actual
     let totalCompra = carrito.reduce((acc, item) => acc + item.precio, 0);
 
-    // Generar datos del recibo con folio único
     const datosRecibo = {
       receiptNumber: `REC-${Date.now()}`,
       date: new Date().toISOString(),
@@ -451,7 +556,6 @@ function initCheckout() {
       totalAmount: totalCompra
     };
 
-    // Pintar los datos en el modal de recibo
     document.getElementById('r-number').textContent = datosRecibo.receiptNumber;
     document.getElementById('r-date').textContent = new Date(datosRecibo.date).toLocaleString();
     document.getElementById('r-client').textContent = datosRecibo.cliente;
@@ -475,13 +579,11 @@ function initCheckout() {
       `;
     });
 
-    // Vaciar carrito y cerrar modal del carrito
     carrito = [];
     localStorage.removeItem('revelion_cart');
     updateCartUI();
     document.getElementById('cart-modal').style.display = 'none';
 
-    // Mostrar el recibo formal en pantalla
     receiptModal.style.display = 'flex';
   };
 }
