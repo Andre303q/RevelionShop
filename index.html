@@ -13,7 +13,7 @@
 
   <!-- HEADER FIJO -->
   <header class="header">
-    <div class="logo-container">
+    <div class="logo-container" id="logo-home-link">
       <div class="logo-badge">
         <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
       </div>
@@ -26,73 +26,85 @@
     <div class="nav-actions">
       <span id="user-display" style="display: none;"></span>
       
-      <!-- BOTÓN CAMBIO DE TEMA (CLARO / OSCURO) -->
+      <!-- SELECTOR DE IDIOMA -->
+      <select id="lang-selector" class="lang-select">
+        <option value="es">🇪🇸 ES</option>
+        <option value="en">🇬🇧 EN</option>
+      </select>
+
+      <!-- BOTÓN TEMA SVG -->
       <button id="btn-theme-toggle" class="btn secondary btn-icon-only" title="Cambiar Tema">
-        <span id="theme-icon">🌙</span>
+        <svg id="theme-svg-icon" viewBox="0 0 24 24">
+          <!-- Icono de Luna por defecto -->
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
       </button>
 
-      <button id="btn-login-modal" class="btn secondary">Iniciar Sesión</button>
-      <button id="btn-logout" class="btn danger" style="display: none;">Salir</button>
-      <button id="btn-cart-toggle" class="btn primary">🛒 Carrito (<span id="cart-count">0</span>)</button>
+      <button id="btn-login-modal" class="btn secondary" data-i18n="loginBtn">Iniciar Sesión</button>
+      <button id="btn-logout" class="btn danger" style="display: none;" data-i18n="logoutBtn">Salir</button>
+      <button id="btn-cart-toggle" class="btn primary">🛒 <span data-i18n="cartBtn">Carrito</span> (<span id="cart-count">0</span>)</button>
     </div>
   </header>
 
-  <!-- SECCIÓN DE INICIO / HERO (CON MODELOS) -->
-  <section class="hero-section" id="inicio">
-    <div class="hero-content">
-      <span class="hero-tag">✨ Nueva Colección Disponible</span>
-      <h1 class="hero-title">Encuentra tu estilo único con <span>Revelion Shop</span></h1>
-      <p class="hero-desc">Explora nuestra selección exclusiva de ropa urbana, accesorios de vanguardia y coleccionables icónicos diseñados para destacar.</p>
-      <div class="hero-buttons">
-        <button id="btn-explorar" class="btn primary">Ver Catálogo</button>
+  <!-- SECCIÓN 1: VISTA DE INICIO (OBLIGATORIA AL ENTRAR) -->
+  <section id="view-inicio" class="view-section active">
+    <div class="hero-section">
+      <div class="hero-content">
+        <span class="hero-tag" data-i18n="heroTag">✨ Nueva Colección Disponible</span>
+        <h1 class="hero-title" data-i18n-html="heroTitle">Encuentra tu estilo único con <span>Revelion Shop</span></h1>
+        <p class="hero-desc" data-i18n="heroDesc">Explora nuestra selección exclusiva de ropa urbana, accesorios de vanguardia y coleccionables icónicos diseñados para destacar.</p>
+        <div class="hero-buttons">
+          <button id="btn-explorar" class="btn primary" data-i18n="exploreBtn">Ver Catálogo</button>
+        </div>
       </div>
-    </div>
-    
-    <!-- IMÁGENES DE MODELOS DE REFERENCIA -->
-    <div class="hero-images-grid">
-      <div class="hero-img-card">
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" alt="Modelo con Ropa y Estilo Urbano">
-      </div>
-      <div class="hero-img-card">
-        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80" alt="Modelo con Accesorios">
+      
+      <div class="hero-images-grid">
+        <div class="hero-img-card">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" alt="Modelo Urbano">
+        </div>
+        <div class="hero-img-card">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80" alt="Modelo Accesorios">
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTENEDOR PRINCIPAL DE CATÁLOGOS -->
-  <main class="catalogue-wrapper" id="catalogo">
-    <h1 class="main-title">Catálogo Exclusivo</h1>
+  <!-- SECCIÓN 2: VISTA DE CATÁLOGO (SE ACCEDE AL INTERACTUAR) -->
+  <main id="view-catalogo" class="view-section">
+    <div class="catalogue-wrapper">
+      <h1 class="main-title" data-i18n="catalogueTitle">Catálogo Exclusivo</h1>
 
-    <!-- SECCIÓN 1: ROPA -->
-    <section class="category-section">
-      <h2 class="category-title">👕 Ropa y Textil</h2>
-      <div id="grid-ropa" class="products-grid"></div>
-    </section>
+      <!-- SECCIÓN ROPA -->
+      <section class="category-section">
+        <h2 class="category-title" data-i18n="catRopa">👕 Ropa y Textil</h2>
+        <div id="grid-ropa" class="products-grid"></div>
+      </section>
 
-    <!-- SECCIÓN 2: ACCESORIOS -->
-    <section class="category-section">
-      <h2 class="category-title">⌚ Accesorios y Relojes</h2>
-      <div id="grid-reloj" class="products-grid"></div>
-    </section>
+      <!-- SECCIÓN ACCESORIOS -->
+      <section class="category-section">
+        <h2 class="category-title" data-i18n="catReloj">⌚ Accesorios y Relojes</h2>
+        <div id="grid-reloj" class="products-grid"></div>
+      </section>
 
-    <!-- SECCIÓN 3: COLECCIONABLES -->
-    <section class="category-section">
-      <h2 class="category-title">🎮 Coleccionables y Juguetes</h2>
-      <div id="grid-coleccionable" class="products-grid"></div>
-    </section>
+      <!-- SECCIÓN COLECCIONABLES -->
+      <section class="category-section">
+        <h2 class="category-title" data-i18n="catColeccionable">🎮 Coleccionables y Juguetes</h2>
+        <div id="grid-coleccionable" class="products-grid"></div>
+      </section>
+    </div>
   </main>
 
   <!-- MODAL DE CARRITO -->
   <div id="cart-modal" class="modal-overlay">
     <div class="modal-content">
       <button class="modal-close" id="close-cart">&times;</button>
-      <h2 class="modal-title">Tu Carrito de Compras</h2>
+      <h2 class="modal-title" data-i18n="cartModalTitle">Tu Carrito de Compras</h2>
       <div id="cart-items-list" class="cart-items-list"></div>
       <div class="cart-summary">
-        <span>Total:</span>
+        <span data-i18n="cartTotalLabel">Total:</span>
         <span id="cart-total">Q 0.00</span>
       </div>
-      <button id="btn-checkout" class="btn primary" style="width: 100%;">Realizar Compra</button>
+      <button id="btn-checkout" class="btn primary" style="width: 100%;" data-i18n="checkoutBtn">Realizar Compra</button>
     </div>
   </div>
 
@@ -100,148 +112,27 @@
   <div id="login-modal" class="modal-overlay">
     <div class="modal-content">
       <button class="modal-close" id="close-login">&times;</button>
-      <h2 class="modal-title" id="modal-title-auth">Iniciar Sesión</h2>
+      <h2 class="modal-title" id="modal-title-auth" data-i18n="loginModalTitle">Iniciar Sesión</h2>
       
       <form id="form-auth">
         <div class="form-group" id="group-name" style="display: none;">
-          <label>Nombre Completo</label>
+          <label data-i18n="labelName">Nombre Completo</label>
           <input type="text" id="auth-name" placeholder="Tu nombre">
         </div>
         <div class="form-group">
-          <label>Nombre de Usuario</label>
+          <label data-i18n="labelUser">Nombre de Usuario</label>
           <input type="text" id="auth-user" required placeholder="Ej. juan123">
         </div>
         <div class="form-group">
-          <label>Contraseña</label>
+          <label data-i18n="labelPass">Contraseña</label>
           <input type="password" id="auth-pass" required placeholder="••••••••">
         </div>
         <div id="auth-error" class="auth-error-msg" style="display: none;"></div>
-        <button type="submit" id="auth-submit-btn" class="btn primary" style="width: 100%; margin-top: 0.5rem;">Entrar</button>
+        <button type="submit" id="auth-submit-btn" class="btn primary" style="width: 100%; margin-top: 0.5rem;" data-i18n="authSubmitLogin">Entrar</button>
       </form>
 
       <div class="auth-switch">
-        <a href="#" id="sw-mode-text">¿No tienes cuenta? Regístrate aquí</a>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Revelion Shop</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <!-- NOTIFICACIÓN FLOTANTE (TOAST) -->
-  <div id="toast-notification" class="toast">¡Producto añadido al carrito!</div>
-
-  <!-- HEADER FIJO -->
-  <header class="header">
-    <div class="logo-container">
-      <div class="logo-badge">
-        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
-      </div>
-      <div class="logo-text">
-        <span class="logo-title">REVELION</span>
-        <span class="logo-subtitle">SHOP</span>
-      </div>
-    </div>
-
-    <div class="nav-actions">
-      <span id="user-display" style="display: none;"></span>
-      <button id="btn-login-modal" class="btn secondary">Iniciar Sesión</button>
-      <button id="btn-logout" class="btn danger" style="display: none;">Salir</button>
-      <button id="btn-cart-toggle" class="btn primary">🛒 Carrito (<span id="cart-count">0</span>)</button>
-    </div>
-  </header>
-
-  <!-- SECCIÓN DE INICIO / HERO -->
-  <section class="hero-section" id="inicio">
-    <div class="hero-content">
-      <span class="hero-tag">✨ Nueva Colección Disponible</span>
-      <h1 class="hero-title">Encuentra tu estilo único con <span>Revelion Shop</span></h1>
-      <p class="hero-desc">Explora nuestra selección exclusiva de ropa urbana, accesorios de vanguardia y coleccionables icónicos diseñados para destacar.</p>
-      <div class="hero-buttons">
-        <button id="btn-explorar" class="btn primary">Ver Catálogo</button>
-      </div>
-    </div>
-    <div class="hero-images-grid">
-      <div class="hero-img-card">
-        <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80" alt="Moda Urbana">
-      </div>
-      <div class="hero-img-card">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Accesorios">
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTENEDOR PRINCIPAL DE CATÁLOGOS -->
-  <main class="catalogue-wrapper" id="catalogo">
-    <h1 class="main-title">Catálogo Exclusivo</h1>
-
-    <!-- SECCIÓN 1: ROPA -->
-    <section class="category-section">
-      <h2 class="category-title">👕 Ropa y Textil</h2>
-      <div id="grid-ropa" class="products-grid"></div>
-    </section>
-
-    <!-- SECCIÓN 2: ACCESORIOS (RELOJES) -->
-    <section class="category-section">
-      <h2 class="category-title">⌚ Accesorios y Relojes</h2>
-      <div id="grid-reloj" class="products-grid"></div>
-    </section>
-
-    <!-- SECCIÓN 3: COLECCIONABLES -->
-    <section class="category-section">
-      <h2 class="category-title">🎮 Coleccionables y Juguetes</h2>
-      <div id="grid-coleccionable" class="products-grid"></div>
-    </section>
-  </main>
-
-  <!-- MODAL DE CARRITO -->
-  <div id="cart-modal" class="modal-overlay">
-    <div class="modal-content">
-      <button class="modal-close" id="close-cart">&times;</button>
-      <h2 class="modal-title">Tu Carrito de Compras</h2>
-      <div id="cart-items-list" class="cart-items-list"></div>
-      <div class="cart-summary">
-        <span>Total:</span>
-        <span id="cart-total">Q 0.00</span>
-      </div>
-      <button id="btn-checkout" class="btn primary" style="width: 100%;">Realizar Compra</button>
-    </div>
-  </div>
-
-  <!-- MODAL DE INICIO DE SESIÓN / REGISTRO -->
-  <div id="login-modal" class="modal-overlay">
-    <div class="modal-content">
-      <button class="modal-close" id="close-login">&times;</button>
-      <h2 class="modal-title" id="modal-title-auth">Iniciar Sesión</h2>
-      
-      <form id="form-auth">
-        <div class="form-group" id="group-name" style="display: none;">
-          <label>Nombre Completo</label>
-          <input type="text" id="auth-name" placeholder="Tu nombre">
-        </div>
-        <div class="form-group">
-          <label>Nombre de Usuario</label>
-          <input type="text" id="auth-user" required placeholder="Ej. juan123">
-        </div>
-        <div class="form-group">
-          <label>Contraseña</label>
-          <input type="password" id="auth-pass" required placeholder="••••••••">
-        </div>
-        <div id="auth-error" class="auth-error-msg" style="display: none;"></div>
-        <button type="submit" id="auth-submit-btn" class="btn primary" style="width: 100%; margin-top: 0.5rem;">Entrar</button>
-      </form>
-
-      <div class="auth-switch">
-        <a href="#" id="sw-mode-text">¿No tienes cuenta? Regístrate aquí</a>
+        <a href="#" id="sw-mode-text" data-i18n="switchRegister">¿No tienes cuenta? Regístrate aquí</a>
       </div>
     </div>
   </div>
