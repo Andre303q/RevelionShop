@@ -129,74 +129,38 @@ const productosEjemplo = [
 
 const translations = { 
   es: { 
-    loginBtn: "Iniciar Sesión", 
-    logoutBtn: "Salir", 
-    cartBtn: "Carrito", 
-    heroTag: "Nueva Colección 2026", 
+    loginBtn: "Iniciar Sesión", logoutBtn: "Salir", cartBtn: "Carrito", 
+    heroTag: "✨ Nueva Colección 2026", 
     heroDesc: "Explora las últimas tendencias en moda y accesorios diseñados para destacar en cualquier lugar.", 
     heroExplore: "Explorar Catálogo", 
     catalogueTitle: "Catálogo de Productos", 
-    catRopa: "Ropa y Textil", 
-    catReloj: "Accesorios y Relojes", 
-    catColeccionable: "Coleccionables y Juguetes", 
-    addToCartBtn: "Añadir al Carrito", 
-    sizeLabel: "Talla", 
-    cartTitle: "Tu Carrito", 
-    cartTotalLabel: "Total:", 
-    checkoutBtn: "Realizar Compra", 
-    loginTitle: "Iniciar Sesión", 
-    registerTitle: "Crear Cuenta Nueva", 
-    nameLabel: "Nombre Completo", 
-    emailLabel: "Correo Electrónico", 
-    passwordLabel: "Contraseña", 
-    loginSubmit: "Ingresar", 
-    registerSubmit: "Registrarse", 
-    switchToRegister: "¿No tienes cuenta? Regístrate aquí", 
-    switchToLogin: "¿Ya tienes cuenta? Inicia sesión aquí", 
-    toastAdded: "¡Producto añadido al carrito!", 
-    emptyCartAlert: "Tu carrito está vacío.", 
-    loginRequiredAlert: "Debes iniciar sesión para realizar una compra.",
-    receiptTitle: "Comprobante de Pago",
-    receiptNumberLabel: "Nro de Recibo:",
-    receiptDateLabel: "Fecha:",
-    receiptClientLabel: "Cliente:",
-    printReceiptBtn: "Imprimir / PDF",
-    closeReceiptBtn: "Cerrar"
+    catRopa: "Ropa y Textil", catReloj: "Accesorios y Relojes", catColeccionable: "Coleccionables y Juguetes", 
+    addToCartBtn: "Añadir al Carrito", sizeLabel: "Talla", 
+    cartTitle: "Tu Carrito", cartTotalLabel: "Total:", checkoutBtn: "Realizar Compra", 
+    loginTitle: "Iniciar Sesión", registerTitle: "Crear Cuenta Nueva", 
+    nameLabel: "Nombre Completo", emailLabel: "Correo Electrónico", passwordLabel: "Contraseña", 
+    loginSubmit: "Ingresar", registerSubmit: "Registrarse", 
+    switchToRegister: "¿No tienes cuenta? Regístrate aquí", switchToLogin: "¿Ya tienes cuenta? Inicia sesión aquí", 
+    toastAdded: "¡Producto añadido al carrito!", emptyCartAlert: "Tu carrito está vacío.", loginRequiredAlert: "Debes iniciar sesión para realizar una compra.",
+    receiptTitle: "Comprobante de Pago", receiptNumberLabel: "Nro de Recibo:", receiptDateLabel: "Fecha:", receiptClientLabel: "Cliente:",
+    printReceiptBtn: "Imprimir / PDF", closeReceiptBtn: "Cerrar"
   }, 
   en: { 
-    loginBtn: "Sign In", 
-    logoutBtn: "Sign Out", 
-    cartBtn: "Cart", 
-    heroTag: "New Collection 2026", 
+    loginBtn: "Sign In", logoutBtn: "Sign Out", cartBtn: "Cart", 
+    heroTag: "✨ New Collection 2026", 
     heroDesc: "Explore the latest trends in fashion and accessories designed to stand out anywhere.", 
     heroExplore: "Explore Catalogue", 
     catalogueTitle: "Product Catalogue", 
-    catRopa: "Apparel & Textile", 
-    catReloj: "Accessories & Watches", 
-    catColeccionable: "Collectibles & Toys", 
-    addToCartBtn: "Add to Cart", 
-    sizeLabel: "Size", 
-    cartTitle: "Your Cart", 
-    cartTotalLabel: "Total:", 
-    checkoutBtn: "Checkout", 
-    loginTitle: "Sign In", 
-    registerTitle: "Create New Account", 
-    nameLabel: "Full Name", 
-    emailLabel: "Email Address", 
-    passwordLabel: "Password", 
-    loginSubmit: "Sign In", 
-    registerSubmit: "Register", 
-    switchToRegister: "Don't have an account? Register here", 
-    switchToLogin: "Already have an account? Sign in here", 
-    toastAdded: "Product added to cart!", 
-    emptyCartAlert: "Your cart is empty.", 
-    loginRequiredAlert: "You must sign in to make a purchase.",
-    receiptTitle: "Payment Receipt",
-    receiptNumberLabel: "Receipt No:",
-    receiptDateLabel: "Date:",
-    receiptClientLabel: "Client:",
-    printReceiptBtn: "Print / PDF",
-    closeReceiptBtn: "Close"
+    catRopa: "Apparel & Textile", catReloj: "Accessories & Watches", catColeccionable: "Collectibles & Toys", 
+    addToCartBtn: "Add to Cart", sizeLabel: "Size", 
+    cartTitle: "Your Cart", cartTotalLabel: "Total:", checkoutBtn: "Checkout", 
+    loginTitle: "Sign In", registerTitle: "Create New Account", 
+    nameLabel: "Full Name", emailLabel: "Email Address", passwordLabel: "Password", 
+    loginSubmit: "Sign In", registerSubmit: "Register", 
+    switchToRegister: "Don't have an account? Register here", switchToLogin: "Already have an account? Sign in here", 
+    toastAdded: "Product added to cart!", emptyCartAlert: "Your cart is empty.", loginRequiredAlert: "You must sign in to make a purchase.",
+    receiptTitle: "Payment Receipt", receiptNumberLabel: "Receipt No:", receiptDateLabel: "Date:", receiptClientLabel: "Client:",
+    printReceiptBtn: "Print / PDF", closeReceiptBtn: "Close"
   } 
 }; 
 
@@ -219,10 +183,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initNavigation() { 
   const logoHome = document.getElementById('logo-home');
+  const btnExplore = document.getElementById('btn-explore');
+  const btnBackHero = document.getElementById('btn-back-hero');
+  const catalogo = document.getElementById('catalogo');
+
   if (logoHome) {
     logoHome.onclick = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      const catalogo = document.getElementById('catalogo');
       if (catalogo) {
         catalogo.classList.remove('catalogue-visible');
         catalogo.classList.add('catalogue-hidden');
@@ -230,13 +197,19 @@ function initNavigation() {
     };
   }
 
-  const btnExplore = document.getElementById('btn-explore');
-  const catalogo = document.getElementById('catalogo');
   if (btnExplore && catalogo) {
     btnExplore.onclick = () => {
       catalogo.classList.remove('catalogue-hidden');
       catalogo.classList.add('catalogue-visible');
       catalogo.scrollIntoView({ behavior: 'smooth' });
+    };
+  }
+
+  if (btnBackHero && catalogo) {
+    btnBackHero.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      catalogo.classList.remove('catalogue-visible');
+      catalogo.classList.add('catalogue-hidden');
     };
   }
 } 
