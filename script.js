@@ -1,43 +1,151 @@
 const productosEjemplo = [
   // Ropa
-  { id: "1", nombre: "Sweater Básico Blanco de Algodón", precio: 220.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80" },
-  { id: "2", nombre: "Camiseta Casual Estampada Minimal", precio: 135.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" },
-  { id: "3", nombre: "Pantalón Cargo Urbano Beige", precio: 295.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80" },
-  { id: "4", nombre: "Sudadera Manga Larga Estilo Urbano", precio: 250.00, tipo: "ropa", imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" },
-  { id: "5", nombre: "Pantalón Gris Estilo Y2K", precio: 265.00, tipo: "ropa", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ64HzNIcTADawH1w6YY0B3Qt6ax8fI-AbwoWd0pCCCqg&s=10" },
-  { id: "6", nombre: "Pantalón Cargo Mujer Azul", precio: 250.00, tipo: "ropa", imagen: "https://m.media-amazon.com/images/I/812w-hkANhL._AC_SY1000_.jpg" },
+  { 
+    id: "1", 
+    nombre: { es: "Sweater Básico Blanco de Algodón", en: "Basic White Cotton Sweater" }, 
+    precio: 220.00, 
+    tipo: "ropa", 
+    imagen: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80" 
+  },
+  { 
+    id: "2", 
+    nombre: { es: "Camiseta Casual Estampada Minimal", en: "Minimal Printed Casual T-Shirt" }, 
+    precio: 135.00, 
+    tipo: "ropa", 
+    imagen: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" 
+  },
+  { 
+    id: "3", 
+    nombre: { es: "Pantalón Cargo Urbano Beige", en: "Beige Urban Cargo Pants" }, 
+    precio: 295.00, 
+    tipo: "ropa", 
+    imagen: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80" 
+  },
+  { 
+    id: "4", 
+    nombre: { es: "Sudadera Manga Larga Estilo Urbano", en: "Urban Style Long Sleeve Hoodie" }, 
+    precio: 250.00, 
+    tipo: "ropa", 
+    imagen: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80" 
+  },
+  { 
+    id: "5", 
+    nombre: { es: "Pantalón Gris Estilo Y2K", en: "Y2K Style Grey Pants" }, 
+    precio: 265.00, 
+    tipo: "ropa", 
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ64HzNIcTADawH1w6YY0B3Qt6ax8fI-AbwoWd0pCCCqg&s=10" 
+  },
+  { 
+    id: "6", 
+    nombre: { es: "Pantalón Cargo Mujer Azul", en: "Women's Blue Cargo Pants" }, 
+    precio: 250.00, 
+    tipo: "ropa", 
+    imagen: "https://m.media-amazon.com/images/I/812w-hkANhL._AC_SY1000_.jpg" 
+  },
   
   // Accesorios
-  { id: "7", nombre: "Reloj Minimalista Cronógrafo Acero", precio: 480.00, tipo: "reloj", imagen: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" },
-  { id: "8", nombre: "Reloj Deportivo Smartwatch Pro", precio: 699.00, tipo: "reloj", imagen: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" },
-  { id: "9", nombre: "Cadena para Pantalón", precio: 129.00, tipo: "reloj", imagen: "https://preview.redd.it/where-to-find-clothing-accessories-that-fit-grunge-y2k-easy-v0-532xvpj1x2cf1.jpg?width=640&crop=smart&auto=webp&s=59263934be3db1987893582837e12e9734468937" },
-  { id: "10", nombre: "Pulsera estilo Y2K", precio: 129.00, tipo: "reloj", imagen: "https://i.etsystatic.com/45963821/r/il/884f55/6146331475/il_fullxfull.6146331475_iv9b.jpg" },
-  { id: "11", nombre: "Muñequera Punk", precio: 219.00, tipo: "reloj", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIZ9XXOQa9jGzpeF5VdUxm7kQMai7ao_auOu9FcglCJJe2-vCPGGGhZBo&s=10" },
-  { id: "12", nombre: "Pendientes Estilo Fresa", precio: 110.00, tipo: "reloj", imagen: "https://www.chocolatecomplementos.com/wp-content/uploads/2026/02/fresa-arito-300x300.jpg" },
+  { 
+    id: "7", 
+    nombre: { es: "Reloj Minimalista Cronógrafo Acero", en: "Minimalist Steel Chronograph Watch" }, 
+    precio: 480.00, 
+    tipo: "reloj", 
+    imagen: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" 
+  },
+  { 
+    id: "8", 
+    nombre: { es: "Reloj Deportivo Smartwatch Pro", en: "Smartwatch Pro Sport Watch" }, 
+    precio: 699.00, 
+    tipo: "reloj", 
+    imagen: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" 
+  },
+  { 
+    id: "9", 
+    nombre: { es: "Cadena para Pantalón", en: "Pants Chain Accessory" }, 
+    precio: 129.00, 
+    tipo: "reloj", 
+    imagen: "https://preview.redd.it/where-to-find-clothing-accessories-that-fit-grunge-y2k-easy-v0-532xvpj1x2cf1.jpg?width=640&crop=smart&auto=webp&s=59263934be3db1987893582837e12e9734468937" 
+  },
+  { 
+    id: "10", 
+    nombre: { es: "Pulsera estilo Y2K", en: "Y2K Style Bracelet" }, 
+    precio: 129.00, 
+    tipo: "reloj", 
+    imagen: "https://i.etsystatic.com/45963821/r/il/884f55/6146331475/il_fullxfull.6146331475_iv9b.jpg" 
+  },
+  { 
+    id: "11", 
+    nombre: { es: "Muñequera Punk", en: "Punk Leather Wristband" }, 
+    precio: 219.00, 
+    tipo: "reloj", 
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIZ9XXOQa9jGzpeF5VdUxm7kQMai7ao_auOu9FcglCJJe2-vCPGGGhZBo&s=10" 
+  },
+  { 
+    id: "12", 
+    nombre: { es: "Pendientes Estilo Fresa", en: "Strawberry Style Earrings" }, 
+    precio: 110.00, 
+    tipo: "reloj", 
+    imagen: "https://www.chocolatecomplementos.com/wp-content/uploads/2026/02/fresa-arito-300x300.jpg" 
+  },
  
   // Coleccionables
-  { id: "13", nombre: "Posters estilo Anime", precio: 320.00, tipo: "coleccionable", imagen: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" },
-  { id: "14", nombre: "Auto de Colección Escala Clásico", precio: 150.00, tipo: "coleccionable", imagen: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80" },
-  { id: "15", nombre: "Coleccionable de Pokémon Bulbasaur", precio: 299.00, tipo: "coleccionable", imagen: "https://media.vulcanita.com.ar/uploads/2024/11/Foto1_Pokemon_PKW2297_Pack-.webp" },
-  { id: "16", nombre: "Poster Serie Stranger Things", precio: 129.00, tipo: "coleccionable", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdJrOB93U48zYkrjwNa78MV_hjW0V8_ieOuozrxGUfLW51YU2itbjptTI&s=10" },
-  { id: "17", nombre: "Poster Rocky The Movie", precio: 149.00, tipo: "coleccionable", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjXoPXyPxVf8rQ3n2ZBSBvALvEoC67ebI79uvW9KcETA&s=10" },
-  { id: "18", nombre: "Poster Star Wars", precio: 149.00, tipo: "coleccionable", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVQHjwyS0oHXHk2SqGFuBCJ6CGAMuAg4fdBUvJO_sXIdTHfcT0xihO_RQ&s=10" }
+  { 
+    id: "13", 
+    nombre: { es: "Posters estilo Anime", en: "Anime Style Posters" }, 
+    precio: 320.00, 
+    tipo: "coleccionable", 
+    imagen: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" 
+  },
+  { 
+    id: "14", 
+    nombre: { es: "Auto de Colección Escala Clásico", en: "Classic Scale Collectible Car" }, 
+    precio: 150.00, 
+    tipo: "coleccionable", 
+    imagen: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80" 
+  },
+  { 
+    id: "15", 
+    nombre: { es: "Coleccionable de Pokémon Bulbasaur", en: "Bulbasaur Pokémon Collectible" }, 
+    precio: 299.00, 
+    tipo: "coleccionable", 
+    imagen: "https://media.vulcanita.com.ar/uploads/2024/11/Foto1_Pokemon_PKW2297_Pack-.webp" 
+  },
+  { 
+    id: "16", 
+    nombre: { es: "Poster Serie Stranger Things", en: "Stranger Things TV Series Poster" }, 
+    precio: 129.00, 
+    tipo: "coleccionable", 
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdJrOB93U48zYkrjwNa78MV_hjW0V8_ieOuozrxGUfLW51YU2itbjptTI&s=10" 
+  },
+  { 
+    id: "17", 
+    nombre: { es: "Poster Rocky The Movie", en: "Rocky The Movie Poster" }, 
+    precio: 149.00, 
+    tipo: "coleccionable", 
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjXoPXyPxVf8rQ3n2ZBSBvALvEoC67ebI79uvW9KcETA&s=10" 
+  },
+  { 
+    id: "18", 
+    nombre: { es: "Poster Star Wars", en: "Star Wars Poster" }, 
+    precio: 149.00, 
+    tipo: "coleccionable", 
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVQHjwyS0oHXHk2SqGFuBCJ6CGAMuAg4fdBUvJO_sXIdTHfcT0xihO_RQ&s=10" 
+  }
 ];
 
-// DICCIONARIO DE IDIOMAS (ESPAÑOL / INGLÉS)
+// DICCIONARIO DE IDIOMAS
 const translations = {
   es: {
     loginBtn: "Iniciar Sesión",
     logoutBtn: "Salir",
     cartBtn: "Carrito",
-    heroTag: "✨ Nueva Colección Disponible",
+    heroTag: "Nueva Colección Disponible",
     heroTitle: "Encuentra tu estilo único con <span>Revelion Shop</span>",
     heroDesc: "Explora nuestra selección exclusiva de ropa urbana, accesorios de vanguardia y coleccionables icónicos diseñados para destacar.",
     exploreBtn: "Ver Catálogo",
     catalogueTitle: "Catálogo Exclusivo",
-    catRopa: "👕 Ropa y Textil",
-    catReloj: "⌚ Accesorios y Relojes",
-    catColeccionable: "🎮 Coleccionables y Juguetes",
+    catRopa: "Ropa y Textil",
+    catReloj: "Accesorios y Relojes",
+    catColeccionable: "Coleccionables y Juguetes",
     addToCartBtn: "Añadir al Carrito",
     sizeLabel: "Talla",
     cartModalTitle: "Tu Carrito de Compras",
@@ -61,14 +169,14 @@ const translations = {
     loginBtn: "Sign In",
     logoutBtn: "Sign Out",
     cartBtn: "Cart",
-    heroTag: "✨ New Collection Available",
+    heroTag: "New Collection Available",
     heroTitle: "Find your unique style with <span>Revelion Shop</span>",
     heroDesc: "Explore our exclusive selection of streetwear, cutting-edge accessories, and iconic collectibles designed to stand out.",
     exploreBtn: "View Catalogue",
     catalogueTitle: "Exclusive Catalogue",
-    catRopa: "👕 Apparel & Textile",
-    catReloj: "⌚ Accessories & Watches",
-    catColeccionable: "🎮 Collectibles & Toys",
+    catRopa: "Apparel & Textile",
+    catReloj: "Accessories & Watches",
+    catColeccionable: "Collectibles & Toys",
     addToCartBtn: "Add to Cart",
     sizeLabel: "Size",
     cartModalTitle: "Your Shopping Cart",
@@ -94,6 +202,7 @@ let currentLang = localStorage.getItem('revelion_lang') || 'es';
 let carrito = [];
 let usuarioActual = null;
 let modoRegistro = false;
+const TASA_CAMBIO_USD = 7.8; // 1 USD aprox 7.8 Quetzales
 
 document.addEventListener('DOMContentLoaded', () => {
   initLanguageSystem();
@@ -106,7 +215,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
 });
 
-// SISTEMA DE NAVEGACIÓN ENTRE VISTAS
 function initNavigation() {
   const btnExplorar = document.getElementById('btn-explorar');
   const logoHomeLink = document.getElementById('logo-home-link');
@@ -126,7 +234,6 @@ function initNavigation() {
   };
 }
 
-// SISTEMA DE IDIOMAS
 function initLanguageSystem() {
   const langSelector = document.getElementById('lang-selector');
   langSelector.value = currentLang;
@@ -137,6 +244,7 @@ function initLanguageSystem() {
     localStorage.setItem('revelion_lang', currentLang);
     applyTranslations();
     renderCategorizedProducts();
+    updateCartUI();
   };
 }
 
@@ -152,7 +260,6 @@ function applyTranslations() {
   });
 }
 
-// SISTEMA DE TEMA CLARO / OSCURO (CON SVG PROFESIONAL)
 function initThemeSystem() {
   const btnThemeToggle = document.getElementById('btn-theme-toggle');
   const themeSvgIcon = document.getElementById('theme-svg-icon');
@@ -188,6 +295,14 @@ function setSunIcon(svg) {
   svg.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
 }
 
+function formatearPrecio(precioGTQ) {
+  if (currentLang === 'en') {
+    const precioUSD = precioGTQ / TASA_CAMBIO_USD;
+    return `$ ${precioUSD.toFixed(2)} USD`;
+  }
+  return `Q ${precioGTQ.toFixed(2)}`;
+}
+
 function renderCategorizedProducts() {
   const gridRopa = document.getElementById('grid-ropa');
   const gridReloj = document.getElementById('grid-reloj');
@@ -217,14 +332,17 @@ function renderCategorizedProducts() {
         </div>`;
     }
 
+    const nombreArticulo = p.nombre[currentLang] || p.nombre.es;
+    const precioFormateado = formatearPrecio(p.precio);
+
     card.innerHTML = `
       <div class="card-img-container">
-        <img src="${p.imagen}" alt="${p.nombre}">
+        <img src="${p.imagen}" alt="${nombreArticulo}">
       </div>
       <div class="card-body">
         <div>
-          <h3 class="card-title">${p.nombre}</h3>
-          <p class="card-price">Q ${p.precio.toFixed(2)}</p>
+          <h3 class="card-title">${nombreArticulo}</h3>
+          <p class="card-price">${precioFormateado}</p>
           ${selectorHTML}
         </div>
         <button class="btn primary" onclick="addToCart('${p.id}')">${t.addToCartBtn}</button>
@@ -383,20 +501,21 @@ function updateCartUI() {
 
   carrito.forEach((item, index) => {
     total += item.precio;
+    const nombreArticulo = item.nombre[currentLang] || item.nombre.es;
     let detalleExtra = item.tipo === 'ropa' ? `<br><small style="color: var(--accent); font-weight: 700;">${item.opcionSeleccionada}</small>` : '';
     
     list.innerHTML += `
       <div class="cart-item">
         <div>
-          <strong>${item.nombre}</strong>
+          <strong>${nombreArticulo}</strong>
           ${detalleExtra}<br>
-          <small style="color: var(--text-muted);">Q ${item.precio.toFixed(2)}</small>
+          <small style="color: var(--text-muted);">${formatearPrecio(item.precio)}</small>
         </div>
         <button class="btn danger" style="padding:4px 8px; font-size:0.75rem;" onclick="removeFromCart(${index})">X</button>
       </div>
     `;
   });
-  document.getElementById('cart-total').textContent = `Q ${total.toFixed(2)}`;
+  document.getElementById('cart-total').textContent = formatearPrecio(total);
 }
 
 function removeFromCart(index) {
