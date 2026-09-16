@@ -205,38 +205,28 @@ body {
   margin-top: 0.5rem;
 }
 
-/* GRILLA DE MODELOS (HERO) */
-.hero-models-grid {
-  display: flex;
-  gap: 1.25rem;
-  align-items: center;
-  flex-shrink: 0;
+/* 🌟 GRILLA / ESTRELLA DE MODELOS (HERO) */
+.hero-star-grid {
   position: relative;
+  width: 380px;
+  height: 420px;
+  flex-shrink: 0;
   z-index: 1;
 }
 
-.model-card {
-  width: 150px;
-  height: 220px;
+.hero-star-grid .model-card {
+  position: absolute;
+  width: 140px;
+  height: 200px;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-color);
   background: var(--bg-card);
-  position: relative;
   transition: var(--transition);
 }
 
-.model-card-2 {
-  transform: translateY(24px);
-}
-
-.model-card:hover {
-  transform: scale(1.04) translateY(0);
-  border-color: var(--accent);
-}
-
-.model-card img {
+.hero-star-grid .model-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -244,22 +234,54 @@ body {
   transition: transform 0.5s ease;
 }
 
-.model-card:hover img {
-  transform: scale(1.08);
+.hero-star-grid .model-card:hover {
+  transform: scale(1.08) rotate(0deg) !important;
+  z-index: 50;
+  border-color: var(--accent);
 }
 
+.hero-star-grid .model-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Posicionamiento en estrella / constelación */
+.model-1 {
+  top: 0px;
+  left: 20px;
+  transform: rotate(-6deg);
+}
+
+.model-2 {
+  top: 30px;
+  right: 10px;
+  transform: rotate(8deg);
+}
+
+.model-3 {
+  bottom: 10px;
+  left: 0px;
+  transform: rotate(4deg);
+}
+
+.model-4 {
+  bottom: 25px;
+  right: 30px;
+  transform: rotate(-5deg);
+}
+
+/* Etiqueta interna de las tarjetas de modelo */
 .model-overlay-tag {
   position: absolute;
-  bottom: 8px;
-  left: 8px;
-  right: 8px;
+  bottom: 6px;
+  left: 6px;
+  right: 6px;
   background: rgba(15, 23, 42, 0.75);
   backdrop-filter: blur(4px);
   color: white;
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 700;
   text-align: center;
-  padding: 4px 6px;
+  padding: 3px 4px;
   border-radius: 6px;
   letter-spacing: 0.3px;
 }
@@ -339,7 +361,7 @@ body {
 }
 .lang-select:hover { border-color: var(--accent); }
 
-/* CATÁLOGO Y SECCIONES DE ARTÍCULOS (CORREGIDO) */
+/* CATÁLOGO Y SECCIONES DE ARTÍCULOS */
 .catalogue-wrapper {
   padding: 3rem 5% 5rem;
   max-width: 1400px;
@@ -421,7 +443,7 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-/* CONTENEDOR DE IMAGEN ESTÁNDAR (Fija la altura y evita deformaciones) */
+/* CONTENEDOR DE IMAGEN ESTÁNDAR */
 .card-img-container {
   width: 100%;
   height: 240px;
@@ -613,17 +635,26 @@ body {
   .hero-desc {
     max-width: 100%;
   }
-  .hero-models-grid {
-    justify-content: center;
+  
+  /* Adaptación del diseño en estrella para pantallas móviles */
+  .hero-star-grid {
     width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
   }
-  .model-card {
-    width: 135px;
-    height: 195px;
+  .hero-star-grid .model-card {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 105px;
+    height: 155px;
+    transform: none !important;
   }
-  .model-card-2 {
-    transform: translateY(0);
-  }
+
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1rem;
