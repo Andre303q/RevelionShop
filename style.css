@@ -123,16 +123,17 @@ body {
   border: 1px solid var(--border-color);
 }
 
-/* NUEVO APARTADO DE BIENVENIDA (HERO SECTION) */
+/* APARTADO DE BIENVENIDA (HERO SECTION) */
 .hero-section {
-  padding: 5rem 5%;
+  padding: 4rem 5%;
   max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-height: calc(80vh - 73px);
+  min-height: calc(100vh - 73px);
+  justify-content: center;
   background: radial-gradient(circle at center, rgba(99, 102, 241, 0.05) 0%, transparent 70%);
   position: relative;
 }
@@ -280,11 +281,28 @@ body {
 }
 .lang-select:hover { border-color: var(--accent); }
 
-/* CATÁLOGO */
+/* CATÁLOGO (ESTADOS DE VISIBILIDAD) */
 .catalogue-wrapper {
   padding: 3rem 5% 5rem;
   max-width: 1400px;
   margin: 0 auto;
+  transition: all 0.5s ease;
+}
+
+.catalogue-hidden {
+  display: none;
+  opacity: 0;
+}
+
+.catalogue-visible {
+  display: block;
+  opacity: 1;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .main-title {
