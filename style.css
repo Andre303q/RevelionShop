@@ -205,7 +205,7 @@ body {
   margin-top: 0.5rem;
 }
 
-/* 🖼️ GRILLA DE MODELOS (TAMAÑO PEQUEÑO Y ORDENADO) */
+/* GRILLA DE MODELOS (HERO) */
 .hero-models-grid {
   display: flex;
   gap: 1.25rem;
@@ -227,7 +227,6 @@ body {
   transition: var(--transition);
 }
 
-/* Escalón elegante para la segunda tarjeta */
 .model-card-2 {
   transform: translateY(24px);
 }
@@ -340,7 +339,7 @@ body {
 }
 .lang-select:hover { border-color: var(--accent); }
 
-/* CATÁLOGO */
+/* CATÁLOGO Y SECCIONES DE ARTÍCULOS (CORREGIDO) */
 .catalogue-wrapper {
   padding: 3rem 5% 5rem;
   max-width: 1400px;
@@ -376,6 +375,125 @@ body {
   font-weight: 800;
   letter-spacing: -0.5px;
   color: var(--text-main);
+  margin-bottom: 1.5rem;
+}
+
+.category-section {
+  margin-bottom: 3.5rem;
+}
+
+.category-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* GRILLA DE PRODUCTOS RESPONSIVA Y UNIFORME */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* TARJETA INDIVIDUAL DE ARTÍCULOS */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+}
+
+/* CONTENEDOR DE IMAGEN ESTÁNDAR (Fija la altura y evita deformaciones) */
+.card-img-container {
+  width: 100%;
+  height: 240px;
+  background: var(--bg-primary);
+  overflow: hidden;
+  position: relative;
+}
+
+.card-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-container img {
+  transform: scale(1.06);
+}
+
+/* CUERPO DE LA TARJETA */
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.card-price {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.size-selector-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-primary);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+}
+
+.size-selector-wrapper label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.size-selector-wrapper select {
+  background: var(--bg-secondary);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
 }
 
 /* TOAST Y MODALES */
@@ -505,5 +623,9 @@ body {
   }
   .model-card-2 {
     transform: translateY(0);
+  }
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
   }
 }
