@@ -598,56 +598,78 @@ body {
 .auth-switch a { color: var(--accent); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
 .auth-switch a:hover { text-decoration: underline; }
 
-/* --- CARRITO DE COMPRAS MEJORADO --- */
+/* --- CARRITO DE COMPRAS PREMIUM & VISUALMENTE AGRADABLE --- */
 .cart-items-list {
-  max-height: 280px;
+  max-height: 320px;
   overflow-y: auto;
   margin-bottom: 1.25rem;
-  padding-right: 6px;
+  padding-right: 4px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+/* Scroll minimalista y estético de alta gama */
 .cart-items-list::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 .cart-items-list::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
+  background: transparent;
 }
 .cart-items-list::-webkit-scrollbar-thumb {
   background: var(--border-color);
-  border-radius: 4px;
+  border-radius: 10px;
+}
+.cart-items-list::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
 }
 
+/* Tarjeta de producto individual en el carrito */
 .cart-item-card {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 14px;
   background: var(--bg-primary);
   border: 1px solid var(--border-color);
-  padding: 10px 14px;
-  border-radius: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
   transition: var(--transition);
+  position: relative;
 }
 
 .cart-item-card:hover {
   border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
 }
 
+/* Miniatura del producto en el carrito (Elegante y redondeada) */
+.cart-item-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+/* Información central del producto */
 .cart-item-info {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 5px;
   flex-grow: 1;
+  min-width: 0; /* Previene desbordamiento de texto */
 }
 
 .cart-item-title {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-height: 1.2;
 }
 
@@ -655,15 +677,16 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
 }
 
 .cart-item-size {
   color: var(--accent);
   font-weight: 700;
-  background: rgba(99, 102, 241, 0.1);
-  padding: 2px 6px;
-  border-radius: 4px;
+  background: rgba(99, 102, 241, 0.12);
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.3px;
 }
 
 .cart-item-price {
@@ -671,32 +694,35 @@ body {
   font-weight: 600;
 }
 
+/* Botón de eliminar sutil y refinado */
 .cart-item-remove {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.2);
-  color: var(--danger);
-  width: 28px;
-  height: 28px;
-  border-radius: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
-  font-weight: bold;
+  font-size: 0.95rem;
   transition: var(--transition);
   flex-shrink: 0;
 }
 
 .cart-item-remove:hover {
-  background: var(--danger);
-  color: white;
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--danger);
+  border-color: rgba(239, 68, 68, 0.25);
   transform: scale(1.08);
 }
 
+/* Resumen del carrito moderno con línea punteada elegante */
 .cart-summary {
-  border-top: 1px solid var(--border-color); 
-  padding-top: 1rem;
+  border-top: 1px dashed var(--border-color); 
+  padding-top: 1.1rem;
+  margin-top: 0.5rem;
   display: flex; 
   justify-content: space-between; 
   align-items: center;
