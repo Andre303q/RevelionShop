@@ -131,6 +131,13 @@ const productosEjemplo = [
     precio: 159.00,   
     tipo: "reloj",   
     imagen: "https://www.ostu.com/dw/image/v2/BHFM_PRD/on/demandware.static/-/Sites-storefront_catalog_ostu/default/dweff07e6e/images/hi-res/2026/07/sets-de-accesorios-para-mujer-40510042-73046_1.jpg?sw=480&sh=576"  
+  },
+    {   
+    id: "20",   
+    nombre: { es: "Llavero Estilo Y2K", en: "Y2K Keychain" },   
+    precio: 129.00,   
+    tipo: "reloj",   
+    imagen: "https://blummishop.com/wp-content/uploads/2024/08/Llavero-Y2K-2.png"  
   } 
 ]; 
 
