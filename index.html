@@ -10,31 +10,55 @@
 </head>
 <body>
 
-  <!-- HEADER FIJO SUPERIOR -->
-  <header class="header">
-    <div class="logo-container" id="logo-home">
-      <div class="logo-badge">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  <!-- BARRA SUPERIOR DE UTILIDADES (Estilo E-commerce Pro) -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <div class="top-contact">
+        <span>📞 +0123456789</span>
+        <span>✉️ Example@Gmail.Com</span>
       </div>
-      <div class="logo-text">
-        <span class="logo-title">Revelion</span>
-        <span class="logo-subtitle">Store</span>
+      <div class="top-actions">
+        <span id="user-display" style="display: none; margin-right: 10px;"></span>
+        <a href="#" id="btn-auth-top" data-i18n="loginBtn">Iniciar Sesión</a>
+        <a href="#">Language</a>
+        <a href="#">Currency</a>
       </div>
     </div>
+  </div>
 
-    <div class="nav-actions">
-      <span id="user-display" style="display: none;"></span>
-      <button class="btn secondary" id="btn-auth" data-i18n="loginBtn">Iniciar Sesión</button>
-      
-      <button class="btn secondary btn-icon-only" id="btn-cart" title="Carrito">
-        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6zM3.6 6h16.8L19 4H5l-1.4 2zM16 10a4 4 0 0 1-8 0"/></svg>
-        <span id="cart-count">0</span>
-      </button>
-      
-      <select id="lang-selector" class="lang-select">
-        <option value="es">ES</option>
-        <option value="en">EN</option>
-      </select>
+  <!-- HEADER FIJO PRINCIPAL CON NAVEGACIÓN -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="logo-container" id="logo-home" style="cursor: pointer;">
+        <div class="logo-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">Revelion</span>
+          <span class="logo-subtitle">Store</span>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#" class="active" id="nav-home">HOME</a>
+        <a href="#" id="btn-explore">SHOP</a>
+        <a href="#">MEN</a>
+        <a href="#">WOMEN</a>
+        <a href="#">PAGES</a>
+        <a href="#">CONTACT</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn secondary btn-icon-only" id="btn-cart" title="Carrito">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6zM3.6 6h16.8L19 4H5l-1.4 2zM16 10a4 4 0 0 1-8 0"/></svg>
+          <span id="cart-count">0</span>
+        </button>
+        
+        <select id="lang-selector" class="lang-select">
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+        </select>
+      </div>
     </div>
   </header>
 
@@ -49,7 +73,7 @@
       <p class="hero-desc" data-i18n="heroDesc">Explora las últimas tendencias en moda y accesorios diseñados para destacar en cualquier lugar.</p>
       
       <div class="hero-actions">
-        <button class="btn primary btn-glow" id="btn-explore" data-i18n="heroExplore">
+        <button class="btn primary btn-glow" id="btn-explore-hero" data-i18n="heroExplore">
           Explorar Catálogo
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
