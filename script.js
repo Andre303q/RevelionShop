@@ -172,7 +172,6 @@ const TASA_CAMBIO_USD = 7.8;
 
 document.addEventListener('DOMContentLoaded', () => { 
   initLanguageSystem(); 
-  initThemeSystem(); 
   renderCategorizedProducts(); 
   initModals(); 
   initAuthSystem(); 
@@ -235,42 +234,6 @@ function applyTranslations() {
     const key = el.getAttribute('data-i18n'); 
     if (t[key]) el.textContent = t[key]; 
   }); 
-} 
-
-function initThemeSystem() { 
-  const btnThemeToggle = document.getElementById('btn-theme-toggle'); 
-  const themeIcon = document.getElementById('theme-icon'); 
-  if (!btnThemeToggle || !themeIcon) return;
-   
-  const savedTheme = localStorage.getItem('revelion_theme') || 'light'; 
-  if (savedTheme === 'dark') { 
-    document.documentElement.setAttribute('data-theme', 'dark'); 
-    setSunIcon(themeIcon); 
-  } else { 
-    document.documentElement.removeAttribute('data-theme'); 
-    setMoonIcon(themeIcon); 
-  } 
-
-  btnThemeToggle.onclick = () => { 
-    const currentTheme = document.documentElement.getAttribute('data-theme'); 
-    if (currentTheme === 'dark') { 
-      document.documentElement.removeAttribute('data-theme'); 
-      localStorage.setItem('revelion_theme', 'light'); 
-      setMoonIcon(themeIcon); 
-    } else { 
-      document.documentElement.setAttribute('data-theme', 'dark'); 
-      localStorage.setItem('revelion_theme', 'dark'); 
-      setSunIcon(themeIcon); 
-    } 
-  }; 
-} 
-
-function setMoonIcon(svg) { 
-  svg.innerHTML = '<path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>'; 
-} 
-
-function setSunIcon(svg) { 
-  svg.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>'; 
 } 
 
 function formatearPrecio(precioGTQ) { 
