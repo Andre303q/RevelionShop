@@ -10,22 +10,7 @@
 </head>
 <body>
 
-  <!-- BARRA SUPERIOR DE UTILIDADES -->
-  <div class="top-bar">
-    <div class="top-bar-container">
-      <div class="top-contact">
-        <span>📞 +01 234 567 89</span>
-        <span>✉️ support@revelion.com</span>
-      </div>
-      <div class="top-actions">
-        <span id="user-display" style="display: none;"></span>
-        <a href="#" id="top-auth-link" data-i18n="loginBtn">Iniciar Sesión</a>
-        <a href="#">Ayuda</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- HEADER FIJO PRINCIPAL -->
+  <!-- HEADER FIJO PRINCIPAL (LIMPIO Y MINIMALISTA) -->
   <header class="header">
     <div class="logo-container" id="logo-home">
       <div class="logo-badge">
@@ -37,17 +22,11 @@
       </div>
     </div>
 
-    <!-- MENÚ DE NAVEGACIÓN ESTILO E-COMMERCE -->
-    <nav class="nav-links">
-      <a href="#" class="active" id="nav-home">HOME</a>
-      <a href="#" id="btn-explore-nav">SHOP</a>
-      <a href="#">MEN</a>
-      <a href="#">WOMEN</a>
-      <a href="#">PAGES</a>
-      <a href="#">CONTACT</a>
-    </nav>
-
+    <!-- ACCIONES DEL HEADER (INCLUYE NOMBRE DE USUARIO Y BOTONES DE CONTROL) -->
     <div class="nav-actions">
+      <!-- Apartado dinámico para el nombre de usuario y botón de salir -->
+      <div id="user-display" style="display: none;"></div>
+      
       <button class="btn secondary" id="btn-auth" data-i18n="loginBtn">Iniciar Sesión</button>
       
       <button class="btn secondary btn-icon-only" id="btn-cart" title="Carrito">
