@@ -59,7 +59,6 @@ body {
   top: 0;
   z-index: 1000;
   width: 100%;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .logo-container {
@@ -205,7 +204,7 @@ body {
   margin-top: 0.5rem;
 }
 
-/* 🌟 GRILLA / ESTRELLA DE MODELOS (HERO) */
+/* GRILLA / ESTRELLA DE MODELOS (HERO) */
 .hero-star-grid {
   position: relative;
   width: 380px;
@@ -244,32 +243,12 @@ body {
   transform: scale(1.05);
 }
 
-/* Posicionamiento en estrella / constelación */
-.model-1 {
-  top: 0px;
-  left: 20px;
-  transform: rotate(-6deg);
-}
+/* Posicionamiento en estrella */
+.model-1 { top: 0px; left: 20px; transform: rotate(-6deg); }
+.model-2 { top: 30px; right: 10px; transform: rotate(8deg); }
+.model-3 { bottom: 10px; left: 0px; transform: rotate(4deg); }
+.model-4 { bottom: 25px; right: 30px; transform: rotate(-5deg); }
 
-.model-2 {
-  top: 30px;
-  right: 10px;
-  transform: rotate(8deg);
-}
-
-.model-3 {
-  bottom: 10px;
-  left: 0px;
-  transform: rotate(4deg);
-}
-
-.model-4 {
-  bottom: 25px;
-  right: 30px;
-  transform: rotate(-5deg);
-}
-
-/* Etiqueta interna de las tarjetas de modelo */
 .model-overlay-tag {
   position: absolute;
   bottom: 6px;
@@ -286,7 +265,7 @@ body {
   letter-spacing: 0.3px;
 }
 
-/* BOTONES GENERALES */
+/* BOTONES */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -342,10 +321,8 @@ body {
   width: 18px;
   height: 18px;
   fill: var(--text-main);
-  transition: var(--transition);
 }
 
-/* SELECTOR DE IDIOMA */
 .lang-select {
   background: var(--bg-primary);
   color: var(--text-main);
@@ -357,11 +334,10 @@ body {
   font-weight: 600;
   cursor: pointer;
   outline: none;
-  transition: var(--transition);
 }
 .lang-select:hover { border-color: var(--accent); }
 
-/* CATÁLOGO Y SECCIONES DE ARTÍCULOS */
+/* CATÁLOGO */
 .catalogue-wrapper {
   padding: 3rem 5% 5rem;
   max-width: 1400px;
@@ -369,16 +345,8 @@ body {
   transition: all 0.5s ease;
 }
 
-.catalogue-hidden {
-  display: none;
-  opacity: 0;
-}
-
-.catalogue-visible {
-  display: block;
-  opacity: 1;
-  animation: fadeIn 0.6s ease forwards;
-}
+.catalogue-hidden { display: none; opacity: 0; }
+.catalogue-visible { display: block; opacity: 1; animation: fadeIn 0.6s ease forwards; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
@@ -395,14 +363,10 @@ body {
 .main-title {
   font-size: 2.2rem;
   font-weight: 800;
-  letter-spacing: -0.5px;
   color: var(--text-main);
-  margin-bottom: 1.5rem;
 }
 
-.category-section {
-  margin-bottom: 3.5rem;
-}
+.category-section { margin-bottom: 3.5rem; }
 
 .category-title {
   font-size: 1.35rem;
@@ -411,12 +375,8 @@ body {
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 2px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
-/* GRILLA DE PRODUCTOS RESPONSIVA Y UNIFORME */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -424,7 +384,7 @@ body {
   width: 100%;
 }
 
-/* TARJETA INDIVIDUAL DE ARTÍCULOS */
+/* TARJETA DE PRODUCTO */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -443,28 +403,22 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-/* CONTENEDOR DE IMAGEN ESTÁNDAR */
 .card-img-container {
   width: 100%;
   height: 240px;
   background: var(--bg-primary);
   overflow: hidden;
-  position: relative;
 }
 
 .card-img-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   transition: transform 0.5s ease;
 }
 
-.card:hover .card-img-container img {
-  transform: scale(1.06);
-}
+.card:hover .card-img-container img { transform: scale(1.06); }
 
-/* CUERPO DE LA TARJETA */
 .card-body {
   padding: 1.25rem;
   display: flex;
@@ -598,7 +552,7 @@ body {
 .auth-switch a { color: var(--accent); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
 .auth-switch a:hover { text-decoration: underline; }
 
-/* --- CARRITO DE COMPRAS PREMIUM & VISUALMENTE AGRADABLE --- */
+/* CARRITO DE COMPRAS PREMIUM */
 .cart-items-list {
   max-height: 320px;
   overflow-y: auto;
@@ -609,22 +563,6 @@ body {
   gap: 12px;
 }
 
-/* Scroll minimalista y estético de alta gama */
-.cart-items-list::-webkit-scrollbar {
-  width: 5px;
-}
-.cart-items-list::-webkit-scrollbar-track {
-  background: transparent;
-}
-.cart-items-list::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 10px;
-}
-.cart-items-list::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
-}
-
-/* Tarjeta de producto individual en el carrito */
 .cart-item-card {
   display: flex;
   align-items: center;
@@ -634,16 +572,13 @@ body {
   padding: 12px 14px;
   border-radius: 16px;
   transition: var(--transition);
-  position: relative;
 }
 
 .cart-item-card:hover {
   border-color: var(--accent);
   box-shadow: var(--shadow-sm);
-  transform: translateY(-2px);
 }
 
-/* Miniatura del producto en el carrito (Elegante y redondeada) */
 .cart-item-img {
   width: 52px;
   height: 52px;
@@ -654,13 +589,12 @@ body {
   background: var(--bg-secondary);
 }
 
-/* Información central del producto */
 .cart-item-info {
   display: flex;
   flex-direction: column;
   gap: 5px;
   flex-grow: 1;
-  min-width: 0; /* Previene desbordamiento de texto */
+  min-width: 0;
 }
 
 .cart-item-title {
@@ -670,7 +604,6 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  line-height: 1.2;
 }
 
 .cart-item-details {
@@ -686,7 +619,6 @@ body {
   background: rgba(99, 102, 241, 0.12);
   padding: 2px 8px;
   border-radius: 6px;
-  letter-spacing: 0.3px;
 }
 
 .cart-item-price {
@@ -694,7 +626,6 @@ body {
   font-weight: 600;
 }
 
-/* Botón de eliminar sutil y refinado */
 .cart-item-remove {
   background: transparent;
   border: 1px solid transparent;
@@ -715,10 +646,8 @@ body {
   background: rgba(239, 68, 68, 0.12);
   color: var(--danger);
   border-color: rgba(239, 68, 68, 0.25);
-  transform: scale(1.08);
 }
 
-/* Resumen del carrito moderno con línea punteada elegante */
 .cart-summary {
   border-top: 1px dashed var(--border-color); 
   padding-top: 1.1rem;
@@ -744,7 +673,6 @@ body {
   .no-print { display: none !important; }
 }
 
-/* RESPONSIVO PARA MÓVILES Y TABLETS */
 @media (max-width: 968px) {
   .hero-section {
     flex-direction: column;
@@ -752,18 +680,8 @@ body {
     padding: 3rem 5%;
     gap: 2.5rem;
   }
-  .hero-content {
-    align-items: center;
-    max-width: 100%;
-  }
-  .hero-title {
-    font-size: 2.6rem;
-  }
-  .hero-desc {
-    max-width: 100%;
-  }
-  
-  /* Adaptación del diseño en estrella para pantallas móviles */
+  .hero-content { align-items: center; max-width: 100%; }
+  .hero-title { font-size: 2.6rem; }
   .hero-star-grid {
     width: 100%;
     height: 220px;
@@ -773,17 +691,8 @@ body {
   }
   .hero-star-grid .model-card {
     position: relative;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    width: 105px;
-    height: 155px;
-    transform: none !important;
+    top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
+    width: 105px; height: 155px; transform: none !important;
   }
-
-  .products-grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 1rem;
-  }
+  .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
 }
