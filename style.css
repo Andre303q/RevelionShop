@@ -188,29 +188,29 @@ body {
   border: 1px solid var(--border-color);
 }
 
-/* APARTADO DE BIENVENIDA (HERO SECTION) */
+/* APARTADO DE BIENVENIDA (HERO SECTION MEJORADO) */
 .hero-section {
-  padding: 4rem 5%;
-  max-width: 1300px;
+  padding: 5rem 5%;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 4rem;
-  min-height: calc(100vh - 73px);
+  gap: 3rem;
+  min-height: 85vh;
   position: relative;
-  text-align: left;
+  overflow: hidden;
 }
 
 .hero-backdrop-glow {
   position: absolute;
-  top: 50%;
-  left: 25%;
+  top: 40%;
+  left: 30%;
   transform: translate(-50%, -50%);
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.18) 0%, transparent 70%);
   z-index: 0;
   pointer-events: none;
 }
@@ -220,9 +220,9 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
-  max-width: 540px;
+  max-width: 580px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-badge-wrapper {
@@ -273,17 +273,22 @@ body {
 /* GRILLA / ESTRELLA DE MODELOS (HERO) */
 .hero-star-grid {
   position: relative;
-  width: 380px;
+  width: 440px;
   height: 420px;
   flex-shrink: 0;
-  z-index: 1;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  align-items: center;
+  justify-items: center;
 }
 
 .hero-star-grid .model-card {
-  position: absolute;
-  width: 140px;
-  height: 200px;
-  border-radius: 16px;
+  position: relative;
+  width: 170px;
+  height: 220px;
+  border-radius: 18px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-color);
@@ -299,35 +304,38 @@ body {
   transition: transform 0.5s ease;
 }
 
+/* Efecto escalonado limpio sin desbordarse */
+.hero-star-grid .model-1 { transform: translateY(-15px) rotate(-3deg); }
+.hero-star-grid .model-2 { transform: translateY(15px) rotate(3deg); }
+.hero-star-grid .model-3 { transform: translateY(-10px) rotate(2deg); }
+.hero-star-grid .model-4 { transform: translateY(20px) rotate(-2deg); }
+
 .hero-star-grid .model-card:hover {
-  transform: scale(1.08) rotate(0deg) !important;
-  z-index: 50;
+  transform: scale(1.06) translateY(0px) rotate(0deg) !important;
+  z-index: 10;
   border-color: var(--accent);
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
 }
 
 .hero-star-grid .model-card:hover img {
   transform: scale(1.05);
 }
 
-.model-1 { top: 0px; left: 20px; transform: rotate(-6deg); }
-.model-2 { top: 30px; right: 10px; transform: rotate(8deg); }
-.model-3 { bottom: 10px; left: 0px; transform: rotate(4deg); }
-.model-4 { bottom: 25px; right: 30px; transform: rotate(-5deg); }
-
 .model-overlay-tag {
   position: absolute;
-  bottom: 6px;
-  left: 6px;
-  right: 6px;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
   background: rgba(6, 9, 19, 0.85);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
   color: white;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   font-weight: 700;
   text-align: center;
-  padding: 4px;
-  border-radius: 6px;
+  padding: 5px;
+  border-radius: 8px;
   letter-spacing: 0.3px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* BOTONES */
@@ -740,26 +748,36 @@ body {
   .no-print { display: none !important; }
 }
 
-@media (max-width: 968px) {
+@media (max-width: 1024px) {
   .hero-section {
     flex-direction: column;
     text-align: center;
     padding: 3rem 5%;
-    gap: 2.5rem;
+    gap: 3rem;
   }
-  .hero-content { align-items: center; max-width: 100%; }
-  .hero-title { font-size: 2.6rem; }
+  .hero-content {
+    align-items: center;
+    max-width: 100%;
+  }
+  .hero-desc {
+    text-align: center;
+  }
   .hero-star-grid {
     width: 100%;
-    height: 220px;
+    max-width: 380px;
+    height: auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
   }
   .hero-star-grid .model-card {
-    position: relative;
-    top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
-    width: 105px; height: 155px; transform: none !important;
+    width: 140px;
+    height: 180px;
+    transform: none !important;
   }
-  .products-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+  .products-grid { 
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    gap: 1rem; 
+  }
 }
