@@ -361,7 +361,7 @@ function initModals() {
   if (btnAuth && authModal) btnAuth.onclick = () => authModal.style.display = 'flex'; 
   if (closeAuth && authModal) closeAuth.onclick = () => authModal.style.display = 'none'; 
   if (btnCart && cartModal) btnCart.onclick = () => cartModal.style.display = 'flex'; 
-  if (closeCart && cartModal) closeCart.onclick = () => closeCart.closest('.modal-overlay').style.display = 'none'; 
+  if (closeCart && cartModal) closeCart.onclick = () => cartModal.closest('.modal-overlay').style.display = 'none'; 
   if (closeReceipt && receiptModal) closeReceipt.onclick = () => receiptModal.style.display = 'none';
   if (btnCerrarRecibo && receiptModal) btnCerrarRecibo.onclick = () => receiptModal.style.display = 'none';
 
@@ -510,19 +510,31 @@ function updateCartUI() {
   list.innerHTML = ''; 
   let total = 0; 
 
+  if (carrito.length === 0) {
+    list.innerHTML = `<div style="text-align: center; padding: 2rem 0; color: var(--text-muted); font-size: 0.9rem;">${currentLang === 'es' ? 'Tu carrito está vacío' : 'Your cart is empty'}</div>`;
+  }
+
   carrito.forEach((item, index) => { 
     total += item.precio; 
     const nombreArticulo = item.nombre[currentLang] || item.nombre.es; 
-    let detalleExtra = item.tipo === 'ropa' ? `<br><small style="color: var(--accent); font-weight: 700;">${item.opcionSeleccionada}</small>` : ''; 
+    
+    let detalleExtra = '';
+    if (item.tipo === 'ropa' && item.opcionSeleccionada) {
+      const letraTalla = item.opcionSeleccionada.split(':').pop().trim();
+      detalleExtra = `<span class="cart-item-size">T: ${letraTalla}</span>`;
+    }
      
     list.innerHTML += ` 
-      <div class="cart-item"> 
-        <div> 
-          <strong>${nombreArticulo}</strong> 
-          ${detalleExtra}<br> 
-          <small style="color: var(--text-muted);">${formatearPrecio(item.precio)}</small> 
+      <div class="cart-item-card"> 
+        <img src="${item.imagen}" alt="${nombreArticulo}" class="cart-item-img">
+        <div class="cart-item-info"> 
+          <span class="cart-item-title" title="${nombreArticulo}">${nombreArticulo}</span> 
+          <div class="cart-item-details">
+            <span class="cart-item-price">${formatearPrecio(item.precio)}</span>
+            ${detalleExtra}
+          </div>
         </div> 
-        <button class="btn danger" style="padding:4px 8px; font-size:0.75rem;" onclick="removeFromCart(${index})">X</button> 
+        <button class="cart-item-remove" onclick="removeFromCart(${index})" title="Eliminar">✕</button> 
       </div> 
     `; 
   }); 
@@ -564,7 +576,7 @@ function initCheckout() {
     carrito.forEach(item => {
       totalRecibo += item.precio;
       const nombreArticulo = item.nombre[currentLang] || item.nombre.es;
-      rItems.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>${nombreArticulo}</span> <span>${formatearPrecio(item.precio)}</span></div>`;
+      rItems.innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size: 0.85rem;"><span>${nombreArticulo}</span> <strong>${formatearPrecio(item.precio)}</strong></div>`;
     });
 
     document.getElementById('r-total').textContent = formatearPrecio(totalRecibo);
