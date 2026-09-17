@@ -1,5 +1,87 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
+/* --- BARRA SUPERIOR DE UTILIDADES --- */
+.top-bar {
+  background-color: #04060d;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.75rem;
+  padding: 6px 0;
+  color: var(--text-muted);
+}
+
+.top-bar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+}
+
+.top-contact {
+  display: flex;
+  gap: 20px;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.top-actions a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.top-actions a:hover {
+  color: var(--accent);
+}
+
+/* --- NAVEGACIÓN CENTRAL EN HEADER --- */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+  color: var(--text-main);
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Ajustes responsive para pantallas pequeñas */
+@media (max-width: 968px) {
+  .nav-links {
+    display: none; /* Oculta el menú horizontal en móviles para mantener limpio el header */
+  }
+  .top-bar {
+    display: none; /* Opcional: oculta la barra superior en móviles si falta espacio */
+  }
+}
+
+
 :root {
   --bg-primary: #060913;
   --bg-secondary: #0f172a;
