@@ -138,6 +138,20 @@ const productosEjemplo = [
     precio: 129.00,   
     tipo: "reloj",   
     imagen: "https://blummishop.com/wp-content/uploads/2024/08/Llavero-Y2K-2.png"  
+  }, 
+    {   
+    id: "21",   
+    nombre: { es: "Sudadera Blanca Y2K", en: "White Hoodie Y2K" },   
+    precio: 249.00,   
+    tipo: "ropa",   
+    imagen: "https://y2k-streetwear.com/cdn/shop/files/knit-sweater-y2k-3671766.jpg?v=1765360099"  
+  },
+  {   
+    id: "22",   
+    nombre: { es: "Sudadera Roja Estilo Y2K", en: "Red Hoodie Y2K" },   
+    precio: 249.00,   
+    tipo: "ropa",   
+    imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ96EwDIHM80QcNKOg2mLM6W7hf63Zb4eNUPvOSV89tWmAVFYvSlT1CEru&s=10"  
   } 
 ]; 
 
