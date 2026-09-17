@@ -124,6 +124,13 @@ const productosEjemplo = [
     precio: 149.00,   
     tipo: "coleccionable",   
     imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVQHjwyS0oHXHk2SqGFuBCJ6CGAMuAg4fdBUvJO_sXIdTHfcT0xihO_RQ&s=10"  
+  },
+    {   
+    id: "19",   
+    nombre: { es: "Collar Hongo Para Mujer", en: "Women's Mushroom Necklace" },   
+    precio: 159.00,   
+    tipo: "reloj",   
+    imagen: "https://www.ostu.com/dw/image/v2/BHFM_PRD/on/demandware.static/-/Sites-storefront_catalog_ostu/default/dweff07e6e/images/hi-res/2026/07/sets-de-accesorios-para-mujer-40510042-73046_1.jpg?sw=480&sh=576"  
   } 
 ]; 
 
