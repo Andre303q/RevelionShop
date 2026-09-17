@@ -1,34 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #ffffff;
-  --bg-card: #ffffff;
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --danger: #ef4444;
-  --success: #22c55e;
-  --border-color: rgba(15, 23, 42, 0.08);
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-[data-theme="dark"] {
-  --bg-primary: #090d16;
-  --bg-secondary: #111827;
-  --bg-card: #1f2937;
+  --bg-primary: #060913;
+  --bg-secondary: #0f172a;
+  --bg-card: #131c31;
   --accent: #818cf8;
   --accent-hover: #6366f1;
-  --text-main: #f3f4f6;
-  --text-muted: #9ca3af;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
   --danger: #f87171;
   --success: #4ade80;
   --border-color: rgba(255, 255, 255, 0.08);
-  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -43,7 +28,6 @@ body {
   color: var(--text-main);
   min-height: 100vh;
   overflow-x: hidden;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* HEADER FIJO SUPERIOR */
@@ -52,8 +36,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5%;
-  background: var(--bg-secondary);
-  backdrop-filter: blur(12px);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
@@ -76,7 +60,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
 .logo-badge svg {
@@ -116,7 +100,7 @@ body {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-main);
-  background: var(--bg-primary);
+  background: var(--bg-card);
   padding: 8px 14px;
   border-radius: 10px;
   border: 1px solid var(--border-color);
@@ -142,9 +126,9 @@ body {
   top: 50%;
   left: 25%;
   transform: translate(-50%, -50%);
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
   z-index: 0;
   pointer-events: none;
 }
@@ -167,14 +151,14 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(99, 102, 241, 0.12);
+  background: rgba(129, 140, 248, 0.12);
   color: var(--accent);
   padding: 8px 18px;
   border-radius: 30px;
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(129, 140, 248, 0.25);
 }
 
 .hero-title {
@@ -186,7 +170,7 @@ body {
 }
 
 .hero-title span {
-  background: linear-gradient(135deg, #6366f1, #a855f7);
+  background: linear-gradient(135deg, #818cf8, #c084fc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -243,7 +227,6 @@ body {
   transform: scale(1.05);
 }
 
-/* Posicionamiento en estrella */
 .model-1 { top: 0px; left: 20px; transform: rotate(-6deg); }
 .model-2 { top: 30px; right: 10px; transform: rotate(8deg); }
 .model-3 { bottom: 10px; left: 0px; transform: rotate(4deg); }
@@ -254,13 +237,13 @@ body {
   bottom: 6px;
   left: 6px;
   right: 6px;
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(6, 9, 19, 0.85);
   backdrop-filter: blur(4px);
   color: white;
   font-size: 0.6rem;
   font-weight: 700;
   text-align: center;
-  padding: 3px 4px;
+  padding: 4px;
   border-radius: 6px;
   letter-spacing: 0.3px;
 }
@@ -288,22 +271,23 @@ body {
 
 .btn.primary { 
   background: var(--accent); 
-  color: white; 
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3); 
+  color: #060913; 
+  box-shadow: 0 4px 14px rgba(129, 140, 248, 0.3); 
 }
 .btn.primary:hover { 
   background: var(--accent-hover); 
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4); 
+  box-shadow: 0 6px 20px rgba(129, 140, 248, 0.5); 
   transform: translateY(-2px); 
 }
 
 .btn.secondary { 
-  background: var(--bg-primary); 
+  background: var(--bg-card); 
   color: var(--text-main); 
   border: 1px solid var(--border-color); 
 }
 .btn.secondary:hover { 
-  background: var(--border-color); 
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
   transform: translateY(-2px); 
 }
 
@@ -321,10 +305,11 @@ body {
   width: 18px;
   height: 18px;
   fill: var(--text-main);
+  stroke: var(--text-main);
 }
 
 .lang-select {
-  background: var(--bg-primary);
+  background: var(--bg-card);
   color: var(--text-main);
   border: 1px solid var(--border-color);
   padding: 9px 12px;
@@ -406,7 +391,7 @@ body {
 .card-img-container {
   width: 100%;
   height: 240px;
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   overflow: hidden;
 }
 
@@ -446,7 +431,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   padding: 8px 12px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
@@ -461,7 +446,7 @@ body {
 }
 
 .size-selector-wrapper select {
-  background: var(--bg-secondary);
+  background: var(--bg-card);
   color: var(--text-main);
   border: 1px solid var(--border-color);
   padding: 4px 8px;
@@ -481,7 +466,7 @@ body {
   padding: 12px 24px;
   border-radius: 12px;
   font-weight: 600;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   z-index: 10000;
   transform: translateY(-120%);
   opacity: 0;
@@ -493,8 +478,8 @@ body {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
   display: none;
   align-items: center;
   justify-content: center;
@@ -515,7 +500,7 @@ body {
 .modal-close {
   position: absolute;
   top: 16px; right: 16px;
-  background: var(--bg-primary);
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   color: var(--text-muted);
   width: 32px; height: 32px;
@@ -533,16 +518,16 @@ body {
 .form-group label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.4rem; }
 .form-group input {
   width: 100%; padding: 10px 14px;
-  background: var(--bg-primary);
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 10px; color: var(--text-main);
   font-size: 0.9rem; outline: none;
 }
-.form-group input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15); }
+.form-group input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.15); }
 
 .auth-error-msg {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.25);
   color: var(--danger);
   padding: 8px; border-radius: 8px;
   font-size: 0.8rem; margin-bottom: 1rem; text-align: center;
@@ -567,7 +552,7 @@ body {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: var(--bg-primary);
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
   padding: 12px 14px;
   border-radius: 16px;
@@ -616,7 +601,7 @@ body {
 .cart-item-size {
   color: var(--accent);
   font-weight: 700;
-  background: rgba(99, 102, 241, 0.12);
+  background: rgba(129, 140, 248, 0.15);
   padding: 2px 8px;
   border-radius: 6px;
 }
@@ -643,9 +628,9 @@ body {
 }
 
 .cart-item-remove:hover {
-  background: rgba(239, 68, 68, 0.12);
+  background: rgba(239, 68, 68, 0.15);
   color: var(--danger);
-  border-color: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.3);
 }
 
 .cart-summary {
