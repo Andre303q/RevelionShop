@@ -152,6 +152,20 @@ const productosEjemplo = [
     precio: 249.00,   
     tipo: "ropa",   
     imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ96EwDIHM80QcNKOg2mLM6W7hf63Zb4eNUPvOSV89tWmAVFYvSlT1CEru&s=10"  
+  },
+    {   
+    id: "23",   
+    nombre: { es: "Poster Conmemorativo", en: "Commemorative Poster" },   
+    precio: 199.00,   
+    tipo: "coleccionable",   
+    imagen: "https://www.rlmartstudio.com/wp-content/uploads/poster-exh-to-sell-2.jpg"  
+  },
+    {   
+    id: "24",   
+    nombre: { es: "Poster New York", en: "New York Poster" },   
+    precio: 199.00,   
+    tipo: "coleccionable",   
+    imagen: "https://static.posters.cz/image/750/posters/vintage-new-york-poster-i187882.jpg"  
   } 
 ]; 
 
