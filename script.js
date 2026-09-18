@@ -85,15 +85,15 @@ const productosEjemplo = [
   }, 
   {   
     id: "13",   
-    nombre: { es: "Posters estilo Anime", en: "Anime Style Posters" },   
-    precio: 320.00,   
+    nombre: { es: "Poster estilo Anime", en: "Anime Style Poster" },   
+    precio: 149.00,   
     tipo: "coleccionable",   
     imagen: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80"   
   }, 
   {   
     id: "14",   
     nombre: { es: "Auto de Colección Escala Clásico", en: "Classic Scale Collectible Car" },   
-    precio: 150.00,   
+    precio: 199.00,   
     tipo: "coleccionable",   
     imagen: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80"   
   }, 
@@ -107,7 +107,7 @@ const productosEjemplo = [
   {   
     id: "16",   
     nombre: { es: "Poster Serie Stranger Things", en: "Stranger Things TV Series Poster" },   
-    precio: 129.00,   
+    precio: 149.00,   
     tipo: "coleccionable",   
     imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdJrOB93U48zYkrjwNa78MV_hjW0V8_ieOuozrxGUfLW51YU2itbjptTI&s=10"  
   }, 
@@ -156,14 +156,14 @@ const productosEjemplo = [
     {   
     id: "23",   
     nombre: { es: "Poster Conmemorativo", en: "Commemorative Poster" },   
-    precio: 199.00,   
+    precio: 149.00,   
     tipo: "coleccionable",   
     imagen: "https://www.rlmartstudio.com/wp-content/uploads/poster-exh-to-sell-2.jpg"  
   },
     {   
     id: "24",   
     nombre: { es: "Poster New York", en: "New York Poster" },   
-    precio: 199.00,   
+    precio: 149.00,   
     tipo: "coleccionable",   
     imagen: "https://static.posters.cz/image/750/posters/vintage-new-york-poster-i187882.jpg"  
   } 
